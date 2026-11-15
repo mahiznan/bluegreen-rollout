@@ -27,6 +27,9 @@ spec:
       containers:
         - name: ${NAME}
           image: ${IMAGE}
+          # Always: a tag is rebuilt in place only when repairing a bad build, and without this a node
+          # that cached the old image under the same tag would keep using it.
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 8080
