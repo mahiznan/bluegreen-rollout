@@ -1,0 +1,17 @@
+# The BINDING layer. A Route is only an address that points at a release Service.
+# Nothing here says live, preview, blue or green: the role is just which Route name it is.
+# Changed only by scripts/bind.sh.
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ${ROUTE_NAME}
+  labels:
+    route-of: ${NAME}
+spec:
+  to:
+    kind: Service
+    name: ${TARGET}
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None
