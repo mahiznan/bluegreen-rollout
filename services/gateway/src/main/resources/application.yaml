@@ -16,6 +16,25 @@ spring:
               # and max life make the gateway pick up a flip quickly (plan section 6.1, #5).
               max-idle-time: 5s
               max-life-time: 30s
+          # RETRY a request whose connection to the router was closed before any answer came back.
+          # The router reloads after every Route change and closes idle keep-alive connections, so a
+          # request sent on a pooled connection at that instant fails with PrematureCloseException
+          # (found in Phase 8: about one failed request per flip). Retrying is safe because:
+          #   - the risk lookup (GET) is a read, and
+          #   - authorize (POST) carries an Idempotency-Key, so a repeat returns the same result.
+          # Only connection errors (java.io.IOException) are retried: NOT 5xx answers (a real outage
+          # must not be multiplied by retries) and NOT timeouts (the service may just be slow).
+          default-filters:
+            - name: Retry
+              args:
+                retries: 2
+                methods: GET,POST
+                exceptions: java.io.IOException
+                series: []
+                backoff:
+                  firstBackoff: 50ms
+                  maxBackoff: 500ms
+                  factor: 2
           # STATIC routes: the gateway knows only these addresses, never commits or releases.
           # The live and preview addresses are Routes in OpenShift. A flip rebinds them there,
           # so this file never changes during a release.
