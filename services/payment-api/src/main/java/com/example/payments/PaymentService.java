@@ -57,7 +57,8 @@ public class PaymentService {
         AuthorizeResponse created = new AuthorizeResponse(
                 authId, status, request.orderId(), false,
                 new RiskSummary(score.score(), score.decision(), score.ruleSet()),
-                new Served(identity.served(), score.served()));
+                new Served(identity.served(), score.served()),
+                "rcpt-" + authId.substring(5, 13));
         AuthorizeResponse raced = store.putIfAbsent(authId, created);
         return raced != null ? raced.asReplay(identity.served()) : created;
     }
