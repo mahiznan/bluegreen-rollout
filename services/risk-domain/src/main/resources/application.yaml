@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: risk-domain
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+server:
+  port: 8080
+  shutdown: graceful
+
+# ---- Identity: who am I? (reported in every response) ----
+# GIT_COMMIT is baked into the image by the Dockerfile. HOSTNAME is the pod name on OpenShift.
+app:
+  commit: ${GIT_COMMIT:dev}
+  pod: ${HOSTNAME:local}
+
+# ---- Settings: come from the release's ConfigMap (env vars) ----
+risk:
+  rule-set: ${RISK_RULE_SET:default}
+  review-threshold: ${RISK_REVIEW_THRESHOLD:60}
+  decline-threshold: ${RISK_DECLINE_THRESHOLD:90}
+  # ---- Secret: comes from the release's Secret. Never returned, only fingerprinted. ----
+  api-key: ${RISK_API_KEY:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
