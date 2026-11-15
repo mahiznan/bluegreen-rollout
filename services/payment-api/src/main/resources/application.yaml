@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: payment-api
+  lifecycle:
+    # Must stay below terminationGracePeriodSeconds minus the preStop sleep
+    timeout-per-shutdown-phase: 20s
+
+server:
+  port: 8080
+  shutdown: graceful
+
+# ---- Identity: who am I? (reported in every response) ----
+app:
+  commit: ${GIT_COMMIT:dev}
+  pod: ${HOSTNAME:local}
+
+# ---- Settings: from the release's ConfigMap (env vars) ----
+payments:
+  bank:
+    min-latency-ms: ${BANK_MIN_LATENCY_MS:200}
+    max-latency-ms: ${BANK_MAX_LATENCY_MS:800}
+  # ---- Secret: from the release's Secret. Never returned, only fingerprinted. ----
+  api-key: ${PAYMENT_API_KEY:}
+
+# Where the eAPI sends its domain call. Locally this is risk-domain itself;
+# in the cluster it is the gateway, which picks live or preview from X-Track.
+downstream:
+  risk-domain:
+    url: ${RISK_DOMAIN_URL:http://localhost:8090}
+    connect-timeout-ms: ${RISK_CONNECT_TIMEOUT_MS:1000}
+    read-timeout-ms: ${RISK_READ_TIMEOUT_MS:3000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      group:
+        liveness:
+          include: livenessState
+        readiness:
+          include: readinessState,bankGateway
