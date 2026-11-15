@@ -1,6 +1,6 @@
 # Blue/Green releases with pilot routing on OpenShift (CRC): proposal v3.2
 
-Status: **v3.2. Phases 0 to 4 are done locally; the cluster is untouched.** v3.1/v3.2 changes: the gateway
+Status: **v3.2. Phases 0 to 5 are done and verified on the cluster (project `bluegreen`).** v3.1/v3.2 changes: the gateway
 stays a **single release with one public URL**, and the track is decided from the **MFE host the browser
 page came from** (the `Origin` header). Decisions are in section 15.
 
