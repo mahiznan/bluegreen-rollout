@@ -9,6 +9,6 @@ metadata:
     commit: "${COMMIT}"
 immutable: true
 data:
-  RISK_RULE_SET: "default"
-  RISK_REVIEW_THRESHOLD: "60"
-  RISK_DECLINE_THRESHOLD: "90"
+  RISK_RULE_SET: "strict"
+  RISK_REVIEW_THRESHOLD: "40"
+  RISK_DECLINE_THRESHOLD: "80"
