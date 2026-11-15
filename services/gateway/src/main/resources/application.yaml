@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: gateway
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  cloud:
+    gateway:
+      server:
+        webflux:
+          httpclient:
+            connect-timeout: 1000
+            response-timeout: 5s
+            pool:
+              # Keep-alive limits. After a route flip the router sends NEW connections to the new
+              # release, but a pooled connection stays on whatever it was opened to. Short idle
+              # and max life make the gateway pick up a flip quickly (plan section 6.1, #5).
+              max-idle-time: 5s
+              max-life-time: 30s
+          # STATIC routes: the gateway knows only these addresses, never commits or releases.
+          # The live and preview addresses are Routes in OpenShift. A flip rebinds them there,
+          # so this file never changes during a release.
+          # The track (live or pilot) is already decided and stamped in X-Track by TrackFilter
+          # BEFORE route matching, so these predicates just read it.
+          routes:
+            - id: payment-api-live
+              uri: ${PAYMENT_API_LIVE_URL:http://localhost:8091}
+              predicates:
+                - Path=/api/v1/payments/**
+                - Header=X-Track, live
+            - id: payment-api-pilot
+              uri: ${PAYMENT_API_PREVIEW_URL:http://localhost:8092}
+              predicates:
+                - Path=/api/v1/payments/**
+                - Header=X-Track, pilot
+            - id: risk-domain-live
+              uri: ${RISK_DOMAIN_LIVE_URL:http://localhost:8090}
+              predicates:
+                - Path=/api/risk/**
+                - Header=X-Track, live
+            - id: risk-domain-pilot
+              uri: ${RISK_DOMAIN_PREVIEW_URL:http://localhost:8093}
+              predicates:
+                - Path=/api/risk/**
+                - Header=X-Track, pilot
+
+server:
+  port: 8080
+  shutdown: graceful
+
+# ---- Edge settings: from the gateway's ConfigMap ----
+# There is ONE public gateway URL. The track comes from the Origin header, i.e. the MFE host
+# that served the page.
+gateway:
+  edge:
+    public-host: ${GATEWAY_PUBLIC_HOST:gateway.apps-crc.testing}
+    live-origin: ${MFE_LIVE_ORIGIN:http://mfe.apps-crc.testing}
+    preview-origin: ${MFE_PREVIEW_ORIGIN:http://mfe-preview.apps-crc.testing}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true

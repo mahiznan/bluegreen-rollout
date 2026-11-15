@@ -1,6 +1,8 @@
-# Blue/Green releases with pilot routing on OpenShift (CRC): proposal v3
+# Blue/Green releases with pilot routing on OpenShift (CRC): proposal v3.2
 
-Status: **v3, awaiting go-ahead for Phase 0/1. Nothing has been built.** Decisions are in section 15.
+Status: **v3.2. Phases 0 to 4 are done locally; the cluster is untouched.** v3.1/v3.2 changes: the gateway
+stays a **single release with one public URL**, and the track is decided from the **MFE host the browser
+page came from** (the `Origin` header). Decisions are in section 15.
 
 Builds on `payments-rollout` (zero-downtime rolling updates). That project made one deployment replace
 itself without dropping requests. This one runs **two releases side by side** and moves users between
@@ -40,65 +42,81 @@ requests were served by old and new code at each hop.
 
 ## 3. Addresses (fixed for ever)
 
-Per service there are two Routes:
+Per service there are two Routes, one live and one preview. **These are the pairs that get swapped.**
 
-| Address | Meaning |
-|---|---|
-| `risk-domain.apps-crc.testing` | live |
-| `risk-domain-preview.apps-crc.testing` | preview |
+| Service | Live address | Preview address |
+|---|---|---|
+| `mfe` (what users browse) | `mfe.apps-crc.testing` | `mfe-preview.apps-crc.testing` |
+| `payment-api` (eAPI) | `payment-api.apps-crc.testing` | `payment-api-preview.apps-crc.testing` |
+| `risk-domain` (domain API) | `risk-domain.apps-crc.testing` | `risk-domain-preview.apps-crc.testing` |
 
-The same pattern applies to `payment-api`, `mfe` and `gateway` (the gateway has no release pair of its own:
-both entry hosts point to the one `gateway` Service).
+Plus **one** public gateway address, `gateway.apps-crc.testing`, with no pair: the gateway is a single
+release (decision 12). Both MFEs call this same URL. A gateway change is a normal hardened rolling update,
+not piloted. If it ever needs piloting, the gateway can become a release pair with a Route swap plus two
+internal addresses.
 
-**Invariant (swap model):** both Routes always exist and always point to two *different* releases once a
-second release exists. Live serves the current release; preview serves either the **next** release (before
-a flip) or the **previous** release (after a flip, kept as the rollback target). The flip is a **swap** of
-the two Routes' targets, and rollback is the same swap again. Only on the very first deploy, before any
-second release exists, do both Routes point to the same release. The gateway therefore never needs "if
-there is no preview" logic. `status.sh` labels each Route's role: `live`, `preview (next)` or
+Users browse `mfe` (live) or `mfe-preview` (pilot). Those Routes point straight at the MFE releases and do
+not go through the gateway.
+
+**Invariant (swap model):** both Routes of a pair always exist and always point to two *different* releases
+once a second release exists. Live serves the current release; preview serves either the **next** release
+(before a flip) or the **previous** release (after a flip, kept as the rollback target). The flip is a
+**swap** of the two Routes' targets, and rollback is the same swap again. Only on the very first deploy,
+before any second release exists, do both Routes point to the same release. The gateway therefore never
+needs "if there is no preview" logic. `status.sh` labels each Route's role: `live`, `preview (next)` or
 `preview (previous, rollback)`.
 
 ## 4. Target flow (simplified)
 
 ```
- User / k6                  Spring Cloud Gateway (one deployment, static config)
-  Host: gateway.crc...  --->  edge rule: entry host + X-User-Group  ->  TRACK (live|pilot)
-  Host: gateway-preview.. ->  sets X-Track, strips any client-supplied X-Track
-  X-User-Group: pilot            |
-                                 | /api/payments/**  track=live  -> http://payment-api.crc...
-                                 v                   track=pilot -> http://payment-api-preview.crc...
-                         payment-api-<commit>   (the eAPI; calls the gateway, forwards X-Track)
-                                 |
-                                 v  internal hop through the same gateway
-                         gateway: track=live  -> risk-domain.crc...
-                                  track=pilot -> risk-domain-preview.crc...
-                                 v
-                         risk-domain-<commit>   (returns its own identity)
+ Browser, page loaded from mfe.crc... (live) or mfe-preview.crc... (pilot)
+   |  the page's JavaScript calls the ONE gateway URL; the browser adds  Origin: <that MFE host>
+   |  and the page sends X-User-Group (simulating the JWT claim)
+   v
+ gateway.crc...     Spring Cloud Gateway (one deployment, static config)
+   edge rule: Origin (+ X-User-Group for the preview origin) -> TRACK (live|pilot)
+   sets X-Track, strips any client-supplied X-Track
+        |  /api/v1/payments/**   track=live  -> http://payment-api.crc...
+        v                        track=pilot -> http://payment-api-preview.crc...
+ payment-api-<commit>   (the eAPI; calls the gateway, forwards X-Track)
+        |
+        v  internal hop through the same gateway
+ gateway:  track=live  -> risk-domain.crc...
+           track=pilot -> risk-domain-preview.crc...
+        v
+ risk-domain-<commit>   (returns its own identity)
 ```
 
 - JWT is replaced by the header `X-User-Group: pilot`. The service-to-service hop keeps its shape (eAPI -> gateway -> domain) without token signing.
-- **The gateway config is static.** It knows only the two host patterns per service. It never learns commits, and it never needs reloading.
+- **The gateway config is static.** It knows only the two host patterns per service and the two MFE origins. It never learns commits, and it never needs reloading.
+- **Why `Origin`:** both MFEs call the same gateway URL, so the `Host` header cannot tell live from pilot. What differs is where the page came from, and the browser reports that itself in `Origin` on every cross-origin call. Page JavaScript cannot change it. (A non-browser client such as k6 sets it itself, which is as spoofable as `X-User-Group`.)
+- **CORS** is allowed at the gateway for exactly the two MFE origins. The preflight `OPTIONS` request carries no `X-User-Group`, so it is answered by the CORS filter before the track filter runs.
 
 ## 5. The rules that make it work
 
 ### 5.1 Decide once at the edge, then propagate
-The edge computes a **track** from the entry host + group and sets `X-Track`. The eAPI copies it onto its
+The edge computes a **track** from the request's `Origin` (+ group for the preview origin) and sets `X-Track`. The eAPI copies it onto its
 call to the gateway, and the internal hop routes by `X-Track` only. The edge **strips any client-supplied
 `X-Track`**, so a client cannot choose preview by sending it.
 
 ### 5.2 Edge decision table
 
-| Entry host | `X-User-Group` | Track | Result |
-|---|---|---|---|
-| `gateway` (live) | any | `live` | live addresses |
-| `gateway-preview` | `pilot` | `pilot` | preview addresses |
-| `gateway-preview` | not `pilot` | | **403** |
+| `Origin` (the MFE host) | Path | `X-User-Group` | Track | Result |
+|---|---|---|---|---|
+| `mfe` (live) | `/api/v1/payments/**` | any | `live` | live addresses |
+| `mfe-preview` | `/api/v1/payments/**` | `pilot` | `pilot` | preview addresses |
+| `mfe-preview` | `/api/v1/payments/**` | not `pilot` | | **403** |
+| missing, or any other origin | any | | | **403** |
+| any | any other path, for example `/api/risk` | | | **404**: the domain API is internal only |
+| any other host (the internal hop) | `/api/risk/**` | | from the incoming `X-Track` | missing or invalid `X-Track` = **403** |
+| preflight `OPTIONS` from an allowed origin | | | | answered by CORS, no track needed |
 
 ### 5.3 Services must not know their role
 Promotion rebinds addresses, so **the same image and config run first as preview and later as live**.
-Therefore no service, ConfigMap or the React app may embed "live" or "preview". The MFE derives its API host
-from its own hostname (a `-preview` host calls `gateway-preview`, otherwise `gateway`), so one build works
-under either address.
+Therefore no service, ConfigMap or the React app may embed "live" or "preview". The MFE calls the one
+gateway URL (from its config) and never knows whether it is live or preview. The browser's `Origin` header
+tells the gateway. In the browser demo the MFE sends `X-User-Group` taken from a "user group" selector,
+standing in for the JWT claim.
 
 ## 6. Release lifecycle (route bindings only)
 
@@ -151,10 +169,10 @@ then 50/50, then 0/100). It is not needed for the demo.
 
 | Component | Tech | Release objects | Pods (CRC) |
 |---|---|---|---|
-| `gateway` | Spring Cloud Gateway Server (WebFlux), static routes | none, single | 1 |
+| `gateway` | Spring Cloud Gateway Server (WebFlux), static routes. One public URL. **On Boot 4.0.9 with Spring Cloud 2025.1.4**, the latest GA release (Spring Cloud 2026.0 targets Boot 4.2 and is still a release candidate). | none, **single** | 1 |
 | `payment-api` (the **eAPI**) | The existing payment app from `payments-rollout`, copied in. Calls the domain service through the gateway, forwards `X-Track`, adds identity to the response. | `payment-api-<commit>` | 1 per release |
 | `risk-domain` (the **domain API**) | New, small Spring Boot 4 / Java 25 service. `GET /api/risk/score?amount=` returns the score and its own identity. Thresholds come from its ConfigMap. | `risk-domain-<commit>` | 1 per release |
-| `mfe` | **React app, real Vite build**, built in the cluster (multi-stage: Node build, then nginx) | `mfe-<commit>` | 1 per release |
+| `mfe` | **React app, real Vite build**, built in the cluster (multi-stage: Node build, then nginx). Served by its own `mfe` / `mfe-preview` Routes, not through the gateway. | `mfe-<commit>` | 1 per release |
 
 `payment-api` authorizing a payment calls `risk-domain` first (through the gateway), so there is a real
 service-to-service hop that the pilot decision must survive.
@@ -211,18 +229,18 @@ POST /api/v1/payments/authorize  ->  200
 | 1 | **Capacity prep**: scale the old `payment-api` to 0, grow or prune the VM disk (target more than 12 GB free) | `crc status`, `oc describe node` shows room for 7 pods |
 | 2 | `risk-domain`: new small service, `/api/risk/score`, identity block, settings from env (ConfigMap), secret fingerprint | local run on a spare port |
 | 3 | `payment-api` (copied in): calls the gateway for a risk score, forwards `X-Track`, response gains `served.{eapi,domain}` | local run against a local `risk-domain`, both commits visible |
-| 4 | `gateway`: edge rule, static routes, internal hop, host resolution check, keep-alive limits | local run plus an in-cluster DNS check |
-| 5 | `release.sh` (clean-tree check, build, tag by commit, render, apply), `bind.sh`, `status.sh`, Routes (live and preview both -> release A) | `status.sh` shows the binding table, curl shows commit A at both hops |
+| 4 | `gateway`: edge rule from `Origin`, CORS, static routes, internal hop, keep-alive limits | local run with two releases of each service behind it (including a CORS preflight), plus an in-cluster DNS check |
+| 5 | `release.sh` (clean-tree check, build, tag by commit, render, apply), `bind.sh` (including `swap`), `status.sh`, Routes (`gateway` -> gateway Service; `mfe`, `payment-api`, `risk-domain` pairs -> release A) | `status.sh` shows the binding table, `http` shows commit A at both hops |
 | 6 | **Release B to pilot**: a real commit in each service, deploy B, bind preview -> B | The matrix in 5.2 behaves as specified, live users still see A |
 | 7 | k6 with both groups and the pair counter, baseline | 0 failures, standard users (A,A), pilot users (B,B) |
 | 8 | **The flip under load** (domain, eAPI, MFE), then **rollback**, then the **wrong-order flip** | 0 failures, pairs (A,A) -> (A,B) -> (B,B), and in the wrong order (B,A) appears. Flip time measured. |
 | 9 | Failure drills: pilot bug (do nothing / redeploy), broken release (readiness fails), retire the old release | Live traffic unaffected in every drill |
-| 10 | React MFE, real Vite build in the cluster (host-agnostic, ConfigMap-driven `config.js`, commit banner) | Browser shows the commit under each host, and the MFE flips with the rest |
+| 10 | React MFE, real Vite build in the cluster (calls the one gateway URL, user-group selector, commit banner) | Browser shows the commit under each host, and the MFE flips with the rest |
 | 11 | README with the real observed results | |
 
 ## 11. k6 plan
 
-- Two scenarios in parallel: **standard users** (entry `gateway`) at about 30 rps and **pilot users** (entry `gateway-preview`, `X-User-Group: pilot`) at about 10 rps. The `Host` header selects the entry address on the CRC router.
+- Two scenarios in parallel, both to `gateway.apps-crc.testing`: **standard users** (`Origin: http://mfe.apps-crc.testing`) at about 30 rps and **pilot users** (`Origin: http://mfe-preview.apps-crc.testing`, `X-User-Group: pilot`) at about 10 rps. The `Host` header selects the entry address on the CRC router.
 - For every non-replayed response k6 reads `served.eapi.commit` and `served.domain.commit` and increments a counter tagged **`{group, eapi, domain}`**.
 - You pass the commits you expect: `-e COMMITS=3f9a2c1,9b1d4e0`. The script builds a threshold for every `{group, eapi, domain}` combination from that list, so the **end-of-test summary prints a count for every pair**, for example:
   ```
@@ -291,3 +309,5 @@ What this design needs at peak (release in flight), at 1 pod per release:
 | 9 | `X-User-Group: pilot` is the pilot signal. No JWT. |
 | 10 | Secrets are simulated by a script, never committed. Plain `envsubst` templates, immutable ConfigMaps named by commit. |
 | 11 | New dedicated repo `bluegreen-rollout`, phase by phase, you commit. I write files and give commands, you run everything that changes the cluster. |
+| 12 | **Single gateway**: one release serves both tracks. Gateway changes use the hardened rolling update and are not piloted. |
+| 13 | **One public gateway URL.** The track is decided from the browser's `Origin` header (the MFE host that served the page), with CORS allowed at the gateway for the two MFE origins. Users browse `mfe` / `mfe-preview`, which are the swapped Routes. The gateway does not serve the MFE. |
