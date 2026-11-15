@@ -1,0 +1,19 @@
+# The gateway knows only ADDRESSES (Route hostnames), never commits or releases.
+# Each URL is a Route that the OpenShift router resolves to whatever release it is bound to,
+# so a flip (changing a Route) needs no change here.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${NAME}-${COMMIT}-config
+  labels:
+    app: ${NAME}
+    commit: "${COMMIT}"
+immutable: true
+data:
+  GATEWAY_PUBLIC_HOST: "gateway-${NAMESPACE}.${APPS_DOMAIN}"
+  MFE_LIVE_ORIGIN: "http://mfe-${NAMESPACE}.${APPS_DOMAIN}"
+  MFE_PREVIEW_ORIGIN: "http://mfe-preview-${NAMESPACE}.${APPS_DOMAIN}"
+  PAYMENT_API_LIVE_URL: "http://payment-api-${NAMESPACE}.${APPS_DOMAIN}"
+  PAYMENT_API_PREVIEW_URL: "http://payment-api-preview-${NAMESPACE}.${APPS_DOMAIN}"
+  RISK_DOMAIN_LIVE_URL: "http://risk-domain-${NAMESPACE}.${APPS_DOMAIN}"
+  RISK_DOMAIN_PREVIEW_URL: "http://risk-domain-preview-${NAMESPACE}.${APPS_DOMAIN}"

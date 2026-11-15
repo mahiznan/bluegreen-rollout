@@ -1,0 +1,14 @@
+# The gateway is a single release: one stable Service, selecting by app only.
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${NAME}
+  labels:
+    app: ${NAME}
+spec:
+  selector:
+    app: ${NAME}
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
