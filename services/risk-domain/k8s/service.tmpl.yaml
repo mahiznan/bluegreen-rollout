@@ -1,0 +1,16 @@
+# One Service PER RELEASE. It selects its own release's pods only (app AND commit).
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${NAME}-${COMMIT}
+  labels:
+    app: ${NAME}
+    commit: "${COMMIT}"
+spec:
+  selector:
+    app: ${NAME}
+    commit: "${COMMIT}"
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http

@@ -1,0 +1,65 @@
+# One Deployment PER RELEASE. Its name carries the commit; the pods report the commit baked
+# into the image (GIT_COMMIT), never this name.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${NAME}-${COMMIT}
+  labels:
+    app: ${NAME}
+    commit: "${COMMIT}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${NAME}
+      commit: "${COMMIT}"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: ${NAME}
+        commit: "${COMMIT}"
+    spec:
+      # preStop (5s) + graceful shutdown (up to 20s) = 25s, with 20s of margin
+      terminationGracePeriodSeconds: 45
+      containers:
+        - name: ${NAME}
+          image: ${IMAGE}
+          ports:
+            - name: http
+              containerPort: 8080
+          # Settings from this release's ConfigMap, secrets from this release's Secret
+          envFrom:
+            - configMapRef:
+                name: ${NAME}-${COMMIT}-config
+            - secretRef:
+                name: ${NAME}-${COMMIT}-secrets
+          resources:
+            requests:
+              cpu: 50m
+              memory: 96Mi
+            limits:
+              memory: 512Mi
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 5"]
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: http }
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 30
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: http }
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: http }
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3

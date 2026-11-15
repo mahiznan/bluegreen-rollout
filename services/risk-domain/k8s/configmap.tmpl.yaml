@@ -1,0 +1,14 @@
+# Immutable: a release never edits its config. A config change is a new commit, so a new
+# release, a new ConfigMap name, and a new set of pods.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${NAME}-${COMMIT}-config
+  labels:
+    app: ${NAME}
+    commit: "${COMMIT}"
+immutable: true
+data:
+  RISK_RULE_SET: "default"
+  RISK_REVIEW_THRESHOLD: "60"
+  RISK_DECLINE_THRESHOLD: "90"
