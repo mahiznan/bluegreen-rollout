@@ -242,7 +242,7 @@ POST /api/v1/payments/authorize  ->  200
 
 - Two scenarios in parallel, both to `gateway.apps-crc.testing`: **standard users** (`Origin: http://mfe.apps-crc.testing`) at about 30 rps and **pilot users** (`Origin: http://mfe-preview.apps-crc.testing`, `X-User-Group: pilot`) at about 10 rps. The `Host` header selects the entry address on the CRC router.
 - For every non-replayed response k6 reads `served.eapi.commit` and `served.domain.commit` and increments a counter tagged **`{group, eapi, domain}`**.
-- You pass the commits you expect: `-e COMMITS=3f9a2c1,9b1d4e0`. The script builds a threshold for every `{group, eapi, domain}` combination from that list, so the **end-of-test summary prints a count for every pair**, for example:
+- You pass the commits you expect for each service: `-e EAPI=<A>,<B> -e DOMAIN=<A>,<B>` (the commits differ per service, so there are two lists; `scripts/status.sh` shows them). The script builds a threshold for every `{group, eapi, domain}` combination, so the **end-of-test summary prints a count for every pair**, for example:
   ```
   pairs{group:standard,eapi:A,domain:A}  ....  4,812
   pairs{group:standard,eapi:A,domain:B}  ....     37     <- old eAPI, new domain (callee flipped first)

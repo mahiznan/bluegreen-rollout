@@ -6,3 +6,6 @@ target/
 # rendered output and secrets never go to git
 .rendered/
 *.secret
+
+# raw k6 CSV output can be large; the .txt summaries are what we commit
+results/*.csv
