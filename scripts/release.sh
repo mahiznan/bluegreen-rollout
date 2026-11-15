@@ -75,8 +75,12 @@ else
   STAGE="$(mktemp -d)"
   trap 'rm -rf "${STAGE:?}"' EXIT
   rsync -a --exclude target/ --exclude k8s/ "$SERVICE_DIR"/ "$STAGE"/
+  # The commit is passed as a build arg set ON THE BuildConfig. Do NOT use `oc start-build --build-arg`:
+  # for binary builds (--from-dir) it is silently ignored, and the image would report "unknown".
   info "building (the commit is baked in as GIT_COMMIT=$COMMIT)"
-  oc start-build "$NAME" --from-dir="$STAGE" --build-arg=GIT_COMMIT="$COMMIT" --follow --wait
+  oc patch "bc/$NAME" --type=merge \
+    -p "{\"spec\":{\"strategy\":{\"dockerStrategy\":{\"buildArgs\":[{\"name\":\"GIT_COMMIT\",\"value\":\"$COMMIT\"}]}}}}" >/dev/null
+  oc start-build "$NAME" --from-dir="$STAGE" --follow --wait
   oc tag "$NAME:latest" "$NAME:$COMMIT"
 fi
 
@@ -94,6 +98,13 @@ oc apply -f "$OUT/service.yaml" -f "$OUT/deployment.yaml"
 
 # ---- 5. Wait until it is really ready ----
 oc rollout status "deployment/$DEPLOY" --timeout=300s
+
+# ---- 6. Verify the pod really runs THIS commit (the image's baked value, not the object name) ----
+POD_COMMIT="$(oc exec "deploy/$DEPLOY" -- printenv GIT_COMMIT 2>/dev/null || true)"
+if [[ "$POD_COMMIT" != "$COMMIT" ]]; then
+  die "the running pod reports GIT_COMMIT='$POD_COMMIT', expected '$COMMIT'. The image was not built with this commit. Do not bind this release."
+fi
+info "verified: the running pod reports commit $POD_COMMIT"
 echo
 oc get pods -l "app=$NAME,commit=$COMMIT"
 echo

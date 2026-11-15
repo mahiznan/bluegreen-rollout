@@ -289,6 +289,8 @@ What this design needs at peak (release in flight), at 1 pod per release:
 - **Preview health:** if B has no ready pods, pilot users see errors while live users are unaffected.
 - **Commit identity needs a clean tree.** `release.sh` refuses a dirty directory, so each phase's change must be committed before it can be released.
 - **Data:** this demo is stateless. A shared database needs backward-compatible schema changes, which is out of scope.
+- **`oc start-build --build-arg` is ignored for binary builds** (`--from-dir`): found in Phase 5, when pods reported `unknown` instead of their commit. The commit is therefore set on the BuildConfig (`dockerStrategy.buildArgs`) before each build, and `release.sh` verifies the commit inside the running pod and refuses to continue if it differs.
+- **A rebuilt tag can be served stale from a node's image cache** under `imagePullPolicy: IfNotPresent`, so the Deployments use `Always`.
 - **Both releases run during a rollout,** so memory use is higher than a rolling update.
 
 ## 14. Tooling checked on this machine
