@@ -148,6 +148,10 @@ seconds between route changes a live request may meet old eAPI with new domain, 
 be backward compatible. This is a real-world rule and we will test it, including the **wrong order**
 (eAPI first), where you should see the reverse mix: **new eAPI with old domain**.
 
+**Two consequences of the swap model (found while writing Phase 8):**
+1. **A swap moves both Routes, so the order that is safe for live users is the unsafe order for pilot users.** Promoting callee first gives live users (old eAPI, new domain), which is safe. But the preview Route moves from B to A at the same time, so for the few seconds between the two swaps pilot users get (new eAPI, **old** domain). That is the direction backward compatibility does not protect. It affects testers only, it lasts as long as the gap between swaps, and `flip.sh --gap 0` shrinks it. It is expected, not a fault.
+2. **Rollback is the reverse order: caller first, then callee.** After a flip, rolling the domain back first would give live users (new eAPI, old domain). Rolling the eAPI back first gives (old eAPI, new domain), which is safe. So the same command, `flip.sh payment-api risk-domain`, is a correct rollback but a wrong-order promotion. Phase 8 runs both.
+
 ### 6.1 Making the flip zero-downtime
 
 A route flip changes **where new requests go**, not whether anything is running, so it should not cause
@@ -233,7 +237,7 @@ POST /api/v1/payments/authorize  ->  200
 | 5 | `release.sh` (clean-tree check, build, tag by commit, render, apply), `bind.sh` (including `swap`), `status.sh`, Routes (`gateway` -> gateway Service; `mfe`, `payment-api`, `risk-domain` pairs -> release A) | `status.sh` shows the binding table, `http` shows commit A at both hops |
 | 6 | **Release B to pilot**: a real commit in each service, deploy B, bind preview -> B | The matrix in 5.2 behaves as specified, live users still see A |
 | 7 | k6 with both groups and the pair counter, baseline | 0 failures, standard users (A,A), pilot users (B,B) |
-| 8 | **The flip under load** (domain, eAPI, MFE), then **rollback**, then the **wrong-order flip** | 0 failures, pairs (A,A) -> (A,B) -> (B,B), and in the wrong order (B,A) appears. Flip time measured. |
+| 8 | **The flip under load** (domain, eAPI; the MFE joins in Phase 10), then **rollback** (caller first), then the **wrong-order flip**. Uses `scripts/flip.sh` and `scripts/timeline.sh` | 0 failures, pairs (A,A) -> (A,B) -> (B,B), and in the wrong order (B,A) appears. Flip time measured. |
 | 9 | Failure drills: pilot bug (do nothing / redeploy), broken release (readiness fails), retire the old release | Live traffic unaffected in every drill |
 | 10 | React MFE, real Vite build in the cluster (calls the one gateway URL, user-group selector, commit banner) | Browser shows the commit under each host, and the MFE flips with the rest |
 | 11 | README with the real observed results | |
@@ -290,6 +294,7 @@ What this design needs at peak (release in flight), at 1 pod per release:
 - **Commit identity needs a clean tree.** `release.sh` refuses a dirty directory, so each phase's change must be committed before it can be released.
 - **Data:** this demo is stateless. A shared database needs backward-compatible schema changes, which is out of scope.
 - **`oc start-build --build-arg` is ignored for binary builds** (`--from-dir`): found in Phase 5, when pods reported `unknown` instead of their commit. The commit is therefore set on the BuildConfig (`dockerStrategy.buildArgs`) before each build, and `release.sh` verifies the commit inside the running pod and refuses to continue if it differs.
+- **Measured in Phase 8 (flip, rollback, wrong order, all under 40 rps):** the router applies Route changes in ticks about 5 s apart (the first change after a quiet period almost at once, later ones on the next tick), so the two Routes of one service move up to 5 s apart and the live mix window is about 10 s, the pilot one about 5 s. Cut-overs were sharp (no long tail from pooled connections). **Failures: 3 in about 17,000 requests over 3 flips (2 of 3 flips affected), each at the first router reload,** all `PrematureCloseException` on a pooled gateway-to-router connection that the router closed at the reload. Fix: a gateway `Retry` on `java.io.IOException` only (GET and POST, 2 retries; not 5xx, not timeouts), safe because the risk call is a read and authorize carries an Idempotency-Key. Verified locally against a fake upstream (closed connection: 2 hits and 200; 503 and timeout: 1 hit).
 - **A rebuilt tag can be served stale from a node's image cache** under `imagePullPolicy: IfNotPresent`, so the Deployments use `Always`.
 - **Both releases run during a rollout,** so memory use is higher than a rolling update.
 
