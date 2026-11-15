@@ -1,0 +1,17 @@
+# Immutable: a config change is a new commit and a new release.
+# RISK_DOMAIN_URL is the in-cluster gateway Service. The call goes through the gateway,
+# which picks live or preview from the X-Track header this service forwards.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${NAME}-${COMMIT}-config
+  labels:
+    app: ${NAME}
+    commit: "${COMMIT}"
+immutable: true
+data:
+  RISK_DOMAIN_URL: "http://gateway:8080"
+  RISK_CONNECT_TIMEOUT_MS: "1000"
+  RISK_READ_TIMEOUT_MS: "3000"
+  BANK_MIN_LATENCY_MS: "200"
+  BANK_MAX_LATENCY_MS: "800"
