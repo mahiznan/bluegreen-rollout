@@ -1,0 +1,1188 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: k6/pairs.js
+        output: csv (results/d1.csv)
+
+     scenarios: (100.00%) 2 scenarios, 450 max VUs, 3m0s max duration (incl. graceful stop):
+              * pilot: 10.00 iterations/s for 2m30s (maxVUs: 30-150, exec: pilot, gracefulStop: 30s)
+              * standard: 30.00 iterations/s for 2m30s (maxVUs: 60-300, exec: standard, gracefulStop: 30s)
+
+
+Run        [ 100% ] setup()
+pilot      [   0% ]
+standard   [   0% ]
+time="2026-11-16T20:05:07+08:00" level=info msg="setup: standard users get eapi,domain = c8cd594,09c7931" source=console
+time="2026-11-16T20:05:07+08:00" level=info msg="setup: pilot users get    eapi,domain = 5467749,b5490fc" source=console
+
+running (0m02.0s), 021/090 VUs, 5 complete and 0 interrupted iterations
+pilot      [   0% ] 006/030 VUs  0m00.6s/2m30s  10.00 iters/s
+standard   [   0% ] 015/060 VUs  0m00.6s/2m30s  30.00 iters/s
+
+running (0m03.0s), 023/090 VUs, 43 complete and 0 interrupted iterations
+pilot      [   1% ] 005/030 VUs  0m01.6s/2m30s  10.00 iters/s
+standard   [   1% ] 018/060 VUs  0m01.6s/2m30s  30.00 iters/s
+
+running (0m04.0s), 019/090 VUs, 87 complete and 0 interrupted iterations
+pilot      [   2% ] 004/030 VUs  0m02.6s/2m30s  10.00 iters/s
+standard   [   2% ] 015/060 VUs  0m02.6s/2m30s  30.00 iters/s
+
+running (0m05.0s), 023/090 VUs, 123 complete and 0 interrupted iterations
+pilot      [   2% ] 006/030 VUs  0m03.6s/2m30s  10.00 iters/s
+standard   [   2% ] 017/060 VUs  0m03.6s/2m30s  30.00 iters/s
+
+running (0m06.0s), 023/090 VUs, 163 complete and 0 interrupted iterations
+pilot      [   3% ] 005/030 VUs  0m04.6s/2m30s  10.00 iters/s
+standard   [   3% ] 018/060 VUs  0m04.6s/2m30s  30.00 iters/s
+
+running (0m07.0s), 023/090 VUs, 203 complete and 0 interrupted iterations
+pilot      [   4% ] 006/030 VUs  0m05.6s/2m30s  10.00 iters/s
+standard   [   4% ] 017/060 VUs  0m05.6s/2m30s  30.00 iters/s
+
+running (0m08.0s), 018/090 VUs, 248 complete and 0 interrupted iterations
+pilot      [   4% ] 006/030 VUs  0m06.6s/2m30s  10.00 iters/s
+standard   [   4% ] 012/060 VUs  0m06.6s/2m30s  30.00 iters/s
+
+running (0m09.0s), 023/090 VUs, 283 complete and 0 interrupted iterations
+pilot      [   5% ] 006/030 VUs  0m07.6s/2m30s  10.00 iters/s
+standard   [   5% ] 017/060 VUs  0m07.6s/2m30s  30.00 iters/s
+
+running (0m10.0s), 020/090 VUs, 326 complete and 0 interrupted iterations
+pilot      [   6% ] 005/030 VUs  0m08.6s/2m30s  10.00 iters/s
+standard   [   6% ] 015/060 VUs  0m08.6s/2m30s  30.00 iters/s
+
+running (0m11.0s), 011/090 VUs, 375 complete and 0 interrupted iterations
+pilot      [   6% ] 001/030 VUs  0m09.6s/2m30s  10.00 iters/s
+standard   [   6% ] 010/060 VUs  0m09.6s/2m30s  30.00 iters/s
+
+running (0m12.0s), 019/090 VUs, 407 complete and 0 interrupted iterations
+pilot      [   7% ] 001/030 VUs  0m10.6s/2m30s  10.00 iters/s
+standard   [   7% ] 018/060 VUs  0m10.6s/2m30s  30.00 iters/s
+
+running (0m13.0s), 017/090 VUs, 449 complete and 0 interrupted iterations
+pilot      [   8% ] 002/030 VUs  0m11.6s/2m30s  10.00 iters/s
+standard   [   8% ] 015/060 VUs  0m11.6s/2m30s  30.00 iters/s
+
+running (0m14.0s), 018/090 VUs, 488 complete and 0 interrupted iterations
+pilot      [   8% ] 003/030 VUs  0m12.6s/2m30s  10.00 iters/s
+standard   [   8% ] 015/060 VUs  0m12.6s/2m30s  30.00 iters/s
+
+running (0m15.0s), 021/090 VUs, 525 complete and 0 interrupted iterations
+pilot      [   9% ] 007/030 VUs  0m13.6s/2m30s  10.00 iters/s
+standard   [   9% ] 014/060 VUs  0m13.6s/2m30s  30.00 iters/s
+
+running (0m16.0s), 023/090 VUs, 563 complete and 0 interrupted iterations
+pilot      [  10% ] 005/030 VUs  0m14.6s/2m30s  10.00 iters/s
+standard   [  10% ] 018/060 VUs  0m14.6s/2m30s  30.00 iters/s
+
+running (0m17.0s), 022/090 VUs, 604 complete and 0 interrupted iterations
+pilot      [  10% ] 006/030 VUs  0m15.6s/2m30s  10.00 iters/s
+standard   [  10% ] 016/060 VUs  0m15.6s/2m30s  30.00 iters/s
+
+running (0m18.0s), 019/090 VUs, 647 complete and 0 interrupted iterations
+pilot      [  11% ] 006/030 VUs  0m16.6s/2m30s  10.00 iters/s
+standard   [  11% ] 013/060 VUs  0m16.6s/2m30s  30.00 iters/s
+
+running (0m19.0s), 018/090 VUs, 688 complete and 0 interrupted iterations
+pilot      [  12% ] 005/030 VUs  0m17.6s/2m30s  10.00 iters/s
+standard   [  12% ] 013/060 VUs  0m17.6s/2m30s  30.00 iters/s
+
+running (0m20.0s), 018/090 VUs, 728 complete and 0 interrupted iterations
+pilot      [  12% ] 005/030 VUs  0m18.6s/2m30s  10.00 iters/s
+standard   [  12% ] 013/060 VUs  0m18.6s/2m30s  30.00 iters/s
+
+running (0m21.0s), 025/090 VUs, 761 complete and 0 interrupted iterations
+pilot      [  13% ] 006/030 VUs  0m19.6s/2m30s  10.00 iters/s
+standard   [  13% ] 019/060 VUs  0m19.6s/2m30s  30.00 iters/s
+
+running (0m22.0s), 022/090 VUs, 804 complete and 0 interrupted iterations
+pilot      [  14% ] 004/030 VUs  0m20.6s/2m30s  10.00 iters/s
+standard   [  14% ] 018/060 VUs  0m20.6s/2m30s  30.00 iters/s
+
+running (0m23.0s), 017/090 VUs, 849 complete and 0 interrupted iterations
+pilot      [  14% ] 001/030 VUs  0m21.6s/2m30s  10.00 iters/s
+standard   [  14% ] 016/060 VUs  0m21.6s/2m30s  30.00 iters/s
+
+running (0m24.0s), 015/090 VUs, 891 complete and 0 interrupted iterations
+pilot      [  15% ] 001/030 VUs  0m22.6s/2m30s  10.00 iters/s
+standard   [  15% ] 014/060 VUs  0m22.6s/2m30s  30.00 iters/s
+
+running (0m25.0s), 019/090 VUs, 927 complete and 0 interrupted iterations
+pilot      [  16% ] 002/030 VUs  0m23.6s/2m30s  10.00 iters/s
+standard   [  16% ] 017/060 VUs  0m23.6s/2m30s  30.00 iters/s
+
+running (0m26.0s), 022/090 VUs, 964 complete and 0 interrupted iterations
+pilot      [  16% ] 004/030 VUs  0m24.6s/2m30s  10.00 iters/s
+standard   [  16% ] 018/060 VUs  0m24.6s/2m30s  30.00 iters/s
+
+running (0m27.0s), 019/090 VUs, 1007 complete and 0 interrupted iterations
+pilot      [  17% ] 005/030 VUs  0m25.6s/2m30s  10.00 iters/s
+standard   [  17% ] 014/060 VUs  0m25.6s/2m30s  30.00 iters/s
+
+running (0m28.0s), 020/090 VUs, 1046 complete and 0 interrupted iterations
+pilot      [  18% ] 006/030 VUs  0m26.6s/2m30s  10.00 iters/s
+standard   [  18% ] 014/060 VUs  0m26.6s/2m30s  30.00 iters/s
+
+running (0m29.0s), 024/090 VUs, 1082 complete and 0 interrupted iterations
+pilot      [  18% ] 006/030 VUs  0m27.6s/2m30s  10.00 iters/s
+standard   [  18% ] 018/060 VUs  0m27.6s/2m30s  30.00 iters/s
+
+running (0m30.0s), 022/090 VUs, 1124 complete and 0 interrupted iterations
+pilot      [  19% ] 005/030 VUs  0m28.6s/2m30s  10.00 iters/s
+standard   [  19% ] 017/060 VUs  0m28.6s/2m30s  30.00 iters/s
+
+running (0m31.0s), 022/090 VUs, 1164 complete and 0 interrupted iterations
+pilot      [  20% ] 007/030 VUs  0m29.6s/2m30s  10.00 iters/s
+standard   [  20% ] 015/060 VUs  0m29.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.052Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.296Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.347Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.453Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.548Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.652Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.852Z FAIL pilot status=503 error=" source=console
+
+running (0m32.0s), 017/090 VUs, 1209 complete and 0 interrupted iterations
+pilot      [  20% ] 001/030 VUs  0m30.6s/2m30s  10.00 iters/s
+standard   [  20% ] 016/060 VUs  0m30.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:37+08:00" level=error msg="2026-11-16T12:05:37.961Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.054Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.149Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.253Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.346Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.459Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.555Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.645Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.748Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.845Z FAIL pilot status=503 error=" source=console
+
+running (0m33.0s), 019/090 VUs, 1247 complete and 0 interrupted iterations
+pilot      [  21% ] 001/030 VUs  0m31.6s/2m30s  10.00 iters/s
+standard   [  21% ] 018/060 VUs  0m31.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:38+08:00" level=error msg="2026-11-16T12:05:38.946Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.045Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.347Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.545Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.645Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.746Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.844Z FAIL pilot status=503 error=" source=console
+
+running (0m34.0s), 017/090 VUs, 1289 complete and 0 interrupted iterations
+pilot      [  22% ] 001/030 VUs  0m32.6s/2m30s  10.00 iters/s
+standard   [  22% ] 016/060 VUs  0m32.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:39+08:00" level=error msg="2026-11-16T12:05:39.953Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.147Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.445Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.545Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.645Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.844Z FAIL pilot status=503 error=" source=console
+
+running (0m35.0s), 017/090 VUs, 1329 complete and 0 interrupted iterations
+pilot      [  22% ] 001/030 VUs  0m33.6s/2m30s  10.00 iters/s
+standard   [  22% ] 016/060 VUs  0m33.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:40+08:00" level=error msg="2026-11-16T12:05:40.954Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.047Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.648Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.844Z FAIL pilot status=503 error=" source=console
+
+running (0m36.0s), 015/090 VUs, 1371 complete and 0 interrupted iterations
+pilot      [  23% ] 001/030 VUs  0m34.6s/2m30s  10.00 iters/s
+standard   [  23% ] 014/060 VUs  0m34.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:41+08:00" level=error msg="2026-11-16T12:05:41.948Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.052Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.211Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.321Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.386Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.485Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.565Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.647Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.748Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.855Z FAIL pilot status=503 error=" source=console
+
+running (0m37.0s), 016/090 VUs, 1410 complete and 0 interrupted iterations
+pilot      [  24% ] 001/030 VUs  0m35.6s/2m30s  10.00 iters/s
+standard   [  24% ] 015/060 VUs  0m35.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:42+08:00" level=error msg="2026-11-16T12:05:42.969Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.352Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.445Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.752Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.844Z FAIL pilot status=503 error=" source=console
+
+running (0m38.0s), 018/090 VUs, 1448 complete and 0 interrupted iterations
+pilot      [  24% ] 001/030 VUs  0m36.6s/2m30s  10.00 iters/s
+standard   [  24% ] 017/060 VUs  0m36.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:43+08:00" level=error msg="2026-11-16T12:05:43.943Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.450Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.653Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.844Z FAIL pilot status=503 error=" source=console
+
+running (0m39.0s), 017/090 VUs, 1489 complete and 0 interrupted iterations
+pilot      [  25% ] 001/030 VUs  0m37.6s/2m30s  10.00 iters/s
+standard   [  25% ] 016/060 VUs  0m37.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:44+08:00" level=error msg="2026-11-16T12:05:44.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.345Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.455Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.643Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.844Z FAIL pilot status=503 error=" source=console
+
+running (0m40.0s), 016/090 VUs, 1530 complete and 0 interrupted iterations
+pilot      [  26% ] 001/030 VUs  0m38.6s/2m30s  10.00 iters/s
+standard   [  26% ] 015/060 VUs  0m38.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:45+08:00" level=error msg="2026-11-16T12:05:45.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.052Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.151Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.445Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.548Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.645Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.753Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.844Z FAIL pilot status=503 error=" source=console
+
+running (0m41.0s), 018/090 VUs, 1568 complete and 0 interrupted iterations
+pilot      [  26% ] 001/030 VUs  0m39.6s/2m30s  10.00 iters/s
+standard   [  26% ] 017/060 VUs  0m39.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:46+08:00" level=error msg="2026-11-16T12:05:46.960Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.247Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.345Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.545Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.748Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.845Z FAIL pilot status=503 error=" source=console
+
+running (0m42.0s), 014/090 VUs, 1612 complete and 0 interrupted iterations
+pilot      [  27% ] 001/030 VUs  0m40.6s/2m30s  10.00 iters/s
+standard   [  27% ] 013/060 VUs  0m40.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:47+08:00" level=error msg="2026-11-16T12:05:47.946Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.070Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.149Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.348Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.552Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.843Z FAIL pilot status=503 error=" source=console
+
+running (0m43.0s), 017/090 VUs, 1649 complete and 0 interrupted iterations
+pilot      [  28% ] 001/030 VUs  0m41.6s/2m30s  10.00 iters/s
+standard   [  28% ] 016/060 VUs  0m41.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:48+08:00" level=error msg="2026-11-16T12:05:48.948Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.650Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.843Z FAIL pilot status=503 error=" source=console
+
+running (0m44.0s), 015/090 VUs, 1691 complete and 0 interrupted iterations
+pilot      [  28% ] 001/030 VUs  0m42.6s/2m30s  10.00 iters/s
+standard   [  28% ] 014/060 VUs  0m42.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:49+08:00" level=error msg="2026-11-16T12:05:49.946Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.049Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.347Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.844Z FAIL pilot status=503 error=" source=console
+
+running (0m45.0s), 017/090 VUs, 1729 complete and 0 interrupted iterations
+pilot      [  29% ] 001/030 VUs  0m43.6s/2m30s  10.00 iters/s
+standard   [  29% ] 016/060 VUs  0m43.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:50+08:00" level=error msg="2026-11-16T12:05:50.949Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.568Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.848Z FAIL pilot status=503 error=" source=console
+
+running (0m46.0s), 018/090 VUs, 1768 complete and 0 interrupted iterations
+pilot      [  30% ] 001/030 VUs  0m44.6s/2m30s  10.00 iters/s
+standard   [  30% ] 017/060 VUs  0m44.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:51+08:00" level=error msg="2026-11-16T12:05:51.948Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.844Z FAIL pilot status=503 error=" source=console
+
+running (0m47.0s), 019/090 VUs, 1807 complete and 0 interrupted iterations
+pilot      [  30% ] 001/030 VUs  0m45.6s/2m30s  10.00 iters/s
+standard   [  30% ] 018/060 VUs  0m45.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:52+08:00" level=error msg="2026-11-16T12:05:52.945Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.048Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.844Z FAIL pilot status=503 error=" source=console
+
+running (0m48.0s), 017/090 VUs, 1849 complete and 0 interrupted iterations
+pilot      [  31% ] 001/030 VUs  0m46.6s/2m30s  10.00 iters/s
+standard   [  31% ] 016/060 VUs  0m46.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:53+08:00" level=error msg="2026-11-16T12:05:53.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.843Z FAIL pilot status=503 error=" source=console
+
+running (0m49.0s), 013/090 VUs, 1893 complete and 0 interrupted iterations
+pilot      [  32% ] 001/030 VUs  0m47.6s/2m30s  10.00 iters/s
+standard   [  32% ] 012/060 VUs  0m47.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:54+08:00" level=error msg="2026-11-16T12:05:54.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.645Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.844Z FAIL pilot status=503 error=" source=console
+
+running (0m50.0s), 014/090 VUs, 1932 complete and 0 interrupted iterations
+pilot      [  32% ] 001/030 VUs  0m48.6s/2m30s  10.00 iters/s
+standard   [  32% ] 013/060 VUs  0m48.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:55+08:00" level=error msg="2026-11-16T12:05:55.943Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.446Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.646Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.845Z FAIL pilot status=503 error=" source=console
+
+running (0m51.0s), 021/090 VUs, 1965 complete and 0 interrupted iterations
+pilot      [  33% ] 001/030 VUs  0m49.6s/2m30s  10.00 iters/s
+standard   [  33% ] 020/060 VUs  0m49.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:56+08:00" level=error msg="2026-11-16T12:05:56.952Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.654Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.844Z FAIL pilot status=503 error=" source=console
+
+running (0m52.0s), 020/090 VUs, 2006 complete and 0 interrupted iterations
+pilot      [  34% ] 001/030 VUs  0m50.6s/2m30s  10.00 iters/s
+standard   [  34% ] 019/060 VUs  0m50.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:57+08:00" level=error msg="2026-11-16T12:05:57.943Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.046Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.245Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.545Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.844Z FAIL pilot status=503 error=" source=console
+
+running (0m53.0s), 015/090 VUs, 2051 complete and 0 interrupted iterations
+pilot      [  34% ] 001/030 VUs  0m51.6s/2m30s  10.00 iters/s
+standard   [  34% ] 014/060 VUs  0m51.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:58+08:00" level=error msg="2026-11-16T12:05:58.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.248Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.844Z FAIL pilot status=503 error=" source=console
+
+running (0m54.0s), 014/090 VUs, 2092 complete and 0 interrupted iterations
+pilot      [  35% ] 001/030 VUs  0m52.6s/2m30s  10.00 iters/s
+standard   [  35% ] 013/060 VUs  0m52.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:05:59+08:00" level=error msg="2026-11-16T12:05:59.943Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.348Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.442Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.549Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.665Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.844Z FAIL pilot status=503 error=" source=console
+
+running (0m55.0s), 019/090 VUs, 2127 complete and 0 interrupted iterations
+pilot      [  36% ] 001/030 VUs  0m53.6s/2m30s  10.00 iters/s
+standard   [  36% ] 018/060 VUs  0m53.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:00+08:00" level=error msg="2026-11-16T12:06:00.948Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.146Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.545Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.843Z FAIL pilot status=503 error=" source=console
+
+running (0m56.0s), 015/090 VUs, 2171 complete and 0 interrupted iterations
+pilot      [  36% ] 001/030 VUs  0m54.6s/2m30s  10.00 iters/s
+standard   [  36% ] 014/060 VUs  0m54.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:01+08:00" level=error msg="2026-11-16T12:06:01.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.049Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.345Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.446Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.747Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.847Z FAIL pilot status=503 error=" source=console
+
+running (0m57.0s), 015/090 VUs, 2211 complete and 0 interrupted iterations
+pilot      [  37% ] 001/030 VUs  0m55.6s/2m30s  10.00 iters/s
+standard   [  37% ] 014/060 VUs  0m55.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:02+08:00" level=error msg="2026-11-16T12:06:02.947Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.643Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.844Z FAIL pilot status=503 error=" source=console
+
+running (0m58.0s), 016/090 VUs, 2250 complete and 0 interrupted iterations
+pilot      [  38% ] 001/030 VUs  0m56.6s/2m30s  10.00 iters/s
+standard   [  38% ] 015/060 VUs  0m56.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:03+08:00" level=error msg="2026-11-16T12:06:03.943Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.051Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.648Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.859Z FAIL pilot status=503 error=" source=console
+
+running (0m59.0s), 018/090 VUs, 2288 complete and 0 interrupted iterations
+pilot      [  38% ] 001/030 VUs  0m57.6s/2m30s  10.00 iters/s
+standard   [  38% ] 017/060 VUs  0m57.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:04+08:00" level=error msg="2026-11-16T12:06:04.945Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.844Z FAIL pilot status=503 error=" source=console
+
+running (1m00.0s), 019/090 VUs, 2327 complete and 0 interrupted iterations
+pilot      [  39% ] 001/030 VUs  0m58.6s/2m30s  10.00 iters/s
+standard   [  39% ] 018/060 VUs  0m58.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:05+08:00" level=error msg="2026-11-16T12:06:05.945Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.354Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.844Z FAIL pilot status=503 error=" source=console
+
+running (1m01.0s), 020/090 VUs, 2366 complete and 0 interrupted iterations
+pilot      [  40% ] 001/030 VUs  0m59.6s/2m30s  10.00 iters/s
+standard   [  40% ] 019/060 VUs  0m59.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:06+08:00" level=error msg="2026-11-16T12:06:06.951Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.052Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.160Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.844Z FAIL pilot status=503 error=" source=console
+
+running (1m02.0s), 018/090 VUs, 2408 complete and 0 interrupted iterations
+pilot      [  40% ] 001/030 VUs  1m00.6s/2m30s  10.00 iters/s
+standard   [  40% ] 017/060 VUs  1m00.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:07+08:00" level=error msg="2026-11-16T12:06:07.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.256Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.456Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.550Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.677Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.843Z FAIL pilot status=503 error=" source=console
+
+running (1m03.0s), 016/090 VUs, 2450 complete and 0 interrupted iterations
+pilot      [  41% ] 001/030 VUs  1m01.6s/2m30s  10.00 iters/s
+standard   [  41% ] 015/060 VUs  1m01.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:08+08:00" level=error msg="2026-11-16T12:06:08.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.646Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.747Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.843Z FAIL pilot status=503 error=" source=console
+
+running (1m04.0s), 016/090 VUs, 2490 complete and 0 interrupted iterations
+pilot      [  42% ] 001/030 VUs  1m02.6s/2m30s  10.00 iters/s
+standard   [  42% ] 015/060 VUs  1m02.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:09+08:00" level=error msg="2026-11-16T12:06:09.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.150Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.245Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.445Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.844Z FAIL pilot status=503 error=" source=console
+
+running (1m05.0s), 014/090 VUs, 2532 complete and 0 interrupted iterations
+pilot      [  42% ] 001/030 VUs  1m03.6s/2m30s  10.00 iters/s
+standard   [  42% ] 013/060 VUs  1m03.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:10+08:00" level=error msg="2026-11-16T12:06:10.949Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.250Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.344Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.643Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.766Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.843Z FAIL pilot status=503 error=" source=console
+
+running (1m06.0s), 019/090 VUs, 2567 complete and 0 interrupted iterations
+pilot      [  43% ] 001/030 VUs  1m04.6s/2m30s  10.00 iters/s
+standard   [  43% ] 018/060 VUs  1m04.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:11+08:00" level=error msg="2026-11-16T12:06:11.947Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.047Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.248Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.645Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.844Z FAIL pilot status=503 error=" source=console
+
+running (1m07.0s), 016/090 VUs, 2610 complete and 0 interrupted iterations
+pilot      [  44% ] 001/030 VUs  1m05.6s/2m30s  10.00 iters/s
+standard   [  44% ] 015/060 VUs  1m05.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:12+08:00" level=error msg="2026-11-16T12:06:12.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.144Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.545Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.643Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.744Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.846Z FAIL pilot status=503 error=" source=console
+
+running (1m08.0s), 018/090 VUs, 2648 complete and 0 interrupted iterations
+pilot      [  44% ] 001/030 VUs  1m06.6s/2m30s  10.00 iters/s
+standard   [  44% ] 017/060 VUs  1m06.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:13+08:00" level=error msg="2026-11-16T12:06:13.943Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.343Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.543Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.643Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.846Z FAIL pilot status=503 error=" source=console
+
+running (1m09.0s), 018/090 VUs, 2688 complete and 0 interrupted iterations
+pilot      [  45% ] 001/030 VUs  1m07.6s/2m30s  10.00 iters/s
+standard   [  45% ] 017/060 VUs  1m07.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:14+08:00" level=error msg="2026-11-16T12:06:14.947Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.044Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.145Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.243Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.348Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.505Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.552Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.644Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.772Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.848Z FAIL pilot status=503 error=" source=console
+
+running (1m10.0s), 020/090 VUs, 2726 complete and 0 interrupted iterations
+pilot      [  46% ] 001/030 VUs  1m08.6s/2m30s  10.00 iters/s
+standard   [  46% ] 019/060 VUs  1m08.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:15+08:00" level=error msg="2026-11-16T12:06:15.994Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.069Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.146Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.244Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.362Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.449Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.569Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.654Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.846Z FAIL pilot status=503 error=" source=console
+
+running (1m11.0s), 018/090 VUs, 2768 complete and 0 interrupted iterations
+pilot      [  46% ] 001/030 VUs  1m09.6s/2m30s  10.00 iters/s
+standard   [  46% ] 017/060 VUs  1m09.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:16+08:00" level=error msg="2026-11-16T12:06:16.969Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.052Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.147Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.277Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.351Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.455Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.555Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.647Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.757Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.855Z FAIL pilot status=503 error=" source=console
+
+running (1m12.0s), 019/090 VUs, 2807 complete and 0 interrupted iterations
+pilot      [  47% ] 001/030 VUs  1m10.6s/2m30s  10.00 iters/s
+standard   [  47% ] 018/060 VUs  1m10.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:17+08:00" level=error msg="2026-11-16T12:06:17.962Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.052Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.161Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.245Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.351Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.446Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.552Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.648Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.755Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.856Z FAIL pilot status=503 error=" source=console
+
+running (1m13.0s), 017/090 VUs, 2849 complete and 0 interrupted iterations
+pilot      [  48% ] 001/030 VUs  1m11.6s/2m30s  10.00 iters/s
+standard   [  48% ] 016/060 VUs  1m11.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:18+08:00" level=error msg="2026-11-16T12:06:18.969Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.053Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.161Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.247Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.353Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.452Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.544Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.659Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.745Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.844Z FAIL pilot status=503 error=" source=console
+
+running (1m14.0s), 017/090 VUs, 2889 complete and 0 interrupted iterations
+pilot      [  48% ] 001/030 VUs  1m12.6s/2m30s  10.00 iters/s
+standard   [  48% ] 016/060 VUs  1m12.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:19+08:00" level=error msg="2026-11-16T12:06:19.944Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.043Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.143Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.251Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.348Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.444Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.553Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.670Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.743Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.848Z FAIL pilot status=503 error=" source=console
+
+running (1m15.0s), 017/090 VUs, 2929 complete and 0 interrupted iterations
+pilot      [  49% ] 001/030 VUs  1m13.6s/2m30s  10.00 iters/s
+standard   [  49% ] 016/060 VUs  1m13.6s/2m30s  30.00 iters/s
+time="2026-11-16T20:06:20+08:00" level=error msg="2026-11-16T12:06:20.969Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:21+08:00" level=error msg="2026-11-16T12:06:21.070Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:21+08:00" level=error msg="2026-11-16T12:06:21.168Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:21+08:00" level=error msg="2026-11-16T12:06:21.245Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:21+08:00" level=error msg="2026-11-16T12:06:21.348Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:21+08:00" level=error msg="2026-11-16T12:06:21.443Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:21+08:00" level=error msg="2026-11-16T12:06:21.569Z FAIL pilot status=503 error=" source=console
+time="2026-11-16T20:06:21+08:00" level=error msg="2026-11-16T12:06:21.659Z FAIL pilot status=503 error=" source=console
+
+running (1m16.0s), 023/090 VUs, 2963 complete and 0 interrupted iterations
+pilot      [  50% ] 003/030 VUs  1m14.6s/2m30s  10.00 iters/s
+standard   [  50% ] 020/060 VUs  1m14.6s/2m30s  30.00 iters/s
+
+running (1m17.0s), 020/090 VUs, 3006 complete and 0 interrupted iterations
+pilot      [  50% ] 006/030 VUs  1m15.6s/2m30s  10.00 iters/s
+standard   [  50% ] 014/060 VUs  1m15.6s/2m30s  30.00 iters/s
+
+running (1m18.0s), 021/090 VUs, 3045 complete and 0 interrupted iterations
+pilot      [  51% ] 006/030 VUs  1m16.6s/2m30s  10.00 iters/s
+standard   [  51% ] 015/060 VUs  1m16.6s/2m30s  30.00 iters/s
+
+running (1m19.0s), 022/090 VUs, 3084 complete and 0 interrupted iterations
+pilot      [  52% ] 004/030 VUs  1m17.6s/2m30s  10.00 iters/s
+standard   [  52% ] 018/060 VUs  1m17.6s/2m30s  30.00 iters/s
+
+running (1m20.0s), 024/090 VUs, 3122 complete and 0 interrupted iterations
+pilot      [  52% ] 007/030 VUs  1m18.6s/2m30s  10.00 iters/s
+standard   [  52% ] 017/060 VUs  1m18.6s/2m30s  30.00 iters/s
+
+running (1m21.0s), 025/090 VUs, 3161 complete and 0 interrupted iterations
+pilot      [  53% ] 007/030 VUs  1m19.6s/2m30s  10.00 iters/s
+standard   [  53% ] 018/060 VUs  1m19.6s/2m30s  30.00 iters/s
+
+running (1m22.0s), 022/090 VUs, 3204 complete and 0 interrupted iterations
+pilot      [  54% ] 005/030 VUs  1m20.6s/2m30s  10.00 iters/s
+standard   [  54% ] 017/060 VUs  1m20.6s/2m30s  30.00 iters/s
+
+running (1m23.0s), 017/090 VUs, 3249 complete and 0 interrupted iterations
+pilot      [  54% ] 001/030 VUs  1m21.6s/2m30s  10.00 iters/s
+standard   [  54% ] 016/060 VUs  1m21.6s/2m30s  30.00 iters/s
+
+running (1m24.0s), 016/090 VUs, 3290 complete and 0 interrupted iterations
+pilot      [  55% ] 001/030 VUs  1m22.6s/2m30s  10.00 iters/s
+standard   [  55% ] 015/060 VUs  1m22.6s/2m30s  30.00 iters/s
+
+running (1m25.0s), 019/090 VUs, 3327 complete and 0 interrupted iterations
+pilot      [  56% ] 002/030 VUs  1m23.6s/2m30s  10.00 iters/s
+standard   [  56% ] 017/060 VUs  1m23.6s/2m30s  30.00 iters/s
+
+running (1m26.0s), 020/090 VUs, 3366 complete and 0 interrupted iterations
+pilot      [  56% ] 003/030 VUs  1m24.6s/2m30s  10.00 iters/s
+standard   [  56% ] 017/060 VUs  1m24.6s/2m30s  30.00 iters/s
+
+running (1m27.0s), 022/090 VUs, 3404 complete and 0 interrupted iterations
+pilot      [  57% ] 006/030 VUs  1m25.6s/2m30s  10.00 iters/s
+standard   [  57% ] 016/060 VUs  1m25.6s/2m30s  30.00 iters/s
+
+running (1m28.0s), 020/090 VUs, 3446 complete and 0 interrupted iterations
+pilot      [  58% ] 005/030 VUs  1m26.6s/2m30s  10.00 iters/s
+standard   [  58% ] 015/060 VUs  1m26.6s/2m30s  30.00 iters/s
+
+running (1m29.0s), 022/090 VUs, 3484 complete and 0 interrupted iterations
+pilot      [  58% ] 007/030 VUs  1m27.6s/2m30s  10.00 iters/s
+standard   [  58% ] 015/060 VUs  1m27.6s/2m30s  30.00 iters/s
+
+running (1m30.0s), 021/090 VUs, 3525 complete and 0 interrupted iterations
+pilot      [  59% ] 005/030 VUs  1m28.6s/2m30s  10.00 iters/s
+standard   [  59% ] 016/060 VUs  1m28.6s/2m30s  30.00 iters/s
+
+running (1m31.0s), 019/090 VUs, 3567 complete and 0 interrupted iterations
+pilot      [  60% ] 006/030 VUs  1m29.6s/2m30s  10.00 iters/s
+standard   [  60% ] 013/060 VUs  1m29.6s/2m30s  30.00 iters/s
+
+running (1m32.0s), 020/090 VUs, 3606 complete and 0 interrupted iterations
+pilot      [  60% ] 004/030 VUs  1m30.6s/2m30s  10.00 iters/s
+standard   [  60% ] 016/060 VUs  1m30.6s/2m30s  30.00 iters/s
+
+running (1m33.0s), 021/090 VUs, 3645 complete and 0 interrupted iterations
+pilot      [  61% ] 004/030 VUs  1m31.6s/2m30s  10.00 iters/s
+standard   [  61% ] 017/060 VUs  1m31.6s/2m30s  30.00 iters/s
+
+running (1m34.0s), 019/090 VUs, 3687 complete and 0 interrupted iterations
+pilot      [  62% ] 005/030 VUs  1m32.6s/2m30s  10.00 iters/s
+standard   [  62% ] 014/060 VUs  1m32.6s/2m30s  30.00 iters/s
+
+running (1m35.0s), 017/090 VUs, 3729 complete and 0 interrupted iterations
+pilot      [  62% ] 002/030 VUs  1m33.6s/2m30s  10.00 iters/s
+standard   [  62% ] 015/060 VUs  1m33.6s/2m30s  30.00 iters/s
+
+running (1m36.0s), 014/090 VUs, 3772 complete and 0 interrupted iterations
+pilot      [  63% ] 001/030 VUs  1m34.6s/2m30s  10.00 iters/s
+standard   [  63% ] 013/060 VUs  1m34.6s/2m30s  30.00 iters/s
+
+running (1m37.0s), 019/090 VUs, 3807 complete and 0 interrupted iterations
+pilot      [  64% ] 002/030 VUs  1m35.6s/2m30s  10.00 iters/s
+standard   [  64% ] 017/060 VUs  1m35.6s/2m30s  30.00 iters/s
+
+running (1m38.0s), 024/090 VUs, 3842 complete and 0 interrupted iterations
+pilot      [  64% ] 006/030 VUs  1m36.6s/2m30s  10.00 iters/s
+standard   [  64% ] 018/060 VUs  1m36.6s/2m30s  30.00 iters/s
+
+running (1m39.0s), 021/090 VUs, 3885 complete and 0 interrupted iterations
+pilot      [  65% ] 004/030 VUs  1m37.6s/2m30s  10.00 iters/s
+standard   [  65% ] 017/060 VUs  1m37.6s/2m30s  30.00 iters/s
+
+running (1m40.0s), 021/090 VUs, 3925 complete and 0 interrupted iterations
+pilot      [  66% ] 005/030 VUs  1m38.6s/2m30s  10.00 iters/s
+standard   [  66% ] 016/060 VUs  1m38.6s/2m30s  30.00 iters/s
+
+running (1m41.0s), 022/090 VUs, 3964 complete and 0 interrupted iterations
+pilot      [  66% ] 005/030 VUs  1m39.6s/2m30s  10.00 iters/s
+standard   [  66% ] 017/060 VUs  1m39.6s/2m30s  30.00 iters/s
+
+running (1m42.0s), 022/090 VUs, 4004 complete and 0 interrupted iterations
+pilot      [  67% ] 006/030 VUs  1m40.6s/2m30s  10.00 iters/s
+standard   [  67% ] 016/060 VUs  1m40.6s/2m30s  30.00 iters/s
+
+running (1m43.0s), 019/090 VUs, 4047 complete and 0 interrupted iterations
+pilot      [  68% ] 005/030 VUs  1m41.6s/2m30s  10.00 iters/s
+standard   [  68% ] 014/060 VUs  1m41.6s/2m30s  30.00 iters/s
+
+running (1m44.0s), 023/090 VUs, 4083 complete and 0 interrupted iterations
+pilot      [  68% ] 007/030 VUs  1m42.6s/2m30s  10.00 iters/s
+standard   [  68% ] 016/060 VUs  1m42.6s/2m30s  30.00 iters/s
+
+running (1m45.0s), 021/090 VUs, 4125 complete and 0 interrupted iterations
+pilot      [  69% ] 006/030 VUs  1m43.6s/2m30s  10.00 iters/s
+standard   [  69% ] 015/060 VUs  1m43.6s/2m30s  30.00 iters/s
+
+running (1m46.0s), 023/090 VUs, 4163 complete and 0 interrupted iterations
+pilot      [  70% ] 006/030 VUs  1m44.6s/2m30s  10.00 iters/s
+standard   [  70% ] 017/060 VUs  1m44.6s/2m30s  30.00 iters/s
+
+running (1m47.0s), 017/090 VUs, 4209 complete and 0 interrupted iterations
+pilot      [  70% ] 002/030 VUs  1m45.6s/2m30s  10.00 iters/s
+standard   [  70% ] 015/060 VUs  1m45.6s/2m30s  30.00 iters/s
+
+running (1m48.0s), 015/090 VUs, 4251 complete and 0 interrupted iterations
+pilot      [  71% ] 001/030 VUs  1m46.6s/2m30s  10.00 iters/s
+standard   [  71% ] 014/060 VUs  1m46.6s/2m30s  30.00 iters/s
+
+running (1m49.0s), 021/090 VUs, 4285 complete and 0 interrupted iterations
+pilot      [  72% ] 003/030 VUs  1m47.6s/2m30s  10.00 iters/s
+standard   [  72% ] 018/060 VUs  1m47.6s/2m30s  30.00 iters/s
+
+running (1m50.0s), 022/090 VUs, 4324 complete and 0 interrupted iterations
+pilot      [  72% ] 005/030 VUs  1m48.6s/2m30s  10.00 iters/s
+standard   [  72% ] 017/060 VUs  1m48.6s/2m30s  30.00 iters/s
+
+running (1m51.0s), 019/090 VUs, 4367 complete and 0 interrupted iterations
+pilot      [  73% ] 006/030 VUs  1m49.6s/2m30s  10.00 iters/s
+standard   [  73% ] 013/060 VUs  1m49.6s/2m30s  30.00 iters/s
+
+running (1m52.0s), 020/090 VUs, 4406 complete and 0 interrupted iterations
+pilot      [  74% ] 006/030 VUs  1m50.6s/2m30s  10.00 iters/s
+standard   [  74% ] 014/060 VUs  1m50.6s/2m30s  30.00 iters/s
+
+running (1m53.0s), 020/090 VUs, 4446 complete and 0 interrupted iterations
+pilot      [  74% ] 005/030 VUs  1m51.6s/2m30s  10.00 iters/s
+standard   [  74% ] 015/060 VUs  1m51.6s/2m30s  30.00 iters/s
+
+running (1m54.0s), 022/090 VUs, 4484 complete and 0 interrupted iterations
+pilot      [  75% ] 005/030 VUs  1m52.6s/2m30s  10.00 iters/s
+standard   [  75% ] 017/060 VUs  1m52.6s/2m30s  30.00 iters/s
+
+running (1m55.0s), 021/090 VUs, 4525 complete and 0 interrupted iterations
+pilot      [  76% ] 005/030 VUs  1m53.6s/2m30s  10.00 iters/s
+standard   [  76% ] 016/060 VUs  1m53.6s/2m30s  30.00 iters/s
+
+running (1m56.0s), 020/090 VUs, 4566 complete and 0 interrupted iterations
+pilot      [  76% ] 004/030 VUs  1m54.6s/2m30s  10.00 iters/s
+standard   [  76% ] 016/060 VUs  1m54.6s/2m30s  30.00 iters/s
+
+running (1m57.0s), 025/090 VUs, 4601 complete and 0 interrupted iterations
+pilot      [  77% ] 006/030 VUs  1m55.6s/2m30s  10.00 iters/s
+standard   [  77% ] 019/060 VUs  1m55.6s/2m30s  30.00 iters/s
+
+running (1m58.0s), 018/090 VUs, 4648 complete and 0 interrupted iterations
+pilot      [  78% ] 005/030 VUs  1m56.6s/2m30s  10.00 iters/s
+standard   [  78% ] 013/060 VUs  1m56.6s/2m30s  30.00 iters/s
+
+running (1m59.0s), 019/090 VUs, 4687 complete and 0 interrupted iterations
+pilot      [  78% ] 002/030 VUs  1m57.6s/2m30s  10.00 iters/s
+standard   [  78% ] 017/060 VUs  1m57.6s/2m30s  30.00 iters/s
+
+running (2m00.0s), 014/090 VUs, 4732 complete and 0 interrupted iterations
+pilot      [  79% ] 001/030 VUs  1m58.6s/2m30s  10.00 iters/s
+standard   [  79% ] 013/060 VUs  1m58.6s/2m30s  30.00 iters/s
+
+running (2m01.0s), 017/090 VUs, 4769 complete and 0 interrupted iterations
+pilot      [  80% ] 003/030 VUs  1m59.6s/2m30s  10.00 iters/s
+standard   [  80% ] 014/060 VUs  1m59.6s/2m30s  30.00 iters/s
+
+running (2m02.0s), 019/090 VUs, 4807 complete and 0 interrupted iterations
+pilot      [  80% ] 003/030 VUs  2m00.6s/2m30s  10.00 iters/s
+standard   [  80% ] 016/060 VUs  2m00.6s/2m30s  30.00 iters/s
+
+running (2m03.0s), 021/090 VUs, 4845 complete and 0 interrupted iterations
+pilot      [  81% ] 005/030 VUs  2m01.6s/2m30s  10.00 iters/s
+standard   [  81% ] 016/060 VUs  2m01.6s/2m30s  30.00 iters/s
+
+running (2m04.0s), 021/090 VUs, 4885 complete and 0 interrupted iterations
+pilot      [  82% ] 005/030 VUs  2m02.6s/2m30s  10.00 iters/s
+standard   [  82% ] 016/060 VUs  2m02.6s/2m30s  30.00 iters/s
+
+running (2m05.0s), 022/090 VUs, 4924 complete and 0 interrupted iterations
+pilot      [  82% ] 004/030 VUs  2m03.6s/2m30s  10.00 iters/s
+standard   [  82% ] 018/060 VUs  2m03.6s/2m30s  30.00 iters/s
+
+running (2m06.0s), 023/090 VUs, 4963 complete and 0 interrupted iterations
+pilot      [  83% ] 006/030 VUs  2m04.6s/2m30s  10.00 iters/s
+standard   [  83% ] 017/060 VUs  2m04.6s/2m30s  30.00 iters/s
+
+running (2m07.0s), 021/090 VUs, 5005 complete and 0 interrupted iterations
+pilot      [  84% ] 006/030 VUs  2m05.6s/2m30s  10.00 iters/s
+standard   [  84% ] 015/060 VUs  2m05.6s/2m30s  30.00 iters/s
+
+running (2m08.0s), 020/090 VUs, 5046 complete and 0 interrupted iterations
+pilot      [  84% ] 008/030 VUs  2m06.6s/2m30s  10.00 iters/s
+standard   [  84% ] 012/060 VUs  2m06.6s/2m30s  30.00 iters/s
+
+running (2m09.0s), 020/090 VUs, 5086 complete and 0 interrupted iterations
+pilot      [  85% ] 006/030 VUs  2m07.6s/2m30s  10.00 iters/s
+standard   [  85% ] 014/060 VUs  2m07.6s/2m30s  30.00 iters/s
+
+running (2m10.0s), 022/090 VUs, 5124 complete and 0 interrupted iterations
+pilot      [  86% ] 004/030 VUs  2m08.6s/2m30s  10.00 iters/s
+standard   [  86% ] 018/060 VUs  2m08.6s/2m30s  30.00 iters/s
+
+running (2m11.0s), 022/090 VUs, 5164 complete and 0 interrupted iterations
+pilot      [  86% ] 004/030 VUs  2m09.6s/2m30s  10.00 iters/s
+standard   [  86% ] 018/060 VUs  2m09.6s/2m30s  30.00 iters/s
+
+running (2m12.0s), 018/090 VUs, 5208 complete and 0 interrupted iterations
+pilot      [  87% ] 001/030 VUs  2m10.6s/2m30s  10.00 iters/s
+standard   [  87% ] 017/060 VUs  2m10.6s/2m30s  30.00 iters/s
+
+running (2m13.0s), 018/090 VUs, 5248 complete and 0 interrupted iterations
+pilot      [  88% ] 003/030 VUs  2m11.6s/2m30s  10.00 iters/s
+standard   [  88% ] 015/060 VUs  2m11.6s/2m30s  30.00 iters/s
+
+running (2m14.0s), 018/090 VUs, 5288 complete and 0 interrupted iterations
+pilot      [  88% ] 004/030 VUs  2m12.6s/2m30s  10.00 iters/s
+standard   [  88% ] 014/060 VUs  2m12.6s/2m30s  30.00 iters/s
+
+running (2m15.0s), 021/090 VUs, 5325 complete and 0 interrupted iterations
+pilot      [  89% ] 006/030 VUs  2m13.6s/2m30s  10.00 iters/s
+standard   [  89% ] 015/060 VUs  2m13.6s/2m30s  30.00 iters/s
+
+running (2m16.0s), 024/090 VUs, 5362 complete and 0 interrupted iterations
+pilot      [  90% ] 007/030 VUs  2m14.6s/2m30s  10.00 iters/s
+standard   [  90% ] 017/060 VUs  2m14.6s/2m30s  30.00 iters/s
+
+running (2m17.0s), 021/090 VUs, 5405 complete and 0 interrupted iterations
+pilot      [  90% ] 005/030 VUs  2m15.6s/2m30s  10.00 iters/s
+standard   [  90% ] 016/060 VUs  2m15.6s/2m30s  30.00 iters/s
+
+running (2m18.0s), 020/090 VUs, 5446 complete and 0 interrupted iterations
+pilot      [  91% ] 005/030 VUs  2m16.6s/2m30s  10.00 iters/s
+standard   [  91% ] 015/060 VUs  2m16.6s/2m30s  30.00 iters/s
+
+running (2m19.0s), 022/090 VUs, 5484 complete and 0 interrupted iterations
+pilot      [  92% ] 005/030 VUs  2m17.6s/2m30s  10.00 iters/s
+standard   [  92% ] 017/060 VUs  2m17.6s/2m30s  30.00 iters/s
+
+running (2m20.0s), 018/090 VUs, 5528 complete and 0 interrupted iterations
+pilot      [  92% ] 005/030 VUs  2m18.6s/2m30s  10.00 iters/s
+standard   [  92% ] 013/060 VUs  2m18.6s/2m30s  30.00 iters/s
+
+running (2m21.0s), 023/090 VUs, 5563 complete and 0 interrupted iterations
+pilot      [  93% ] 006/030 VUs  2m19.6s/2m30s  10.00 iters/s
+standard   [  93% ] 017/060 VUs  2m19.6s/2m30s  30.00 iters/s
+
+running (2m22.0s), 018/090 VUs, 5608 complete and 0 interrupted iterations
+pilot      [  94% ] 004/030 VUs  2m20.6s/2m30s  10.00 iters/s
+standard   [  94% ] 014/060 VUs  2m20.6s/2m30s  30.00 iters/s
+
+running (2m23.0s), 019/090 VUs, 5647 complete and 0 interrupted iterations
+pilot      [  94% ] 003/030 VUs  2m21.6s/2m30s  10.00 iters/s
+standard   [  94% ] 016/060 VUs  2m21.6s/2m30s  30.00 iters/s
+
+running (2m24.0s), 015/090 VUs, 5691 complete and 0 interrupted iterations
+pilot      [  95% ] 001/030 VUs  2m22.6s/2m30s  10.00 iters/s
+standard   [  95% ] 014/060 VUs  2m22.6s/2m30s  30.00 iters/s
+
+running (2m25.0s), 017/090 VUs, 5729 complete and 0 interrupted iterations
+pilot      [  96% ] 002/030 VUs  2m23.6s/2m30s  10.00 iters/s
+standard   [  96% ] 015/060 VUs  2m23.6s/2m30s  30.00 iters/s
+
+running (2m26.0s), 021/090 VUs, 5765 complete and 0 interrupted iterations
+pilot      [  96% ] 004/030 VUs  2m24.6s/2m30s  10.00 iters/s
+standard   [  96% ] 017/060 VUs  2m24.6s/2m30s  30.00 iters/s
+
+running (2m27.0s), 024/090 VUs, 5802 complete and 0 interrupted iterations
+pilot      [  97% ] 006/030 VUs  2m25.6s/2m30s  10.00 iters/s
+standard   [  97% ] 018/060 VUs  2m25.6s/2m30s  30.00 iters/s
+
+running (2m28.0s), 023/090 VUs, 5843 complete and 0 interrupted iterations
+pilot      [  98% ] 006/030 VUs  2m26.6s/2m30s  10.00 iters/s
+standard   [  98% ] 017/060 VUs  2m26.6s/2m30s  30.00 iters/s
+
+running (2m29.0s), 023/090 VUs, 5883 complete and 0 interrupted iterations
+pilot      [  98% ] 005/030 VUs  2m27.6s/2m30s  10.00 iters/s
+standard   [  98% ] 018/060 VUs  2m27.6s/2m30s  30.00 iters/s
+
+running (2m30.0s), 023/090 VUs, 5923 complete and 0 interrupted iterations
+pilot      [  99% ] 006/030 VUs  2m28.6s/2m30s  10.00 iters/s
+standard   [  99% ] 017/060 VUs  2m28.6s/2m30s  30.00 iters/s
+
+running (2m31.0s), 019/090 VUs, 5967 complete and 0 interrupted iterations
+pilot      [ 100% ] 004/030 VUs  2m29.6s/2m30s  10.00 iters/s
+standard   [ 100% ] 015/060 VUs  2m29.6s/2m30s  30.00 iters/s
+
+running (2m32.0s), 001/090 VUs, 6000 complete and 0 interrupted iterations
+pilot    ↓ [ 100% ] 006/030 VUs  2m30s  10.00 iters/s
+standard ✓ [ 100% ] 000/060 VUs  2m30s  30.00 iters/s
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✗ 'rate==1' rate=94.41%
+
+    dropped_iterations
+    ✓ 'count==0' count=0
+
+    failed_requests{status:0}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:403}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:500}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:502}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:503}
+    ✓ 'count>=0' count=447
+
+    http_req_duration
+    ✓ 'p(95)<2000' p(95)=774.72ms
+
+    http_req_failed
+    ✗ 'rate==0' rate=7.44%
+
+    pairs{group:pilot,eapi:5467749,domain:09c7931}
+    ✓ 'count>=0' count=0
+
+    pairs{group:pilot,eapi:5467749,domain:b5490fc}
+    ✓ 'count>=0' count=1054
+
+    pairs{group:pilot,eapi:c8cd594,domain:09c7931}
+    ✓ 'count>=0' count=0
+
+    pairs{group:pilot,eapi:c8cd594,domain:b5490fc}
+    ✓ 'count>=0' count=0
+
+    pairs{group:standard,eapi:5467749,domain:09c7931}
+    ✓ 'count>=0' count=0
+
+    pairs{group:standard,eapi:5467749,domain:b5490fc}
+    ✓ 'count>=0' count=0
+
+    pairs{group:standard,eapi:c8cd594,domain:09c7931}
+    ✓ 'count>=0' count=4500
+
+    pairs{group:standard,eapi:c8cd594,domain:b5490fc}
+    ✓ 'count>=0' count=0
+
+    unexpected_pair
+    ✓ 'count==0' count=0
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 24004  157.922521/s
+    checks_succeeded...: 94.41% 22663 out of 24004
+    checks_failed......: 5.58%  1341 out of 24004
+
+    ✗ status is 200
+      ↳  92% — ✓ 5554 / ✗ 447
+    ✗ status is a valid outcome
+      ↳  92% — ✓ 5554 / ✗ 447
+    ✗ both commits are reported
+      ↳  92% — ✓ 5554 / ✗ 447
+    ✓ expected release pair
+
+    CUSTOM
+    failed_requests....................................: 447    2.940817/s
+      { status:0 }.....................................: 0      0/s
+      { status:403 }...................................: 0      0/s
+      { status:500 }...................................: 0      0/s
+      { status:502 }...................................: 0      0/s
+      { status:503 }...................................: 447    2.940817/s
+    pairs..............................................: 5554   36.539813/s
+      { group:pilot,eapi:5467749,domain:09c7931 }......: 0      0/s
+      { group:pilot,eapi:5467749,domain:b5490fc }......: 1054   6.934275/s
+      { group:pilot,eapi:c8cd594,domain:09c7931 }......: 0      0/s
+      { group:pilot,eapi:c8cd594,domain:b5490fc }......: 0      0/s
+      { group:standard,eapi:5467749,domain:09c7931 }...: 0      0/s
+      { group:standard,eapi:5467749,domain:b5490fc }...: 0      0/s
+      { group:standard,eapi:c8cd594,domain:09c7931 }...: 4500   29.605538/s
+      { group:standard,eapi:c8cd594,domain:b5490fc }...: 0      0/s
+    unexpected_pair....................................: 0      0/s
+
+    HTTP
+    http_req_duration..................................: avg=453.35ms min=5ms    med=472.45ms max=853.74ms p(90)=739.01ms p(95)=774.72ms
+      { expected_response:true }.......................: avg=489.01ms min=5.45ms med=493ms    max=853.74ms p(90)=744.04ms p(95)=776.76ms
+    http_req_failed....................................: 7.44%  447 out of 6003
+    http_reqs..........................................: 6003   39.493788/s
+
+    EXECUTION
+    dropped_iterations.................................: 0      0/s
+    iteration_duration.................................: avg=453.56ms min=5.15ms med=472.62ms max=835.29ms p(90)=739.27ms p(95)=774.91ms
+    iterations.........................................: 6001   39.48063/s
+    vus................................................: 1      min=0           max=25
+    vus_max............................................: 90     min=90          max=90
+
+    NETWORK
+    data_received......................................: 5.7 MB 37 kB/s
+    data_sent..........................................: 2.1 MB 14 kB/s
+
+
+
+
+running (2m32.0s), 000/090 VUs, 6001 complete and 0 interrupted iterations
+pilot    ✓ [ 100% ] 000/030 VUs  2m30s  10.00 iters/s
+standard ✓ [ 100% ] 000/060 VUs  2m30s  30.00 iters/s
+time="2026-11-16T20:07:38+08:00" level=error msg="thresholds on metrics 'checks, http_req_failed' have been crossed"

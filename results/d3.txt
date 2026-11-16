@@ -1,0 +1,1536 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: k6/pairs.js
+        output: csv (results/d3.csv)
+
+     scenarios: (100.00%) 2 scenarios, 450 max VUs, 3m0s max duration (incl. graceful stop):
+              * pilot: 10.00 iterations/s for 2m30s (maxVUs: 30-150, exec: pilot, gracefulStop: 30s)
+              * standard: 30.00 iterations/s for 2m30s (maxVUs: 60-300, exec: standard, gracefulStop: 30s)
+
+
+Run        [ 100% ] setup()
+pilot      [   0% ]
+standard   [   0% ]
+time="2026-11-16T21:01:03+08:00" level=info msg="setup: standard users get eapi,domain = c8cd594,09c7931" source=console
+time="2026-11-16T21:01:03+08:00" level=info msg="setup: pilot users get    eapi,domain = 5467749,b5490fc" source=console
+
+running (0m02.0s), 025/090 VUs, 5 complete and 0 interrupted iterations
+pilot      [   0% ] 005/030 VUs  0m00.7s/2m30s  10.00 iters/s
+standard   [   0% ] 020/060 VUs  0m00.7s/2m30s  30.00 iters/s
+
+running (0m03.0s), 023/090 VUs, 47 complete and 0 interrupted iterations
+pilot      [   1% ] 005/030 VUs  0m01.7s/2m30s  10.00 iters/s
+standard   [   1% ] 018/060 VUs  0m01.7s/2m30s  30.00 iters/s
+
+running (0m04.0s), 022/090 VUs, 88 complete and 0 interrupted iterations
+pilot      [   2% ] 005/030 VUs  0m02.7s/2m30s  10.00 iters/s
+standard   [   2% ] 017/060 VUs  0m02.7s/2m30s  30.00 iters/s
+
+running (0m05.0s), 019/090 VUs, 131 complete and 0 interrupted iterations
+pilot      [   2% ] 006/030 VUs  0m03.7s/2m30s  10.00 iters/s
+standard   [   2% ] 013/060 VUs  0m03.7s/2m30s  30.00 iters/s
+
+running (0m06.0s), 019/090 VUs, 171 complete and 0 interrupted iterations
+pilot      [   3% ] 005/030 VUs  0m04.7s/2m30s  10.00 iters/s
+standard   [   3% ] 014/060 VUs  0m04.7s/2m30s  30.00 iters/s
+
+running (0m07.0s), 024/090 VUs, 206 complete and 0 interrupted iterations
+pilot      [   4% ] 007/030 VUs  0m05.7s/2m30s  10.00 iters/s
+standard   [   4% ] 017/060 VUs  0m05.7s/2m30s  30.00 iters/s
+
+running (0m08.0s), 021/090 VUs, 249 complete and 0 interrupted iterations
+pilot      [   4% ] 006/030 VUs  0m06.7s/2m30s  10.00 iters/s
+standard   [   4% ] 015/060 VUs  0m06.7s/2m30s  30.00 iters/s
+
+running (0m09.0s), 022/090 VUs, 288 complete and 0 interrupted iterations
+pilot      [   5% ] 006/030 VUs  0m07.7s/2m30s  10.00 iters/s
+standard   [   5% ] 016/060 VUs  0m07.7s/2m30s  30.00 iters/s
+
+running (0m10.0s), 022/090 VUs, 328 complete and 0 interrupted iterations
+pilot      [   6% ] 005/030 VUs  0m08.7s/2m30s  10.00 iters/s
+standard   [   6% ] 017/060 VUs  0m08.7s/2m30s  30.00 iters/s
+
+running (0m11.0s), 015/090 VUs, 375 complete and 0 interrupted iterations
+pilot      [   6% ] 000/030 VUs  0m09.7s/2m30s  10.00 iters/s
+standard   [   6% ] 015/060 VUs  0m09.7s/2m30s  30.00 iters/s
+
+running (0m12.0s), 016/090 VUs, 414 complete and 0 interrupted iterations
+pilot      [   7% ] 000/030 VUs  0m10.7s/2m30s  10.00 iters/s
+standard   [   7% ] 016/060 VUs  0m10.7s/2m30s  30.00 iters/s
+
+running (0m13.0s), 018/090 VUs, 452 complete and 0 interrupted iterations
+pilot      [   8% ] 002/030 VUs  0m11.7s/2m30s  10.00 iters/s
+standard   [   8% ] 016/060 VUs  0m11.7s/2m30s  30.00 iters/s
+
+running (0m14.0s), 020/090 VUs, 490 complete and 0 interrupted iterations
+pilot      [   8% ] 005/030 VUs  0m12.7s/2m30s  10.00 iters/s
+standard   [   8% ] 015/060 VUs  0m12.7s/2m30s  30.00 iters/s
+
+running (0m15.0s), 025/090 VUs, 525 complete and 0 interrupted iterations
+pilot      [   9% ] 007/030 VUs  0m13.7s/2m30s  10.00 iters/s
+standard   [   9% ] 018/060 VUs  0m13.7s/2m30s  30.00 iters/s
+
+running (0m16.0s), 019/090 VUs, 571 complete and 0 interrupted iterations
+pilot      [  10% ] 004/030 VUs  0m14.7s/2m30s  10.00 iters/s
+standard   [  10% ] 015/060 VUs  0m14.7s/2m30s  30.00 iters/s
+
+running (0m17.0s), 020/090 VUs, 610 complete and 0 interrupted iterations
+pilot      [  10% ] 005/030 VUs  0m15.7s/2m30s  10.00 iters/s
+standard   [  10% ] 015/060 VUs  0m15.7s/2m30s  30.00 iters/s
+
+running (0m18.0s), 020/090 VUs, 650 complete and 0 interrupted iterations
+pilot      [  11% ] 004/030 VUs  0m16.7s/2m30s  10.00 iters/s
+standard   [  11% ] 016/060 VUs  0m16.7s/2m30s  30.00 iters/s
+
+running (0m19.0s), 021/090 VUs, 689 complete and 0 interrupted iterations
+pilot      [  12% ] 006/030 VUs  0m17.7s/2m30s  10.00 iters/s
+standard   [  12% ] 015/060 VUs  0m17.7s/2m30s  30.00 iters/s
+
+running (0m20.0s), 025/090 VUs, 725 complete and 0 interrupted iterations
+pilot      [  12% ] 007/030 VUs  0m18.7s/2m30s  10.00 iters/s
+standard   [  12% ] 018/060 VUs  0m18.7s/2m30s  30.00 iters/s
+
+running (0m21.0s), 021/090 VUs, 769 complete and 0 interrupted iterations
+pilot      [  13% ] 005/030 VUs  0m19.7s/2m30s  10.00 iters/s
+standard   [  13% ] 016/060 VUs  0m19.7s/2m30s  30.00 iters/s
+
+running (0m22.0s), 020/090 VUs, 810 complete and 0 interrupted iterations
+pilot      [  14% ] 005/030 VUs  0m20.7s/2m30s  10.00 iters/s
+standard   [  14% ] 015/060 VUs  0m20.7s/2m30s  30.00 iters/s
+
+running (0m23.0s), 013/090 VUs, 857 complete and 0 interrupted iterations
+pilot      [  14% ] 000/030 VUs  0m21.7s/2m30s  10.00 iters/s
+standard   [  14% ] 013/060 VUs  0m21.7s/2m30s  30.00 iters/s
+
+running (0m24.0s), 014/090 VUs, 896 complete and 0 interrupted iterations
+pilot      [  15% ] 000/030 VUs  0m22.7s/2m30s  10.00 iters/s
+standard   [  15% ] 014/060 VUs  0m22.7s/2m30s  30.00 iters/s
+
+running (0m25.0s), 022/090 VUs, 928 complete and 0 interrupted iterations
+pilot      [  16% ] 003/030 VUs  0m23.7s/2m30s  10.00 iters/s
+standard   [  16% ] 019/060 VUs  0m23.7s/2m30s  30.00 iters/s
+
+running (0m26.0s), 018/090 VUs, 972 complete and 0 interrupted iterations
+pilot      [  16% ] 003/030 VUs  0m24.7s/2m30s  10.00 iters/s
+standard   [  16% ] 015/060 VUs  0m24.7s/2m30s  30.00 iters/s
+
+running (0m27.0s), 017/090 VUs, 1013 complete and 0 interrupted iterations
+pilot      [  17% ] 005/030 VUs  0m25.7s/2m30s  10.00 iters/s
+standard   [  17% ] 012/060 VUs  0m25.7s/2m30s  30.00 iters/s
+
+running (0m28.0s), 022/090 VUs, 1048 complete and 0 interrupted iterations
+pilot      [  18% ] 005/030 VUs  0m26.7s/2m30s  10.00 iters/s
+standard   [  18% ] 017/060 VUs  0m26.7s/2m30s  30.00 iters/s
+
+running (0m29.0s), 022/090 VUs, 1088 complete and 0 interrupted iterations
+pilot      [  18% ] 005/030 VUs  0m27.7s/2m30s  10.00 iters/s
+standard   [  18% ] 017/060 VUs  0m27.7s/2m30s  30.00 iters/s
+
+running (0m30.0s), 020/090 VUs, 1130 complete and 0 interrupted iterations
+pilot      [  19% ] 006/030 VUs  0m28.7s/2m30s  10.00 iters/s
+standard   [  19% ] 014/060 VUs  0m28.7s/2m30s  30.00 iters/s
+
+running (0m31.0s), 020/090 VUs, 1170 complete and 0 interrupted iterations
+pilot      [  20% ] 005/030 VUs  0m29.7s/2m30s  10.00 iters/s
+standard   [  20% ] 015/060 VUs  0m29.7s/2m30s  30.00 iters/s
+
+running (0m32.0s), 019/090 VUs, 1211 complete and 0 interrupted iterations
+pilot      [  20% ] 004/030 VUs  0m30.7s/2m30s  10.00 iters/s
+standard   [  20% ] 015/060 VUs  0m30.7s/2m30s  30.00 iters/s
+
+running (0m33.0s), 018/090 VUs, 1252 complete and 0 interrupted iterations
+pilot      [  21% ] 006/030 VUs  0m31.7s/2m30s  10.00 iters/s
+standard   [  21% ] 012/060 VUs  0m31.7s/2m30s  30.00 iters/s
+
+running (0m34.0s), 021/090 VUs, 1289 complete and 0 interrupted iterations
+pilot      [  22% ] 005/030 VUs  0m32.7s/2m30s  10.00 iters/s
+standard   [  22% ] 016/060 VUs  0m32.7s/2m30s  30.00 iters/s
+
+running (0m35.0s), 013/090 VUs, 1337 complete and 0 interrupted iterations
+pilot      [  22% ] 000/030 VUs  0m33.7s/2m30s  10.00 iters/s
+standard   [  22% ] 013/060 VUs  0m33.7s/2m30s  30.00 iters/s
+
+running (0m36.0s), 019/090 VUs, 1371 complete and 0 interrupted iterations
+pilot      [  23% ] 000/030 VUs  0m34.7s/2m30s  10.00 iters/s
+standard   [  23% ] 019/060 VUs  0m34.7s/2m30s  30.00 iters/s
+
+running (0m37.0s), 017/090 VUs, 1413 complete and 0 interrupted iterations
+pilot      [  24% ] 002/030 VUs  0m35.7s/2m30s  10.00 iters/s
+standard   [  24% ] 015/060 VUs  0m35.7s/2m30s  30.00 iters/s
+
+running (0m38.0s), 020/090 VUs, 1450 complete and 0 interrupted iterations
+pilot      [  24% ] 004/030 VUs  0m36.7s/2m30s  10.00 iters/s
+standard   [  24% ] 016/060 VUs  0m36.7s/2m30s  30.00 iters/s
+
+running (0m39.0s), 024/090 VUs, 1486 complete and 0 interrupted iterations
+pilot      [  25% ] 005/030 VUs  0m37.7s/2m30s  10.00 iters/s
+standard   [  25% ] 019/060 VUs  0m37.7s/2m30s  30.00 iters/s
+
+running (0m40.0s), 025/090 VUs, 1525 complete and 0 interrupted iterations
+pilot      [  26% ] 006/030 VUs  0m38.7s/2m30s  10.00 iters/s
+standard   [  26% ] 019/060 VUs  0m38.7s/2m30s  30.00 iters/s
+
+running (0m41.0s), 021/090 VUs, 1569 complete and 0 interrupted iterations
+pilot      [  26% ] 004/030 VUs  0m39.7s/2m30s  10.00 iters/s
+standard   [  26% ] 017/060 VUs  0m39.7s/2m30s  30.00 iters/s
+
+running (0m42.0s), 021/090 VUs, 1609 complete and 0 interrupted iterations
+pilot      [  27% ] 005/030 VUs  0m40.7s/2m30s  10.00 iters/s
+standard   [  27% ] 016/060 VUs  0m40.7s/2m30s  30.00 iters/s
+
+running (0m43.0s), 019/090 VUs, 1651 complete and 0 interrupted iterations
+pilot      [  28% ] 005/030 VUs  0m41.7s/2m30s  10.00 iters/s
+standard   [  28% ] 014/060 VUs  0m41.7s/2m30s  30.00 iters/s
+
+running (0m44.0s), 021/090 VUs, 1689 complete and 0 interrupted iterations
+pilot      [  28% ] 005/030 VUs  0m42.7s/2m30s  10.00 iters/s
+standard   [  28% ] 016/060 VUs  0m42.7s/2m30s  30.00 iters/s
+
+running (0m45.0s), 017/090 VUs, 1733 complete and 0 interrupted iterations
+pilot      [  29% ] 005/030 VUs  0m43.7s/2m30s  10.00 iters/s
+standard   [  29% ] 012/060 VUs  0m43.7s/2m30s  30.00 iters/s
+
+running (0m46.0s), 017/090 VUs, 1773 complete and 0 interrupted iterations
+pilot      [  30% ] 003/030 VUs  0m44.7s/2m30s  10.00 iters/s
+standard   [  30% ] 014/060 VUs  0m44.7s/2m30s  30.00 iters/s
+
+running (0m47.0s), 016/090 VUs, 1814 complete and 0 interrupted iterations
+pilot      [  30% ] 001/030 VUs  0m45.7s/2m30s  10.00 iters/s
+standard   [  30% ] 015/060 VUs  0m45.7s/2m30s  30.00 iters/s
+
+running (0m48.0s), 013/090 VUs, 1857 complete and 0 interrupted iterations
+pilot      [  31% ] 001/030 VUs  0m46.7s/2m30s  10.00 iters/s
+standard   [  31% ] 012/060 VUs  0m46.7s/2m30s  30.00 iters/s
+
+running (0m49.0s), 018/090 VUs, 1892 complete and 0 interrupted iterations
+pilot      [  32% ] 002/030 VUs  0m47.7s/2m30s  10.00 iters/s
+standard   [  32% ] 016/060 VUs  0m47.7s/2m30s  30.00 iters/s
+
+running (0m50.0s), 020/090 VUs, 1930 complete and 0 interrupted iterations
+pilot      [  32% ] 003/030 VUs  0m48.7s/2m30s  10.00 iters/s
+standard   [  32% ] 017/060 VUs  0m48.7s/2m30s  30.00 iters/s
+
+running (0m51.0s), 023/090 VUs, 1967 complete and 0 interrupted iterations
+pilot      [  33% ] 007/030 VUs  0m49.7s/2m30s  10.00 iters/s
+standard   [  33% ] 016/060 VUs  0m49.7s/2m30s  30.00 iters/s
+
+running (0m52.0s), 019/090 VUs, 2011 complete and 0 interrupted iterations
+pilot      [  34% ] 007/030 VUs  0m50.7s/2m30s  10.00 iters/s
+standard   [  34% ] 012/060 VUs  0m50.7s/2m30s  30.00 iters/s
+
+running (0m53.0s), 022/090 VUs, 2048 complete and 0 interrupted iterations
+pilot      [  34% ] 006/030 VUs  0m51.7s/2m30s  10.00 iters/s
+standard   [  34% ] 016/060 VUs  0m51.7s/2m30s  30.00 iters/s
+
+running (0m54.0s), 024/090 VUs, 2086 complete and 0 interrupted iterations
+pilot      [  35% ] 006/030 VUs  0m52.7s/2m30s  10.00 iters/s
+standard   [  35% ] 018/060 VUs  0m52.7s/2m30s  30.00 iters/s
+
+running (0m55.0s), 017/090 VUs, 2133 complete and 0 interrupted iterations
+pilot      [  36% ] 004/030 VUs  0m53.7s/2m30s  10.00 iters/s
+standard   [  36% ] 013/060 VUs  0m53.7s/2m30s  30.00 iters/s
+
+running (0m56.0s), 021/090 VUs, 2169 complete and 0 interrupted iterations
+pilot      [  36% ] 005/030 VUs  0m54.7s/2m30s  10.00 iters/s
+standard   [  36% ] 016/060 VUs  0m54.7s/2m30s  30.00 iters/s
+
+running (0m57.0s), 018/090 VUs, 2212 complete and 0 interrupted iterations
+pilot      [  37% ] 004/030 VUs  0m55.7s/2m30s  10.00 iters/s
+standard   [  37% ] 014/060 VUs  0m55.7s/2m30s  30.00 iters/s
+
+running (0m58.0s), 019/090 VUs, 2251 complete and 0 interrupted iterations
+pilot      [  38% ] 005/030 VUs  0m56.7s/2m30s  10.00 iters/s
+standard   [  38% ] 014/060 VUs  0m56.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:01:59+08:00" level=error msg="2026-11-16T13:01:59.957Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.098Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.293Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.405Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.551Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.665Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.698Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.708Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (0m59.0s), 015/090 VUs, 2295 complete and 0 interrupted iterations
+pilot      [  38% ] 001/030 VUs  0m57.7s/2m30s  10.00 iters/s
+standard   [  38% ] 014/060 VUs  0m57.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.831Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.850Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:00+08:00" level=error msg="2026-11-16T13:02:00.949Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.051Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.150Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.250Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.350Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.448Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.649Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.760Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m00.0s), 014/090 VUs, 2336 complete and 0 interrupted iterations
+pilot      [  39% ] 000/030 VUs  0m58.7s/2m30s  10.00 iters/s
+standard   [  39% ] 014/060 VUs  0m58.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.850Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:01+08:00" level=error msg="2026-11-16T13:02:01.949Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.052Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.251Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.551Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.736Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.752Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m01.0s), 012/090 VUs, 2378 complete and 0 interrupted iterations
+pilot      [  40% ] 002/030 VUs  0m59.7s/2m30s  10.00 iters/s
+standard   [  40% ] 010/060 VUs  0m59.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.956Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:02+08:00" level=error msg="2026-11-16T13:02:02.977Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.048Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.097Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.147Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.356Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.445Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.548Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.674Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:03+08:00" level=error msg="2026-11-16T13:02:03.755Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m02.0s), 017/090 VUs, 2413 complete and 0 interrupted iterations
+pilot      [  40% ] 001/030 VUs  1m00.7s/2m30s  10.00 iters/s
+standard   [  40% ] 016/060 VUs  1m00.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.089Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.273Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.305Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.415Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.610Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.736Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m03.0s), 021/090 VUs, 2449 complete and 0 interrupted iterations
+pilot      [  41% ] 005/030 VUs  1m01.7s/2m30s  10.00 iters/s
+standard   [  41% ] 016/060 VUs  1m01.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.797Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.958Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:04+08:00" level=error msg="2026-11-16T13:02:04.996Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.169Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.222Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.277Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.399Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.448Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.526Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.550Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m04.0s), 022/090 VUs, 2488 complete and 0 interrupted iterations
+pilot      [  42% ] 005/030 VUs  1m02.7s/2m30s  10.00 iters/s
+standard   [  42% ] 017/060 VUs  1m02.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:05+08:00" level=error msg="2026-11-16T13:02:05.773Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.027Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.055Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.102Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.382Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.478Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.592Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.672Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.731Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m05.0s), 024/090 VUs, 2526 complete and 0 interrupted iterations
+pilot      [  42% ] 006/030 VUs  1m03.7s/2m30s  10.00 iters/s
+standard   [  42% ] 018/060 VUs  1m03.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.805Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:06+08:00" level=error msg="2026-11-16T13:02:06.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.043Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.122Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.175Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.266Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.365Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.513Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.516Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.688Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m06.0s), 022/090 VUs, 2568 complete and 0 interrupted iterations
+pilot      [  43% ] 006/030 VUs  1m04.7s/2m30s  10.00 iters/s
+standard   [  43% ] 016/060 VUs  1m04.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.822Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:07+08:00" level=error msg="2026-11-16T13:02:07.932Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.032Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.074Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.089Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.187Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.372Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.383Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.509Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.538Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m07.0s), 020/090 VUs, 2610 complete and 0 interrupted iterations
+pilot      [  44% ] 006/030 VUs  1m05.7s/2m30s  10.00 iters/s
+standard   [  44% ] 014/060 VUs  1m05.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.777Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.839Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:08+08:00" level=error msg="2026-11-16T13:02:08.952Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.051Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.099Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.194Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.259Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.564Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m08.0s), 023/090 VUs, 2647 complete and 0 interrupted iterations
+pilot      [  44% ] 007/030 VUs  1m06.7s/2m30s  10.00 iters/s
+standard   [  44% ] 016/060 VUs  1m06.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.794Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.824Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.902Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.921Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:09+08:00" level=error msg="2026-11-16T13:02:09.962Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.016Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.036Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.407Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.433Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.451Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.451Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.500Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m09.0s), 019/090 VUs, 2691 complete and 0 interrupted iterations
+pilot      [  45% ] 005/030 VUs  1m07.7s/2m30s  10.00 iters/s
+standard   [  45% ] 014/060 VUs  1m07.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:10+08:00" level=error msg="2026-11-16T13:02:10.917Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.064Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.172Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.172Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.200Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.431Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.536Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.548Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.651Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.682Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m10.0s), 019/090 VUs, 2731 complete and 0 interrupted iterations
+pilot      [  46% ] 003/030 VUs  1m08.7s/2m30s  10.00 iters/s
+standard   [  46% ] 016/060 VUs  1m08.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.783Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:11+08:00" level=error msg="2026-11-16T13:02:11.948Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.137Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.408Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.448Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.458Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.524Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.555Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.746Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m11.0s), 018/090 VUs, 2772 complete and 0 interrupted iterations
+pilot      [  46% ] 003/030 VUs  1m09.7s/2m30s  10.00 iters/s
+standard   [  46% ] 015/060 VUs  1m09.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.825Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.868Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.908Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:12+08:00" level=error msg="2026-11-16T13:02:12.948Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.049Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.248Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.448Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.549Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.648Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m12.0s), 013/090 VUs, 2817 complete and 0 interrupted iterations
+pilot      [  47% ] 001/030 VUs  1m10.7s/2m30s  10.00 iters/s
+standard   [  47% ] 012/060 VUs  1m10.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.918Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:13+08:00" level=error msg="2026-11-16T13:02:13.945Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.351Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.549Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.715Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m13.0s), 013/090 VUs, 2857 complete and 0 interrupted iterations
+pilot      [  48% ] 001/030 VUs  1m11.7s/2m30s  10.00 iters/s
+standard   [  48% ] 012/060 VUs  1m11.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:14+08:00" level=error msg="2026-11-16T13:02:14.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.049Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.249Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.526Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.548Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.593Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.610Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m14.0s), 019/090 VUs, 2891 complete and 0 interrupted iterations
+pilot      [  48% ] 002/030 VUs  1m12.7s/2m30s  10.00 iters/s
+standard   [  48% ] 017/060 VUs  1m12.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:15+08:00" level=error msg="2026-11-16T13:02:15.990Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.161Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.527Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.534Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.555Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.589Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.691Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m15.0s), 019/090 VUs, 2931 complete and 0 interrupted iterations
+pilot      [  49% ] 004/030 VUs  1m13.7s/2m30s  10.00 iters/s
+standard   [  49% ] 015/060 VUs  1m13.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.793Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.874Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:16+08:00" level=error msg="2026-11-16T13:02:16.985Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.294Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.410Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.596Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.642Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.652Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.678Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m16.0s), 021/090 VUs, 2969 complete and 0 interrupted iterations
+pilot      [  50% ] 005/030 VUs  1m14.7s/2m30s  10.00 iters/s
+standard   [  50% ] 016/060 VUs  1m14.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.788Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:17+08:00" level=error msg="2026-11-16T13:02:17.831Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.105Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.272Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.402Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.439Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.481Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.577Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.613Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.730Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.743Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m17.0s), 019/090 VUs, 3011 complete and 0 interrupted iterations
+pilot      [  50% ] 004/030 VUs  1m15.7s/2m30s  10.00 iters/s
+standard   [  50% ] 015/060 VUs  1m15.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.924Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:18+08:00" level=error msg="2026-11-16T13:02:18.936Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.091Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.197Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.254Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.363Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.493Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.622Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.656Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m18.0s), 018/090 VUs, 3052 complete and 0 interrupted iterations
+pilot      [  51% ] 005/030 VUs  1m16.7s/2m30s  10.00 iters/s
+standard   [  51% ] 013/060 VUs  1m16.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:19+08:00" level=error msg="2026-11-16T13:02:19.801Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.209Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.215Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.281Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.322Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.334Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.338Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.382Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.566Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.599Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m19.0s), 020/090 VUs, 3090 complete and 0 interrupted iterations
+pilot      [  52% ] 005/030 VUs  1m17.7s/2m30s  10.00 iters/s
+standard   [  52% ] 015/060 VUs  1m17.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.799Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.805Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:20+08:00" level=error msg="2026-11-16T13:02:20.984Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.003Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.138Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.249Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.251Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.266Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.494Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.664Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.692Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m20.0s), 019/090 VUs, 3131 complete and 0 interrupted iterations
+pilot      [  52% ] 004/030 VUs  1m18.7s/2m30s  10.00 iters/s
+standard   [  52% ] 015/060 VUs  1m18.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:21+08:00" level=error msg="2026-11-16T13:02:21.784Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.076Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.143Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.305Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.349Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.357Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.421Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.463Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.695Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m21.0s), 017/090 VUs, 3173 complete and 0 interrupted iterations
+pilot      [  53% ] 005/030 VUs  1m19.7s/2m30s  10.00 iters/s
+standard   [  53% ] 012/060 VUs  1m19.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.776Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.792Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.938Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:22+08:00" level=error msg="2026-11-16T13:02:22.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.109Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.139Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.164Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.347Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.519Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.545Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.582Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m22.0s), 016/090 VUs, 3214 complete and 0 interrupted iterations
+pilot      [  54% ] 002/030 VUs  1m20.7s/2m30s  10.00 iters/s
+standard   [  54% ] 014/060 VUs  1m20.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:23+08:00" level=error msg="2026-11-16T13:02:23.873Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.165Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.317Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.346Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.455Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.563Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.655Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.732Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m23.0s), 014/090 VUs, 3256 complete and 0 interrupted iterations
+pilot      [  54% ] 001/030 VUs  1m21.7s/2m30s  10.00 iters/s
+standard   [  54% ] 013/060 VUs  1m21.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.840Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:24+08:00" level=error msg="2026-11-16T13:02:24.957Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.151Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.250Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.548Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.746Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m24.0s), 017/090 VUs, 3293 complete and 0 interrupted iterations
+pilot      [  55% ] 002/030 VUs  1m22.7s/2m30s  10.00 iters/s
+standard   [  55% ] 015/060 VUs  1m22.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.818Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:25+08:00" level=error msg="2026-11-16T13:02:25.948Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.405Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.485Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m25.0s), 019/090 VUs, 3331 complete and 0 interrupted iterations
+pilot      [  56% ] 003/030 VUs  1m23.7s/2m30s  10.00 iters/s
+standard   [  56% ] 016/060 VUs  1m23.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:26+08:00" level=error msg="2026-11-16T13:02:26.935Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.007Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.048Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.121Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.247Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.264Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.449Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.694Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m26.0s), 015/090 VUs, 3375 complete and 0 interrupted iterations
+pilot      [  56% ] 002/030 VUs  1m24.7s/2m30s  10.00 iters/s
+standard   [  56% ] 013/060 VUs  1m24.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:27+08:00" level=error msg="2026-11-16T13:02:27.909Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.063Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.230Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.291Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.391Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.597Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.706Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m27.0s), 020/090 VUs, 3410 complete and 0 interrupted iterations
+pilot      [  57% ] 004/030 VUs  1m25.7s/2m30s  10.00 iters/s
+standard   [  57% ] 016/060 VUs  1m25.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:28+08:00" level=error msg="2026-11-16T13:02:28.943Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.068Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.132Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.489Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.626Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.676Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.690Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.704Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.719Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:29+08:00" level=error msg="2026-11-16T13:02:29.734Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m28.0s), 021/090 VUs, 3449 complete and 0 interrupted iterations
+pilot      [  58% ] 004/030 VUs  1m26.7s/2m30s  10.00 iters/s
+standard   [  58% ] 017/060 VUs  1m26.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.094Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.151Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.339Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.343Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.349Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.508Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.640Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m29.0s), 023/090 VUs, 3487 complete and 0 interrupted iterations
+pilot      [  58% ] 006/030 VUs  1m27.7s/2m30s  10.00 iters/s
+standard   [  58% ] 017/060 VUs  1m27.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.772Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.885Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.893Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:30+08:00" level=error msg="2026-11-16T13:02:30.997Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.022Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.035Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.318Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.333Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.560Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.668Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.738Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m30.0s), 021/090 VUs, 3529 complete and 0 interrupted iterations
+pilot      [  59% ] 005/030 VUs  1m28.7s/2m30s  10.00 iters/s
+standard   [  59% ] 016/060 VUs  1m28.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.899Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:31+08:00" level=error msg="2026-11-16T13:02:31.999Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.139Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.186Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.268Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.292Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.308Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.522Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.551Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:32+08:00" level=error msg="2026-11-16T13:02:32.716Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m31.0s), 017/090 VUs, 3573 complete and 0 interrupted iterations
+pilot      [  60% ] 004/030 VUs  1m29.7s/2m30s  10.00 iters/s
+standard   [  60% ] 013/060 VUs  1m29.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.018Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.108Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.135Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.299Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.395Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.498Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.564Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m32.0s), 024/090 VUs, 3606 complete and 0 interrupted iterations
+pilot      [  60% ] 007/030 VUs  1m30.7s/2m30s  10.00 iters/s
+standard   [  60% ] 017/060 VUs  1m30.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.808Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:33+08:00" level=error msg="2026-11-16T13:02:33.943Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.068Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.071Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.092Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.115Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.152Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.198Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.434Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.591Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.610Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.636Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.679Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.760Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m33.0s), 020/090 VUs, 3650 complete and 0 interrupted iterations
+pilot      [  61% ] 002/030 VUs  1m31.7s/2m30s  10.00 iters/s
+standard   [  61% ] 018/060 VUs  1m31.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.949Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:34+08:00" level=error msg="2026-11-16T13:02:34.998Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.089Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.431Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.451Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.484Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.598Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.715Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m34.0s), 018/090 VUs, 3692 complete and 0 interrupted iterations
+pilot      [  62% ] 003/030 VUs  1m32.7s/2m30s  10.00 iters/s
+standard   [  62% ] 015/060 VUs  1m32.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:35+08:00" level=error msg="2026-11-16T13:02:35.882Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.122Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.149Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.215Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.247Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.365Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.627Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.649Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.741Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m35.0s), 014/090 VUs, 3736 complete and 0 interrupted iterations
+pilot      [  62% ] 002/030 VUs  1m33.7s/2m30s  10.00 iters/s
+standard   [  62% ] 012/060 VUs  1m33.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.806Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.888Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:36+08:00" level=error msg="2026-11-16T13:02:36.948Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.047Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.147Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.248Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.347Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.697Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m36.0s), 014/090 VUs, 3776 complete and 0 interrupted iterations
+pilot      [  63% ] 002/030 VUs  1m34.7s/2m30s  10.00 iters/s
+standard   [  63% ] 012/060 VUs  1m34.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:37+08:00" level=error msg="2026-11-16T13:02:37.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.116Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.154Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.161Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.247Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.346Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m37.0s), 017/090 VUs, 3813 complete and 0 interrupted iterations
+pilot      [  64% ] 003/030 VUs  1m35.7s/2m30s  10.00 iters/s
+standard   [  64% ] 014/060 VUs  1m35.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.783Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:38+08:00" level=error msg="2026-11-16T13:02:38.946Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.146Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.177Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.181Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.247Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.409Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.410Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.448Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.607Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.648Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m38.0s), 015/090 VUs, 3855 complete and 0 interrupted iterations
+pilot      [  64% ] 002/030 VUs  1m36.7s/2m30s  10.00 iters/s
+standard   [  64% ] 013/060 VUs  1m36.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:39+08:00" level=error msg="2026-11-16T13:02:39.849Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.142Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.156Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.410Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.501Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.535Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.617Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m39.0s), 018/090 VUs, 3892 complete and 0 interrupted iterations
+pilot      [  65% ] 005/030 VUs  1m37.7s/2m30s  10.00 iters/s
+standard   [  65% ] 013/060 VUs  1m37.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.855Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.868Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.892Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:40+08:00" level=error msg="2026-11-16T13:02:40.955Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:41+08:00" level=error msg="2026-11-16T13:02:41.032Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:41+08:00" level=error msg="2026-11-16T13:02:41.196Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:41+08:00" level=error msg="2026-11-16T13:02:41.430Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:41+08:00" level=error msg="2026-11-16T13:02:41.464Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:41+08:00" level=error msg="2026-11-16T13:02:41.614Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m40.0s), 025/090 VUs, 3925 complete and 0 interrupted iterations
+pilot      [  66% ] 006/030 VUs  1m38.7s/2m30s  10.00 iters/s
+standard   [  66% ] 019/060 VUs  1m38.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:41+08:00" level=error msg="2026-11-16T13:02:41.810Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:41+08:00" level=error msg="2026-11-16T13:02:41.966Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.032Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.050Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.074Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.102Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.141Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.592Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.643Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.657Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.675Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.697Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m41.0s), 017/090 VUs, 3973 complete and 0 interrupted iterations
+pilot      [  66% ] 004/030 VUs  1m39.7s/2m30s  10.00 iters/s
+standard   [  66% ] 013/060 VUs  1m39.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:42+08:00" level=error msg="2026-11-16T13:02:42.838Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.002Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.080Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.310Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.439Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.444Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.597Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.743Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:43+08:00" level=error msg="2026-11-16T13:02:43.755Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m42.0s), 021/090 VUs, 4009 complete and 0 interrupted iterations
+pilot      [  67% ] 005/030 VUs  1m40.7s/2m30s  10.00 iters/s
+standard   [  67% ] 016/060 VUs  1m40.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.097Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.108Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.151Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.189Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.273Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.366Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.474Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.676Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m43.0s), 023/090 VUs, 4047 complete and 0 interrupted iterations
+pilot      [  68% ] 006/030 VUs  1m41.7s/2m30s  10.00 iters/s
+standard   [  68% ] 017/060 VUs  1m41.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.775Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.868Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:44+08:00" level=error msg="2026-11-16T13:02:44.894Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.027Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.035Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.075Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.335Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.389Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.523Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.605Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.640Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.668Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:45+08:00" level=error msg="2026-11-16T13:02:45.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m44.0s), 013/090 VUs, 4097 complete and 0 interrupted iterations
+pilot      [  68% ] 003/030 VUs  1m42.7s/2m30s  10.00 iters/s
+standard   [  68% ] 010/060 VUs  1m42.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.072Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.107Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.172Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.342Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.472Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.501Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.672Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.705Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.746Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.755Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m45.0s), 017/090 VUs, 4133 complete and 0 interrupted iterations
+pilot      [  69% ] 003/030 VUs  1m43.7s/2m30s  10.00 iters/s
+standard   [  69% ] 014/060 VUs  1m43.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.950Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:46+08:00" level=error msg="2026-11-16T13:02:46.988Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.147Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.180Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.331Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.347Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.524Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.660Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m46.0s), 019/090 VUs, 4171 complete and 0 interrupted iterations
+pilot      [  70% ] 005/030 VUs  1m44.7s/2m30s  10.00 iters/s
+standard   [  70% ] 014/060 VUs  1m44.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.857Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.915Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.952Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:47+08:00" level=error msg="2026-11-16T13:02:47.972Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.005Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.245Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.339Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.344Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.392Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.445Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.474Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.698Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.745Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m47.0s), 018/090 VUs, 4212 complete and 0 interrupted iterations
+pilot      [  70% ] 001/030 VUs  1m45.7s/2m30s  10.00 iters/s
+standard   [  70% ] 017/060 VUs  1m45.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:48+08:00" level=error msg="2026-11-16T13:02:48.948Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.050Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.147Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.149Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.247Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.446Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.657Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m48.0s), 019/090 VUs, 4251 complete and 0 interrupted iterations
+pilot      [  71% ] 003/030 VUs  1m46.7s/2m30s  10.00 iters/s
+standard   [  71% ] 016/060 VUs  1m46.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:49+08:00" level=error msg="2026-11-16T13:02:49.956Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.071Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.167Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.225Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.255Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.452Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m49.0s), 016/090 VUs, 4294 complete and 0 interrupted iterations
+pilot      [  72% ] 001/030 VUs  1m47.7s/2m30s  10.00 iters/s
+standard   [  72% ] 015/060 VUs  1m47.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.890Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:50+08:00" level=error msg="2026-11-16T13:02:50.949Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:51+08:00" level=error msg="2026-11-16T13:02:51.147Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:51+08:00" level=error msg="2026-11-16T13:02:51.322Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:51+08:00" level=error msg="2026-11-16T13:02:51.347Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:51+08:00" level=error msg="2026-11-16T13:02:51.483Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:51+08:00" level=error msg="2026-11-16T13:02:51.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:51+08:00" level=error msg="2026-11-16T13:02:51.690Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m50.0s), 020/090 VUs, 4330 complete and 0 interrupted iterations
+pilot      [  72% ] 003/030 VUs  1m48.7s/2m30s  10.00 iters/s
+standard   [  72% ] 017/060 VUs  1m48.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:51+08:00" level=error msg="2026-11-16T13:02:51.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.038Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.107Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.141Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.150Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.202Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.477Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.660Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.724Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m51.0s), 019/090 VUs, 4371 complete and 0 interrupted iterations
+pilot      [  73% ] 004/030 VUs  1m49.7s/2m30s  10.00 iters/s
+standard   [  73% ] 015/060 VUs  1m49.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.876Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.974Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:52+08:00" level=error msg="2026-11-16T13:02:52.994Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:53+08:00" level=error msg="2026-11-16T13:02:53.016Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:53+08:00" level=error msg="2026-11-16T13:02:53.425Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:53+08:00" level=error msg="2026-11-16T13:02:53.505Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:53+08:00" level=error msg="2026-11-16T13:02:53.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:53+08:00" level=error msg="2026-11-16T13:02:53.656Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m52.0s), 021/090 VUs, 4409 complete and 0 interrupted iterations
+pilot      [  74% ] 005/030 VUs  1m50.7s/2m30s  10.00 iters/s
+standard   [  74% ] 016/060 VUs  1m50.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:53+08:00" level=error msg="2026-11-16T13:02:53.763Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.041Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.166Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.188Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.390Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.449Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.633Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.690Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.741Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m53.0s), 021/090 VUs, 4449 complete and 0 interrupted iterations
+pilot      [  74% ] 005/030 VUs  1m51.7s/2m30s  10.00 iters/s
+standard   [  74% ] 016/060 VUs  1m51.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.882Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:54+08:00" level=error msg="2026-11-16T13:02:54.978Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.066Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.156Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.223Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.373Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.389Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.553Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.611Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.655Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.739Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m54.0s), 021/090 VUs, 4489 complete and 0 interrupted iterations
+pilot      [  75% ] 004/030 VUs  1m52.7s/2m30s  10.00 iters/s
+standard   [  75% ] 017/060 VUs  1m52.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.773Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:55+08:00" level=error msg="2026-11-16T13:02:55.980Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.000Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.359Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.425Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.577Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.608Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.646Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m55.0s), 021/090 VUs, 4529 complete and 0 interrupted iterations
+pilot      [  76% ] 006/030 VUs  1m53.7s/2m30s  10.00 iters/s
+standard   [  76% ] 015/060 VUs  1m53.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.798Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:56+08:00" level=error msg="2026-11-16T13:02:56.881Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.083Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.153Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.215Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.252Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.442Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.522Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.638Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.667Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m56.0s), 019/090 VUs, 4571 complete and 0 interrupted iterations
+pilot      [  76% ] 005/030 VUs  1m54.7s/2m30s  10.00 iters/s
+standard   [  76% ] 014/060 VUs  1m54.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.810Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:57+08:00" level=error msg="2026-11-16T13:02:57.890Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.208Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.281Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.369Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.443Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.477Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.510Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.717Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m57.0s), 018/090 VUs, 4612 complete and 0 interrupted iterations
+pilot      [  77% ] 005/030 VUs  1m55.7s/2m30s  10.00 iters/s
+standard   [  77% ] 013/060 VUs  1m55.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.799Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.814Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.822Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:58+08:00" level=error msg="2026-11-16T13:02:58.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.236Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.389Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.473Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.530Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.550Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.688Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m58.0s), 013/090 VUs, 4657 complete and 0 interrupted iterations
+pilot      [  78% ] 002/030 VUs  1m56.7s/2m30s  10.00 iters/s
+standard   [  78% ] 011/060 VUs  1m56.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:02:59+08:00" level=error msg="2026-11-16T13:02:59.948Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.060Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.206Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.248Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.440Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.446Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.455Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.546Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.698Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (1m59.0s), 015/090 VUs, 4695 complete and 0 interrupted iterations
+pilot      [  78% ] 002/030 VUs  1m57.7s/2m30s  10.00 iters/s
+standard   [  78% ] 013/060 VUs  1m57.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.846Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.953Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:00+08:00" level=error msg="2026-11-16T13:03:00.979Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.046Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.346Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.358Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.545Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.556Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.665Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.748Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m00.0s), 016/090 VUs, 4734 complete and 0 interrupted iterations
+pilot      [  79% ] 002/030 VUs  1m58.7s/2m30s  10.00 iters/s
+standard   [  79% ] 014/060 VUs  1m58.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.888Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:01+08:00" level=error msg="2026-11-16T13:03:01.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.146Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.233Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.246Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.347Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.595Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.640Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m01.0s), 015/090 VUs, 4775 complete and 0 interrupted iterations
+pilot      [  80% ] 002/030 VUs  1m59.7s/2m30s  10.00 iters/s
+standard   [  80% ] 013/060 VUs  1m59.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.845Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.923Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:02+08:00" level=error msg="2026-11-16T13:03:02.930Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:03+08:00" level=error msg="2026-11-16T13:03:03.047Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:03+08:00" level=error msg="2026-11-16T13:03:03.249Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:03+08:00" level=error msg="2026-11-16T13:03:03.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:03+08:00" level=error msg="2026-11-16T13:03:03.531Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:03+08:00" level=error msg="2026-11-16T13:03:03.655Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:03+08:00" level=error msg="2026-11-16T13:03:03.693Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m02.0s), 017/090 VUs, 4813 complete and 0 interrupted iterations
+pilot      [  80% ] 003/030 VUs  2m00.7s/2m30s  10.00 iters/s
+standard   [  80% ] 014/060 VUs  2m00.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:03+08:00" level=error msg="2026-11-16T13:03:03.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.027Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.033Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.151Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.230Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.347Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.399Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.464Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m03.0s), 018/090 VUs, 4852 complete and 0 interrupted iterations
+pilot      [  81% ] 004/030 VUs  2m01.7s/2m30s  10.00 iters/s
+standard   [  81% ] 014/060 VUs  2m01.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.834Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.867Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:04+08:00" level=error msg="2026-11-16T13:03:04.932Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.030Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.185Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.309Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.446Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.533Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.601Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.724Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.749Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m04.0s), 018/090 VUs, 4892 complete and 0 interrupted iterations
+pilot      [  82% ] 003/030 VUs  2m02.7s/2m30s  10.00 iters/s
+standard   [  82% ] 015/060 VUs  2m02.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:05+08:00" level=error msg="2026-11-16T13:03:05.864Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:06+08:00" level=error msg="2026-11-16T13:03:06.109Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:06+08:00" level=error msg="2026-11-16T13:03:06.137Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:06+08:00" level=error msg="2026-11-16T13:03:06.344Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:06+08:00" level=error msg="2026-11-16T13:03:06.374Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:06+08:00" level=error msg="2026-11-16T13:03:06.597Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:06+08:00" level=error msg="2026-11-16T13:03:06.682Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m05.0s), 021/090 VUs, 4929 complete and 0 interrupted iterations
+pilot      [  82% ] 006/030 VUs  2m03.7s/2m30s  10.00 iters/s
+standard   [  82% ] 015/060 VUs  2m03.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:06+08:00" level=error msg="2026-11-16T13:03:06.822Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.139Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.147Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.156Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.177Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.199Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.406Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.506Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.609Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m06.0s), 022/090 VUs, 4968 complete and 0 interrupted iterations
+pilot      [  83% ] 007/030 VUs  2m04.7s/2m30s  10.00 iters/s
+standard   [  83% ] 015/060 VUs  2m04.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.814Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.830Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.855Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.899Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:07+08:00" level=error msg="2026-11-16T13:03:07.933Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.035Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.118Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.348Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.568Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.582Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.582Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.585Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m07.0s), 019/090 VUs, 5011 complete and 0 interrupted iterations
+pilot      [  84% ] 005/030 VUs  2m05.7s/2m30s  10.00 iters/s
+standard   [  84% ] 014/060 VUs  2m05.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:08+08:00" level=error msg="2026-11-16T13:03:08.962Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.165Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.246Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.274Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.345Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.394Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.397Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.658Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.760Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m08.0s), 017/090 VUs, 5053 complete and 0 interrupted iterations
+pilot      [  84% ] 005/030 VUs  2m06.7s/2m30s  10.00 iters/s
+standard   [  84% ] 012/060 VUs  2m06.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:09+08:00" level=error msg="2026-11-16T13:03:09.934Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.027Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.045Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.151Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.160Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.275Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.366Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.456Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.522Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m09.0s), 022/090 VUs, 5088 complete and 0 interrupted iterations
+pilot      [  85% ] 005/030 VUs  2m07.7s/2m30s  10.00 iters/s
+standard   [  85% ] 017/060 VUs  2m07.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:10+08:00" level=error msg="2026-11-16T13:03:10.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.035Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.093Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.141Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.238Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.423Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.478Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m10.0s), 020/090 VUs, 5130 complete and 0 interrupted iterations
+pilot      [  86% ] 004/030 VUs  2m08.7s/2m30s  10.00 iters/s
+standard   [  86% ] 016/060 VUs  2m08.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.838Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.875Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:11+08:00" level=error msg="2026-11-16T13:03:11.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.047Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.104Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.247Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.319Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.342Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.644Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.673Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.746Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m11.0s), 018/090 VUs, 5172 complete and 0 interrupted iterations
+pilot      [  86% ] 003/030 VUs  2m09.7s/2m30s  10.00 iters/s
+standard   [  86% ] 015/060 VUs  2m09.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.848Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:12+08:00" level=error msg="2026-11-16T13:03:12.900Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.046Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.105Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.205Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.608Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.647Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.713Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.746Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m12.0s), 020/090 VUs, 5210 complete and 0 interrupted iterations
+pilot      [  87% ] 003/030 VUs  2m10.7s/2m30s  10.00 iters/s
+standard   [  87% ] 017/060 VUs  2m10.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.947Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.957Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.982Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:13+08:00" level=error msg="2026-11-16T13:03:13.994Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:14+08:00" level=error msg="2026-11-16T13:03:14.047Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:14+08:00" level=error msg="2026-11-16T13:03:14.244Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:14+08:00" level=error msg="2026-11-16T13:03:14.447Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:14+08:00" level=error msg="2026-11-16T13:03:14.547Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:14+08:00" level=error msg="2026-11-16T13:03:14.681Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m13.0s), 020/090 VUs, 5250 complete and 0 interrupted iterations
+pilot      [  88% ] 003/030 VUs  2m11.7s/2m30s  10.00 iters/s
+standard   [  88% ] 017/060 VUs  2m11.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:14+08:00" level=error msg="2026-11-16T13:03:14.849Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:14+08:00" level=error msg="2026-11-16T13:03:14.869Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.047Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.147Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.239Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.347Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.357Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.566Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.646Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.658Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m14.0s), 020/090 VUs, 5290 complete and 0 interrupted iterations
+pilot      [  88% ] 003/030 VUs  2m12.7s/2m30s  10.00 iters/s
+standard   [  88% ] 017/060 VUs  2m12.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.859Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:15+08:00" level=error msg="2026-11-16T13:03:15.867Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.031Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.044Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.148Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.199Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.450Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.644Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m15.0s), 023/090 VUs, 5327 complete and 0 interrupted iterations
+pilot      [  89% ] 005/030 VUs  2m13.7s/2m30s  10.00 iters/s
+standard   [  89% ] 018/060 VUs  2m13.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.796Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.847Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.944Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:16+08:00" level=error msg="2026-11-16T13:03:16.983Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.047Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.225Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.256Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.326Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.734Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m16.0s), 018/090 VUs, 5372 complete and 0 interrupted iterations
+pilot      [  90% ] 006/030 VUs  2m14.7s/2m30s  10.00 iters/s
+standard   [  90% ] 012/060 VUs  2m14.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.932Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.935Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:17+08:00" level=error msg="2026-11-16T13:03:17.976Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.117Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.134Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.159Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.375Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.401Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.468Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.715Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m17.0s), 019/090 VUs, 5411 complete and 0 interrupted iterations
+pilot      [  90% ] 006/030 VUs  2m15.7s/2m30s  10.00 iters/s
+standard   [  90% ] 013/060 VUs  2m15.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.783Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.798Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:18+08:00" level=error msg="2026-11-16T13:03:18.905Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.024Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.156Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.253Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.413Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.524Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.706Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.714Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.747Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m18.0s), 020/090 VUs, 5450 complete and 0 interrupted iterations
+pilot      [  91% ] 005/030 VUs  2m16.7s/2m30s  10.00 iters/s
+standard   [  91% ] 015/060 VUs  2m16.7s/2m30s  30.00 iters/s
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.832Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:19+08:00" level=error msg="2026-11-16T13:03:19.880Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+time="2026-11-16T21:03:20+08:00" level=error msg="2026-11-16T13:03:20.159Z UNEXPECTED pilot eapi=5467749 domain=a7030a6" source=console
+
+running (2m19.0s), 022/090 VUs, 5488 complete and 0 interrupted iterations
+pilot      [  92% ] 008/030 VUs  2m17.7s/2m30s  10.00 iters/s
+standard   [  92% ] 014/060 VUs  2m17.7s/2m30s  30.00 iters/s
+
+running (2m20.0s), 021/090 VUs, 5529 complete and 0 interrupted iterations
+pilot      [  92% ] 006/030 VUs  2m18.7s/2m30s  10.00 iters/s
+standard   [  92% ] 015/060 VUs  2m18.7s/2m30s  30.00 iters/s
+
+running (2m21.0s), 026/090 VUs, 5564 complete and 0 interrupted iterations
+pilot      [  93% ] 006/030 VUs  2m19.7s/2m30s  10.00 iters/s
+standard   [  93% ] 020/060 VUs  2m19.7s/2m30s  30.00 iters/s
+
+running (2m22.0s), 017/090 VUs, 5613 complete and 0 interrupted iterations
+pilot      [  94% ] 004/030 VUs  2m20.7s/2m30s  10.00 iters/s
+standard   [  94% ] 013/060 VUs  2m20.7s/2m30s  30.00 iters/s
+
+running (2m23.0s), 019/090 VUs, 5651 complete and 0 interrupted iterations
+pilot      [  94% ] 002/030 VUs  2m21.7s/2m30s  10.00 iters/s
+standard   [  94% ] 017/060 VUs  2m21.7s/2m30s  30.00 iters/s
+
+running (2m24.0s), 015/090 VUs, 5695 complete and 0 interrupted iterations
+pilot      [  95% ] 001/030 VUs  2m22.7s/2m30s  10.00 iters/s
+standard   [  95% ] 014/060 VUs  2m22.7s/2m30s  30.00 iters/s
+
+running (2m25.0s), 017/090 VUs, 5733 complete and 0 interrupted iterations
+pilot      [  96% ] 001/030 VUs  2m23.7s/2m30s  10.00 iters/s
+standard   [  96% ] 016/060 VUs  2m23.7s/2m30s  30.00 iters/s
+
+running (2m26.0s), 021/090 VUs, 5769 complete and 0 interrupted iterations
+pilot      [  96% ] 003/030 VUs  2m24.7s/2m30s  10.00 iters/s
+standard   [  96% ] 018/060 VUs  2m24.7s/2m30s  30.00 iters/s
+
+running (2m27.0s), 022/090 VUs, 5808 complete and 0 interrupted iterations
+pilot      [  97% ] 004/030 VUs  2m25.7s/2m30s  10.00 iters/s
+standard   [  97% ] 018/060 VUs  2m25.7s/2m30s  30.00 iters/s
+
+running (2m28.0s), 016/090 VUs, 5854 complete and 0 interrupted iterations
+pilot      [  98% ] 004/030 VUs  2m26.7s/2m30s  10.00 iters/s
+standard   [  98% ] 012/060 VUs  2m26.7s/2m30s  30.00 iters/s
+
+running (2m29.0s), 022/090 VUs, 5888 complete and 0 interrupted iterations
+pilot      [  98% ] 006/030 VUs  2m27.7s/2m30s  10.00 iters/s
+standard   [  98% ] 016/060 VUs  2m27.7s/2m30s  30.00 iters/s
+
+running (2m30.0s), 019/090 VUs, 5931 complete and 0 interrupted iterations
+pilot      [  99% ] 004/030 VUs  2m28.7s/2m30s  10.00 iters/s
+standard   [  99% ] 015/060 VUs  2m28.7s/2m30s  30.00 iters/s
+
+running (2m31.0s), 022/090 VUs, 5968 complete and 0 interrupted iterations
+pilot      [ 100% ] 006/030 VUs  2m29.7s/2m30s  10.00 iters/s
+standard   [ 100% ] 016/060 VUs  2m29.7s/2m30s  30.00 iters/s
+
+running (2m32.0s), 001/090 VUs, 6000 complete and 0 interrupted iterations
+pilot    ✓ [ 100% ] 000/030 VUs  2m30s  10.00 iters/s
+standard ↓ [ 100% ] 018/060 VUs  2m30s  30.00 iters/s
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+    dropped_iterations
+    ✓ 'count==0' count=0
+
+    failed_requests{status:0}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:403}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:500}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:502}
+    ✓ 'count>=0' count=0
+
+    failed_requests{status:503}
+    ✓ 'count>=0' count=0
+
+    http_req_duration
+    ✓ 'p(95)<2000' p(95)=776.01ms
+
+    http_req_failed
+    ✓ 'rate==0' rate=0.00%
+
+    pairs{group:pilot,eapi:5467749,domain:09c7931}
+    ✓ 'count>=0' count=0
+
+    pairs{group:pilot,eapi:5467749,domain:b5490fc}
+    ✓ 'count>=0' count=702
+
+    pairs{group:pilot,eapi:c8cd594,domain:09c7931}
+    ✓ 'count>=0' count=0
+
+    pairs{group:pilot,eapi:c8cd594,domain:b5490fc}
+    ✓ 'count>=0' count=0
+
+    pairs{group:standard,eapi:5467749,domain:09c7931}
+    ✓ 'count>=0' count=0
+
+    pairs{group:standard,eapi:5467749,domain:b5490fc}
+    ✓ 'count>=0' count=0
+
+    pairs{group:standard,eapi:c8cd594,domain:09c7931}
+    ✓ 'count>=0' count=4501
+
+    pairs{group:standard,eapi:c8cd594,domain:b5490fc}
+    ✓ 'count>=0' count=0
+
+    unexpected_pair
+    ✗ 'count==0' count=798
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 24004   157.917466/s
+    checks_succeeded...: 100.00% 24004 out of 24004
+    checks_failed......: 0.00%   0 out of 24004
+
+    ✓ status is 200
+    ✓ status is a valid outcome
+    ✓ both commits are reported
+    ✓ expected release pair
+
+    CUSTOM
+    failed_requests....................................: 0      0/s
+      { status:0 }.....................................: 0      0/s
+      { status:403 }...................................: 0      0/s
+      { status:500 }...................................: 0      0/s
+      { status:502 }...................................: 0      0/s
+      { status:503 }...................................: 0      0/s
+    pairs..............................................: 6001   39.479367/s
+      { group:pilot,eapi:5467749,domain:09c7931 }......: 0      0/s
+      { group:pilot,eapi:5467749,domain:b5490fc }......: 702    4.618316/s
+      { group:pilot,eapi:c8cd594,domain:09c7931 }......: 0      0/s
+      { group:pilot,eapi:c8cd594,domain:b5490fc }......: 0      0/s
+      { group:standard,eapi:5467749,domain:09c7931 }...: 0      0/s
+      { group:standard,eapi:5467749,domain:b5490fc }...: 0      0/s
+      { group:standard,eapi:c8cd594,domain:09c7931 }...: 4501   29.61117/s
+      { group:standard,eapi:c8cd594,domain:b5490fc }...: 0      0/s
+    unexpected_pair....................................: 798    5.249881/s
+
+    HTTP
+    http_req_duration..................................: avg=477.67ms min=3.97ms med=485.3ms  max=893.73ms p(90)=748.53ms p(95)=776.01ms
+      { expected_response:true }.......................: avg=477.67ms min=3.97ms med=485.3ms  max=893.73ms p(90)=748.53ms p(95)=776.01ms
+    http_req_failed....................................: 0.00%  0 out of 6003
+    http_reqs..........................................: 6003   39.492524/s
+
+    EXECUTION
+    dropped_iterations.................................: 0      0/s
+    iteration_duration.................................: avg=477.97ms min=4.09ms med=485.52ms max=898.63ms p(90)=748.89ms p(95)=776.26ms
+    iterations.........................................: 6001   39.479367/s
+    vus................................................: 1      min=0         max=26
+    vus_max............................................: 90     min=90        max=90
+
+    NETWORK
+    data_received......................................: 5.8 MB 38 kB/s
+    data_sent..........................................: 2.1 MB 14 kB/s
+
+
+
+
+running (2m32.0s), 000/090 VUs, 6001 complete and 0 interrupted iterations
+pilot    ✓ [ 100% ] 000/030 VUs  2m30s  10.00 iters/s
+standard ✓ [ 100% ] 000/060 VUs  2m30s  30.00 iters/s
+time="2026-11-16T21:03:34+08:00" level=error msg="thresholds on metrics 'unexpected_pair' have been crossed"

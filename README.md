@@ -15,8 +15,100 @@ testing it.
 plain headers, there is one pod per release, and all numbers below come from single runs generated from one
 Mac (see [Caveats](#caveats)).
 
+## At a glance
+
+### The architecture
+
+```
+ USER                       EDGE                         ROUTES (OpenShift router)            RELEASES (one set of objects per git commit)
+ ----                       ----                         -------------------------            --------------------------------------------
+
+ browser on the LIVE MFE    +-------------------+
+   Origin: mfe-...          |     gateway       |   live    payment-api  --+--> Service payment-api-<A> --> Deployment/Pod  (eAPI, release A)
+   (standard users) ------->|                   |-------->  (Route)        |
+                            |  ONE public URL   |
+ browser on the PREVIEW MFE |                   |   preview payment-api-  --+--> Service payment-api-<B> --> Deployment/Pod  (eAPI, release B)
+   Origin: mfe-preview-...  |  decides TRACK    |-------->  preview (Route)
+   X-User-Group: pilot ---->|  from Origin      |
+   (pilot users)            |  stamps X-Track   |   403 for a non-pilot user on the preview origin
+                            |  CORS, retry      |   404 for any non-public path (the domain API is internal)
+                            +---------+---------+
+                                      ^
+                                      |  internal hop (cluster Service "gateway:8080"), X-Track forwarded
+                            payment-api (eAPI) calls the gateway for a risk score
+                                      |
+                                      v
+                            +-------------------+   live    risk-domain   --+--> Service risk-domain-<A> --> Pod  (domain API, release A)
+                            |     gateway       |-------->  (Route)
+                            |  (same pod)       |   preview risk-domain-  --+--> Service risk-domain-<B> --> Pod  (domain API, release B)
+                            +-------------------+-------->  preview (Route)
+
+ Every response carries   served.eapi {service, commit, pod, secretFingerprint}
+                          served.domain {service, commit, pod, secretFingerprint}     <- k6 counts the (eapi, domain) PAIR
+```
+
+Four things to hold on to:
+
+1. **Release = git commit.** `payment-api-c8cd594` is one set of objects; the commit is baked into the image
+   and each pod reports it, so the running pod, not the name, is the truth.
+2. **Blue and green are not objects.** Only the two Routes per service carry a role: **live** and **preview**.
+3. **The pilot is decided at the edge**, once, from the `Origin` header (the MFE host) plus a simulated group,
+   and carried through the call chain in `X-Track`, so one user stays on one release at both hops.
+4. **The flip is a Route change only.** No running Deployment, Pod, ConfigMap or Secret is touched.
+
+### The release lifecycle
+
+```
+ S1  deploy B (objects only)         live -> A      preview -> (A or nothing)     nobody can reach B yet
+ S2  bind preview -> B               live -> A      preview -> B                  PILOT OPENS
+        |
+        +--- pilot happy ---> S3  SWAP            live -> B      preview -> A      B is live, A kept for rollback
+        |                         |
+        |                         +--- problem ---> S4  SWAP back  live -> A  preview -> B     instant rollback
+        |
+        +--- pilot unhappy --> do nothing to live; then either
+                                 - close the pilot    (preview -> A)               drill D2
+                                 - fix forward        (deploy C, preview -> C)     drill D3
+        |
+ S5  retire the release nobody points at   (image tags deleted: it cannot be rebuilt)         drill D5
+```
+
+### The swap, and the order that keeps users safe
+
+```
+ PROMOTE (callee first)                            ROLL BACK (caller first)
+   1. risk-domain   live <-> preview                 1. payment-api   live <-> preview
+   2. payment-api   live <-> preview                 2. risk-domain   live <-> preview
+   live users see  (old eAPI, new domain)  safe      live users see  (old eAPI, new domain)  safe
+   pilot users see (new eAPI, old domain)  UNSAFE    pilot users see (new eAPI, old domain)  UNSAFE
+        for ~4 to 5 s, testers only                       for ~4 to 5 s, testers only
+```
+
+The router applies Route changes in ticks about 5 s apart (+2 s, +7 s, +12 s after the start), so adjacent
+releases must be backward compatible for 10 to 15 s.
+
+### What has been proven
+
+| Claim | Evidence | Section |
+|---|---|---|
+| Live users see 0 failed requests while a release is flipped, rolled back, or retired | k6 runs: 0 failures in 4 of the 6 phase-8 runs (the other two had 2 and 1) and in drills D2 to D5. D1 had 447 pilot-only 503s, provoked on purpose | [10](#10-measured-results) |
+| The pair that answers matches the order of the flip, to the request | `(A,A)` → `(A,B)` mix → `(B,B)` counted per second | [9, Part B](#part-b-load-tests-with-k6) |
+| A broken pilot release cannot hurt live users | D1 (pods removed: pilot 503, live untouched) and D4 (crashing release: never receives traffic, `bind.sh` refuses it) | [9, Part C](#part-c-failure-drills-phase-9-all-five-verified) |
+| Closing the pilot, fixing forward and retiring an old release are Route changes too | D2, D3, D5 | [9, Part C](#part-c-failure-drills-phase-9-all-five-verified) |
+| The wrong flip order is unsafe for live users | Run 3: 299 live answers in the unsafe pair | [10](#10-measured-results) |
+
+### Where the cluster is now
+
+After drill D5 the cluster holds **one release per service**: the former release B is both live and preview,
+and release A has been **retired and cannot be rebuilt**. The test commands in section 9 use A and B as
+example names; to run them again from this state, create a new release first (see
+[Starting a new cycle](#starting-a-new-cycle)).
+
+---
+
 ## Contents
 
+0. [At a glance](#at-a-glance): architecture, lifecycle, what is proven
 1. [Status](#1-status)
 2. [The idea in one page](#2-the-idea-in-one-page)
 3. [Release lifecycle and the flip](#3-release-lifecycle-and-the-flip)
@@ -47,12 +139,13 @@ Mac (see [Caveats](#caveats)).
 | 6 | Release B opened to the pilot | Done, run on the cluster |
 | 7 | k6 pair counter, baseline | Done, results in `results/` |
 | 8 | Flip, rollback, wrong-order flip under load; retrying gateway; reload stress | Done, results in `results/` |
-| 9 | Failure drills (pilot bug, broken release, retire) | **Procedures written below, not yet run** |
+| 9 | Failure drills D1 to D5 (pilot bug, close the pilot, fix forward, broken release, retire) | Done, run on the cluster, results in `results/d1` to `d5` |
 | 10 | React MFE (Vite build) | **Not built yet** |
-| 11 | This README with the final results | Updated after Phases 9 and 10 |
+| 11 | This README with the results of Phases 0 to 9 | Done for Phases 0 to 9; Phase 10 results to be added |
 
 Every test in section 9 is marked **Verified** (it was run and the evidence is named) or **Not yet run**
 (the procedure and the expected result are written, but the expectation is a prediction, not a measurement).
+T1 to T11 and D1 to D5 are verified; only the MFE tests M1 to M6 (Phase 10) are not run.
 
 ---
 
@@ -434,8 +527,8 @@ image and config run first as preview and later as live. No service knows its ow
 
 ```bash
 # Read the four commits from scripts/status.sh. Example values from the real runs:
-export A_EAPI=c8cd594 A_DOM=09c7931        # release A: live
-export B_EAPI=5467749 B_DOM=b5490fc        # release B: preview
+export A_EAPI=c8cd594 A_DOM=09c7931        # release A: live (retired by drill D5, see "Starting a new cycle")
+export B_EAPI=5467749 B_DOM=b5490fc        # release B: preview (live and preview after D5)
 
 export GW=http://gateway-bluegreen.apps-crc.testing
 export LIVE_ORIGIN=http://mfe-bluegreen.apps-crc.testing
@@ -475,14 +568,15 @@ How to read the result:
   `grep ' FAIL ' results/NAME.txt | awk '{print substr($1,18,8), $5, $6}' | sort | uniq -c`
 - k6 exits with code 99 when a threshold fails. That is expected in the drills that provoke failures.
 
-Test order: run **T1 to T11 first**, then the drills **D1 to D5**. D3 and D5 are destructive (they consume a
-release), so they go **last**.
+Test order used for the real runs: **T1 to T11 first**, then the drills **D1, D2, D4, D3, D5**. D5 is
+destructive (it retires release A for good), so it goes **last**. After D5 the commands below need a new
+release first: see [Starting a new cycle](#starting-a-new-cycle).
 
 **The state moves.** The load tests start from the standard state **live = A, preview = B**. T7 promotes B
 (live = B), T8 rolls back (live = A), and T9 promotes again (live = B), so run them in that order, or use
 `scripts/status.sh` to see where you are and start each from the state it names.
 
-Status legend: **Verified** = run, evidence named. **Not yet run** = procedure and prediction only.
+Status legend: **Verified** = run, evidence named. **Not yet run** = procedure and prediction only (only M1 to M6).
 
 ---
 
@@ -691,119 +785,294 @@ both**, so the retry has not been shown to save a request in this cluster (see s
 
 ---
 
-### Part C: failure drills (Phase 9, **Not yet run**)
+### Part C: failure drills (Phase 9, all five verified)
 
-Every expectation below is a **prediction** until you run it. Run each drill with the load test going in a
-second terminal (T7's k6 command with `DURATION=150s`, without `EXPECT_*`, writing `results/d1.txt`,
-`results/d2.txt` and so on), so you can see whether live users notice.
+The drills ask one question each: **when something goes wrong, or when a release is closed, replaced or
+retired, do live users notice?** Each ran under k6 load (30 rps standard + 10 rps pilot) with the output in
+`results/dN.txt` (the CSVs are ignored by git). They were run **in the order D1, D2, D4, D3, D5**, because D5
+consumes release A and D3 and D5 change what is on preview.
 
-**Reset to the standard state** (live = A, preview = B) before D1, D2 and D4:
+| Drill | What goes wrong or changes | Live users | Pilot users | Evidence |
+|---|---|---|---|---|
+| **D1** | the pilot release's domain loses all pods | 0 failures, only `(A,A)` | 447 `503` for about 45 s, then recovery | `results/d1.txt` |
+| **D2** | the pilot is closed (preview back to A, caller first) | 0 failures, only `(A,A)` | 0 failures, safe mixed pair for ~10 s, then `(A,A)` | `results/d2.txt` |
+| **D3** | release C replaces B on preview (fix forward), then B comes back | 0 failures, only `(A,A)` | 0 failures, domain `C` for 79 s then `B` again | `results/d3.txt` |
+| **D4** | a release that crashes at startup | 0 failures, only `(A,A)` | 0 failures, only `(B,B)` | `results/d4.txt` |
+| **D5** | B promoted, preview rebound, A retired | 0 failures, safe mixed pair ~8 s, then `(B,B)` | 0 failures, unsafe pair ~4 s during the flip | `results/d5.txt` |
+
+#### How every drill was run (the two terminals)
+
+Both terminals start with the same variables. The commits below are the ones of the real runs; replace them
+with yours from `scripts/status.sh`.
 
 ```bash
-scripts/status.sh
-# If live is B (the state after T9), first go back to A with a quiet flip, caller first, with no load running:
-scripts/flip.sh -y payment-api risk-domain
-# Then make sure B is on preview for both services:
-scripts/bind.sh -y preview risk-domain  $B_DOM
-scripts/bind.sh -y preview payment-api  $B_EAPI
-scripts/status.sh            # live = A, preview = B for both services, all rows READY 1/1
+cd /Users/rajeshkumarm/workspace/openshift/bluegreen-rollout
+export A_EAPI=c8cd594 A_DOM=09c7931 B_EAPI=5467749 B_DOM=b5490fc
+export GW=http://gateway-bluegreen.apps-crc.testing
+export LIVE_ORIGIN=http://mfe-bluegreen.apps-crc.testing
+export PREVIEW_ORIGIN=http://mfe-preview-bluegreen.apps-crc.testing
+oc project bluegreen
+git branch --show-current          # main (the drills that need a branch create and delete their own)
+scripts/status.sh                  # starting state for D1, D2, D4: live = A, preview = B, every row READY 1/1
 ```
 
-(This works only while both A and B still exist. D3 and D5 consume releases, so they come last.)
+* **Terminal 1** runs k6 (the exact command is in each drill) and prints its summary at the end.
+* **Terminal 2** does the thing the drill is about, about 30 s after k6 starts.
+* After k6: `scripts/timeline.sh results/dN.csv <epoch>` and
+  `grep ' FAIL ' results/dN.txt | awk '{print substr($1,18,8), $5, $6}' | sort | uniq -c`.
 
-#### D1. The pilot finds a bug: do nothing to live
+k6 exits with code 99 in D1 (a threshold fails on purpose). Never add `EXPECT_*` to k6 in these drills, because
+mixes are expected.
 
-The requirement: "if the pilot has issues, we don't do anything". Simulate a broken release B by removing
-its domain pods; live must not notice.
+#### D1. The pilot finds a bug: do nothing to live  (Verified, `results/d1.txt`)
+
+The requirement: "if the pilot has issues, we don't do anything". Simulate a broken release B by removing the
+pods of its domain; live must not notice.
 
 ```bash
-# terminal 2, about 30 s into the k6 run
+# terminal 1 (150 s)
+k6 run -e DURATION=150s -e EAPI=$A_EAPI,$B_EAPI -e DOMAIN=$A_DOM,$B_DOM \
+  --out csv=results/d1.csv k6/pairs.js 2>&1 | tee results/d1.txt
+
+# terminal 2, about 30 s after k6 starts
+date +%s                                                   # t=0 for the timeline
 oc scale deployment/risk-domain-$B_DOM --replicas=0
-# watch for about 60 s, then recover
+oc get pods -l app=risk-domain                             # no b5490fc pod
+# wait about 60 s, then recover
 oc scale deployment/risk-domain-$B_DOM --replicas=1
 oc rollout status deployment/risk-domain-$B_DOM
-grep ' FAIL ' results/d1.txt | awk '{print $5, $6}' | sort | uniq -c       # failures per group and status
+
+# after k6
+grep ' FAIL ' results/d1.txt | awk '{print substr($1,18,8), $5, $6}' | sort | uniq -c
+scripts/timeline.sh results/d1.csv <epoch>
+scripts/status.sh
 ```
 
 Prediction: pilot users get `503` (the preview Route has no ready pods, the router returns 503, the gateway
-passes it on, and `payment-api` answers "risk service unavailable"). **Standard users: 0 failures and only
-`(A,A)` pairs the whole time.** k6 exits with code 99, because its thresholds are meant to fail here. The
-gateway does **not** retry a 503, by design. After scaling back, pilot users recover once the pod is ready
-(a JVM start takes a few tens of seconds).
+passes it on). Standard users: 0 failures and only `(A,A)`. The gateway does **not** retry a 503, by design.
 
-#### D2. Close the pilot (rebind preview to A)
+**Result (150 s):**
 
-Roll the preview track back to A, caller first:
+| Group | Iterations | Failures | Pairs |
+|---|---|---|---|
+| standard | 4,500 | **0** | `c8cd594/09c7931` = 4,500 |
+| pilot | 1,501 | **447, all `503`** | `5467749/b5490fc` = 1,054 answered |
+
+The pilot's 503s ran without a gap from `20:05:37` to `20:06:21` (about 45 s, 10 per second, 7 in the last
+second), starting 1 s after the scale-down and ending when the new pod became ready (a JVM start). Standard
+users never noticed. `timeline.sh` lists only answered requests, so the outage is not visible there; the
+`FAIL` lines are the evidence. After recovery `status.sh` showed every row 1/1 again.
+
+**What it shows:** the track isolation holds under failure: a dead preview release is a pilot problem only.
+
+#### D2. Close the pilot (rebind preview to A)  (Verified, `results/d2.txt`)
+
+Roll the preview track back to A, **caller first**. The 8 s pause only makes the middle step visible.
 
 ```bash
+# terminal 1 (120 s)
+k6 run -e DURATION=120s -e EAPI=$A_EAPI,$B_EAPI -e DOMAIN=$A_DOM,$B_DOM \
+  --out csv=results/d2.csv k6/pairs.js 2>&1 | tee results/d2.txt
+
+# terminal 2, about 30 s after k6 starts
+START=$(date +%s); echo "START=$START"
 scripts/bind.sh -y preview payment-api $A_EAPI
+sleep 8
 scripts/bind.sh -y preview risk-domain $A_DOM
 scripts/status.sh
+
+# after k6
+scripts/timeline.sh results/d2.csv $START
+grep ' FAIL ' results/d2.txt | awk '{print substr($1,18,8), $5, $6}' | sort | uniq -c
 ```
 
-Prediction: pilot users go `(B,B)` → briefly `($A_EAPI/$B_DOM)` → `(A,A)`; standard users stay `(A,A)` throughout;
-0 failures. `bind.sh` warns each time that the release leaving preview becomes unreachable. B's objects keep
-running, unbound, and can be reopened with the reset above.
+`bind.sh` warns each time that the release leaving preview becomes unreachable. That is expected.
 
-#### D3. Fix forward: release C replaces B on preview  (destructive)
+**Result (120 s):**
+
+| Group | Iterations | Failures | Pairs over time |
+|---|---|---|---|
+| standard | 3,601 | **0** | `c8cd594/09c7931` throughout |
+| pilot | 1,201 | **0** | `(B,B)` to t=1; MIX t=2; `c8cd594/b5490fc` t=3..11 (89); MIX t=12; `(A,A)` from t=13 (787) |
+
+The caller moved at t=0 and showed up at t=2 (a router tick); the domain moved at about t=9 and showed up at
+t=12, so the safe mixed window (old eAPI, new domain) lasted about 10 s. The unsafe pair (new eAPI, old
+domain) never appeared and `unexpected_pair` was 0. B keeps running, unbound, and can be reopened with one
+`bind.sh preview` per service (domain first, then caller).
+
+**What it shows:** closing a pilot is a preview-only Route change, and caller-first avoids the unsafe pair.
+
+#### D3. Fix forward: release C replaces B on preview  (Verified, `results/d3.txt`)
+
+The pilot finds a problem in B, so the fix ships as release C. C takes the preview slot and live is never
+touched. This run puts B back afterwards and retires C, so the later drills still had their A/B pair.
 
 ```bash
-# 1. change risk-domain (for example RISK_DECLINE_THRESHOLD in services/risk-domain/k8s/configmap.tmpl.yaml), then:
-git add services/risk-domain && git commit -m "risk-domain release C"
-scripts/release.sh risk-domain                  # note the new commit <C>
-scripts/bind.sh preview risk-domain <C>         # warns that B is replaced on preview; answer y
-scripts/status.sh
-# 2. optional: B is now unbound; remove it
-scripts/retire.sh risk-domain $B_DOM
+# 1. build release C on a throwaway branch (no load running)
+git checkout -b drill-release-c
+sed -i '' 's/RISK_DECLINE_THRESHOLD: "80"/RISK_DECLINE_THRESHOLD: "70"/' services/risk-domain/k8s/configmap.tmpl.yaml
+git diff services/risk-domain/k8s/configmap.tmpl.yaml          # 70 replaced 80
+git commit services/risk-domain -m "DRILL: risk-domain release C"   # NOT "-am", see the note below
+export C_DOM=$(git log -1 --format=%h -- services/risk-domain); echo "C_DOM=$C_DOM"
+scripts/release.sh -y risk-domain
+scripts/status.sh                    # C is ready but unbound
+
+# 2. terminal 1 (150 s). C MUST be in the DOMAIN list; check: echo $C_DOM
+k6 run -e DURATION=150s -e EAPI=$A_EAPI,$B_EAPI -e DOMAIN=$A_DOM,$B_DOM,$C_DOM \
+  --out csv=results/d3.csv k6/pairs.js 2>&1 | tee results/d3.txt
+
+# 3. terminal 2, about 30 s after k6 starts: C on preview; about 60 s later: B back
+START=$(date +%s); echo "START=$START"
+scripts/bind.sh -y preview risk-domain $C_DOM
+scripts/bind.sh -y preview risk-domain $B_DOM
+
+# 4. after k6: retire C, return to main
+scripts/retire.sh -y risk-domain $C_DOM
+git checkout main
+git branch -D drill-release-c
+scripts/timeline.sh results/d3.csv $START
 ```
 
-Prediction: standard users stay `(A,A)` with 0 failures; pilot users now get the new domain `<C>` (with
-`payment-api` B or A, depending on what is on preview). This consumes B.
+**Result (150 s):** standard users 4,501 answers, all `c8cd594/09c7931`, **0 failures**. Pilot users: `(B,B)` to
+t=1; MIX t=2..3; `5467749/<C>` for t=4..82 (785 answers); MIX t=83; `(B,B)` again. 0 failed requests in
+6,003. The caller stayed on B throughout, so only the domain changed, as predicted.
 
-#### D4. A broken release never receives traffic
+**Two mistakes made while running it (both are now written out of the commands above):**
 
-A release whose service cannot start. Use a throwaway branch so `main` keeps a clean history. A non-numeric
-threshold crashes `risk-domain` at startup; this was checked locally (exit code 1, `TypeMismatchException:
-Failed to convert ... "abc"`).
+* `unexpected_pair` was 798: all 798 were `eapi=5467749 domain=<C>`, exactly the number of C answers
+  (785 + 12 + 1), because C was missing from the `DOMAIN` list k6 was started with (probably `C_DOM` was unset
+  in that terminal). It is a harness input error, not a system fault; the CSV and `timeline.sh` still show C.
+* `git commit -am` also committed the edited `README.md` into the throwaway branch, which later blocked
+  `git checkout main`. The command now commits only the service directory.
+
+**What it shows:** a fix-forward release replaces the preview without any effect on live.
+
+#### D4. A broken release never receives traffic  (Verified, `results/d4.txt`)
+
+A release whose service cannot start. A non-numeric threshold crashes `risk-domain` at startup (checked
+locally first: exit code 1, `TypeMismatchException: Failed to convert ... "abc"`). A throwaway branch keeps
+`main` clean.
 
 ```bash
+# terminal 1 (240 s: the image build takes minutes)
+k6 run -e DURATION=240s -e EAPI=$A_EAPI,$B_EAPI -e DOMAIN=$A_DOM,$B_DOM \
+  --out csv=results/d4.csv k6/pairs.js 2>&1 | tee results/d4.txt
+
+# terminal 2
 git checkout -b drill-broken-release
-# set RISK_REVIEW_THRESHOLD: "abc" in services/risk-domain/k8s/configmap.tmpl.yaml, then
-git commit -am "DRILL: broken release (non-numeric threshold)"
-scripts/release.sh risk-domain         # builds and applies; the rollout never completes.
-                                       # Wait for "timed out" (5 min) or press Ctrl+C once you see the crash loop
-BAD=$(git log -1 --format=%h -- services/risk-domain)
-oc get pods -l app=risk-domain,commit=$BAD                      # Error / CrashLoopBackOff, never Ready
-oc logs deploy/risk-domain-$BAD | grep -E "TypeMismatch|NumberFormat"     # add --previous if the container is between restarts
-scripts/bind.sh preview risk-domain $BAD                        # must refuse
-scripts/status.sh                                               # live and preview untouched; the bad release is "unbound", not ready
-# cleanup
+sed -i '' 's/RISK_REVIEW_THRESHOLD: "40"/RISK_REVIEW_THRESHOLD: "abc"/' services/risk-domain/k8s/configmap.tmpl.yaml
+git diff services/risk-domain/k8s/configmap.tmpl.yaml
+git commit services/risk-domain -m "DRILL: broken release (non-numeric threshold)"
+BAD=$(git log -1 --format=%h -- services/risk-domain); echo "BAD=$BAD"
+scripts/release.sh -y risk-domain      # builds and applies; the rollout never completes.
+                                       # press Ctrl+C once the pod is crash-looping
+oc get pods -l app=risk-domain,commit=$BAD                                  # Error / CrashLoopBackOff, 0/1
+oc logs deploy/risk-domain-$BAD --previous | grep -E "TypeMismatch|NumberFormat|abc" | head -3
+scripts/bind.sh preview risk-domain $BAD; echo "exit code: $?"             # must refuse
+scripts/status.sh                                                           # live and preview untouched
+
+# cleanup, after k6 has finished
 scripts/retire.sh -y risk-domain $BAD
 git checkout main && git branch -D drill-broken-release
 ```
 
-Prediction: `release.sh` exits non-zero after the rollout timeout and **does not** reach its commit
-verification; `bind.sh preview` fails with `ERROR: Service 'risk-domain-<bad>' has no ready pods. Binding a
-Route to it would make the router return 503.`; live and pilot traffic show 0 failures and unchanged pairs the
-whole time.
+Prediction: `release.sh` never completes its rollout step and so never reaches its commit verification;
+`bind.sh preview` fails with `ERROR: Service 'risk-domain-<bad>' has no ready pods. Binding a Route to it
+would make the router return 503.`; live and pilot traffic show 0 failures and unchanged pairs.
 
-#### D5. Retire the old release after a flip, under load  (destructive, run last)
+**Result:** k6 measured **0 failures in 9,604 requests** over 240 s, `unexpected_pair` 0, no `FAIL` lines: live and
+pilot never noticed the broken release. The crash loop, the refusal by `bind.sh` and the cleanup were run and
+**confirmed by the operator as behaving as predicted**; their terminal output was not saved, so those parts are
+not backed by a file in `results/`.
+
+**What it shows:** two independent guards. A crashing release has no ready pods, and `bind.sh` refuses to
+point a Route at a Service without ready pods, so a broken release can be built but never exposed.
+
+#### D5. Retire the old release after a flip, under load  (Verified, destructive, run last; `results/d5.txt`)
+
+Promote B, put B on preview as well so that A is unbound, then retire A, all under load. **A's image tags are
+deleted, so A cannot be recreated afterwards.** The cluster ends with one release per service.
 
 ```bash
-# precondition: live = A, preview = B, k6 running
-scripts/flip.sh -y --gap 5 risk-domain payment-api      # live = B, preview = A
+# terminal 1 (240 s)
+k6 run -e DURATION=240s -e EAPI=$A_EAPI,$B_EAPI -e DOMAIN=$A_DOM,$B_DOM \
+  --out csv=results/d5.csv k6/pairs.js 2>&1 | tee results/d5.txt
+
+# terminal 2, about 30 s after k6 starts, one step at a time
+scripts/flip.sh -y --gap 5 risk-domain payment-api       # 1. live = B, preview = A. Note the START epoch it prints
 sleep 30
-scripts/bind.sh -y preview risk-domain $B_DOM           # preview = B too, so A is unbound
+scripts/status.sh                                        # 2. live = B, preview = A
+scripts/bind.sh -y preview risk-domain $B_DOM            # 3. preview = B as well, domain first
 scripts/bind.sh -y preview payment-api $B_EAPI
-scripts/status.sh                                       # A's rows read "unbound"
-scripts/retire.sh -y payment-api $A_EAPI
+scripts/status.sh                                        #    A's rows read "unbound"
+scripts/retire.sh -y payment-api $B_EAPI; echo "exit code: $?"   # 4. must REFUSE: B is bound
+scripts/retire.sh -y payment-api $A_EAPI                 # 5. retire A
 scripts/retire.sh -y risk-domain $A_DOM
-scripts/status.sh                                       # one release per service
+oc get pods -l 'app in (payment-api,risk-domain)'
+scripts/status.sh                                        #    one release per service
+
+# after k6
+scripts/timeline.sh results/d5.csv <START>
+oc get is payment-api -o jsonpath='{.status.tags[*].tag}'; echo
+oc get is risk-domain -o jsonpath='{.status.tags[*].tag}'; echo
 ```
 
-Prediction: 0 failures through the whole sequence, live users `(B,B)` after the flip, and A's pods terminating
-without an error (they use the hardened shutdown from project 1: probes, graceful shutdown, `preStop`).
-`retire.sh` deletes A's image tags, so **A cannot be recreated** afterwards.
+Prediction: 0 failures through the whole sequence, live users `(B,B)` after the flip, step 4 refused with a
+non-zero exit code, and A's pods terminating without errors (the hardened shutdown from project 1: probes,
+graceful shutdown, `preStop`).
+
+**Result (240 s, flip at t=0, preview rebound to B at about t=46):** 9,602 requests, **0 failures**,
+`unexpected_pair` 0. After the retire the image streams hold only `5467749 latest` (`payment-api`) and
+`b5490fc latest` (`risk-domain`), so A's images are gone.
+
+| Group | Timeline |
+|---|---|
+| standard | `(A,A)` to t=0; MIX t=1..2; `c8cd594/b5490fc` t=3..10 (old caller, new domain: safe); MIX t=11..12; `(B,B)` from t=13 (5,873) |
+| pilot | `(B,B)` to t=5; MIX t=6..7; **`5467749/09c7931` t=8..11 (new caller, old domain: the unsafe pair)**; MIX t=12; `(A,A)` t=13..45; step 3: MIX t=46; `c8cd594/b5490fc` t=47..50 (safe); MIX t=51; `(B,B)` from t=52 |
+
+Standard users got the safe order and pilot users the unsafe one during the flip, exactly the swap behaviour in
+section 11. The unsafe pair was answered with 200s only because the two releases are compatible. Step 3
+(preview back to B, domain first) went through the safe pair only. Not in the saved output: the refusal
+printed by step 4 and the pod-termination listing of step 5; the tag lists confirm the retire completed.
+
+**What it shows:** retiring is the last, separate step. It is allowed only once nothing points at the
+release, and it does not disturb traffic.
+
+#### What the drills showed
+
+1. **A failing pilot release is a pilot-only problem** (D1, D4): the track is chosen at the edge and each track
+   has its own Routes, Services and pods, so nothing live depends on preview.
+2. **Every release-state change is a Route change or an object delete, never a change to a running release**
+   (D2, D3, D5), and none of them cost a live request.
+3. **Order matters only for the pair of services** (D2, D5), and caller-first for the preview rollback kept the
+   unsafe pair away. The pilot saw the unsafe pair once, during the swap in D5.
+4. **The guards held**: `bind.sh` refuses a Service without ready pods (D4), `retire.sh` refuses a release a
+   Route still points at (D5 step 4, and the earlier T1), and `release.sh` refuses a dirty service directory.
+5. **Operator mistakes are the likely failures**, not the design: a release missing from the k6 list (D3), or
+   `git commit -am` sweeping up unrelated files (D3). Both are noted in [Troubleshooting](#12-troubleshooting).
+
+#### Starting a new cycle
+
+After D5 there is one release per service and no A. To run T7 to T9 or the drills again, create a **new**
+release of each service and use the current one as "A":
+
+```bash
+# 1. a change to each service, committed on main (commit ONLY the service directory)
+git commit services/risk-domain -m "risk-domain: next release"      # after changing a file under it
+git commit services/payment-api -m "payment-api: next release"      # same
+# 2. build and deploy the new releases (nothing is routed to them yet)
+scripts/release.sh risk-domain
+scripts/release.sh payment-api
+# 3. open the pilot on them: domain first, then the caller
+scripts/bind.sh preview risk-domain  <new domain commit>
+scripts/bind.sh preview payment-api  <new eapi commit>
+scripts/status.sh              # live = the old B, preview = the new release
+# 4. in each terminal, name them the way the tests do
+export A_EAPI=5467749 A_DOM=b5490fc          # what is live now
+export B_EAPI=<new eapi commit> B_DOM=<new domain commit>
+```
+
+The drills then work as written. D5 would retire the old live release again.
 
 ---
 
@@ -850,6 +1119,21 @@ A = `c8cd594/09c7931`, B = `5467749/b5490fc`. Load: 30 rps standard plus 10 rps 
 All runs had 0 dropped iterations and 0 `unexpected_pair`. Baseline p95 was 780 ms (the bank call is simulated
 at 200 to 800 ms). The first three flips on the original gateway had 3 failed requests in 16,812; the three
 runs on the retrying gateway had 0 in 14,410.
+
+### The drill runs (Phase 9)
+
+Same load (30 rps standard + 10 rps pilot). `http_reqs` includes the two setup requests of k6.
+
+| Drill | File | Duration | Requests | Failed | Max latency | Notes |
+|---|---|---|---|---|---|---|
+| **D1** pilot domain pods removed | `d1.txt` | 150 s | 6,003 | **447** | 854 ms | all 447 are pilot `503`, 0 on the standard path; 4,500 standard `(A,A)` |
+| **D2** close the pilot | `d2.txt` | 120 s | 4,804 | **0** | 817 ms | safe mixed pair for ~10 s on the pilot |
+| **D3** release C on preview | `d3.txt` | 150 s | 6,003 | **0** | 894 ms | `unexpected_pair` 798 = C was missing from the k6 list (harness error) |
+| **D4** broken release | `d4.txt` | 240 s | 9,604 | **0** | 846 ms | the crashing release never received traffic |
+| **D5** flip, rebind, retire A | `d5.txt` | 240 s | 9,602 | **0** | 846 ms | pilot saw the unsafe pair for ~4 s during the flip |
+
+Across the five drills, **live users had 0 failed requests in about 27,000 requests**, even in D1, where the pilot
+lost 447.
 
 ### Which pair answered (answer counts)
 
@@ -930,6 +1214,21 @@ long tail of old-pod answers was seen, even though the gateway pools connections
    defence in depth, with the claim limited to what T10 shows.
 8. **One pod per release means any pod loss is an outage for that track.** That is a CRC capacity choice, not
    a recommendation.
+9. **The track isolation holds under failure (D1, D4).** A preview release with no pods, or one that cannot
+   start, costs pilot users 503s at most; live users saw 0 failures. The gateway does not retry a 503, so the
+   pilot outage lasted exactly as long as the pod was missing (about 45 s, a JVM start).
+10. **Closing, replacing and retiring a release are all invisible to live users (D2, D3, D5).** The preview can
+    be rebound to any release that has ready pods, at any time, and a retire is possible only for a release
+    that no Route points at.
+11. **The unsafe pair shows up for pilot users in every correct promotion** (D5: about 4 s of new eAPI + old
+    domain), a direct consequence of the swap. It was harmless here because releases A and B are compatible;
+    it would not be harmless for a breaking change, which is why adjacent releases must stay compatible.
+12. **Retiring is irreversible.** `retire.sh` deletes the image tags, so a retired release cannot be rebuilt from
+    the cluster. Rebuilding it from git (check out that commit, then run `release.sh`) is plausible but was
+    not tried.
+13. **The operator is the weak point.** In D3 a release missing from the k6 list produced 798 false
+    `unexpected_pair` counts, and `git commit -am` swept an unrelated README edit into the throwaway commit.
+    Both are procedural: the commands in section 9 now name the list and commit only the service directory.
 
 ---
 
@@ -949,6 +1248,11 @@ long tail of old-pod answers was seen, even though the gateway pools connections
 | A pod stays `Pending` | not enough schedulable memory: `oc describe node`; retire old releases; keep the 3-pod project 1 app at 0 replicas |
 | Build `Evicted` / node `DiskPressure` | the VM disk is nearly full: `crc stop; crc config set disk-size 50; crc start`; `crc status` shows disk usage |
 | k6 exits with code 99 | a threshold failed. Expected in drill D1, otherwise look at the `FAIL` lines |
+| k6 prints a large `unexpected_pair` count with a single `eapi=...` or `domain=...` | that release is not in your `-e EAPI=` / `-e DOMAIN=` lists (drill D3: `C_DOM` was unset). Check `echo $C_DOM`, restart k6 with the full list |
+| `git checkout main` refuses: "local changes would be overwritten" | an earlier `git commit -am` committed unrelated files (for example `README.md`) on the throwaway branch. Copy the file aside, `git checkout -- <file>`, switch, copy it back. Use `git commit <service dir> -m ...` instead of `-am` |
+| `retire.sh` refuses | a Route still points at that release. Bind preview (or flip) to another release first, then retire |
+| `retire.sh` succeeded, now `release.sh` for that commit fails | the image tags were deleted. The release id is the last commit touching the directory, so rebuilding means checking out that commit first (not tried in this project) |
+| During a promotion pilot users briefly get the new eAPI with the old domain | expected with the swap (see section 3): the pilot gets the opposite order from live users. Harmless for compatible releases |
 | zsh: `no matches found: ...?amount=...` | the `?` is a glob. Quote the URL or use HTTPie's `amount==250` |
 | `curl`/`http` to the gateway returns 403 | the request has no `Origin`; every example in this guide adds one |
 
@@ -972,8 +1276,11 @@ Project 1 in `my-project` is untouched. To bring its 3-pod app back: `oc scale d
 
 ## 14. Limits and what is next
 
-- **Phase 9 and Phase 10 have not been run or built** (see section 1). This README should be updated with
-  their results.
+- **Phase 10 (the Vite MFE) is not built.** Until it exists, the "users" are k6 and HTTPie sending the `Origin`
+  header, and tests M1 to M6 are procedures only. The README must be extended with their results.
+- The drill figures are single runs. D4's crash-loop and `bind.sh` refusal output and D5's step 4 and pod
+  termination output were observed by the operator but not saved.
+- The cluster is now in a one-release state (see [Starting a new cycle](#starting-a-new-cycle)).
 - A header is not security: `X-User-Group` and `Origin` are spoofable by any non-browser client. They stand
   in for a verified JWT claim and for the real browser's `Origin`.
 - The eAPI and domain Routes are public in this demo; in a real cluster they would be internal only.
