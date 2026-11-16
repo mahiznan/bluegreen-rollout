@@ -1,0 +1,16 @@
+Project: bluegreen
+
+SERVICE      ROLE       TARGET                     READY  IMAGE-TAG POD-COMMIT NOTE
+mfe          live+prev  mfe-fd9934e                1/1    fd9934e   fd9934e    same release on both Routes
+payment-api  live+prev  payment-api-5467749        1/1    5467749   5467749    same release on both Routes
+risk-domain  live+prev  risk-domain-b5490fc        1/1    b5490fc   b5490fc    same release on both Routes
+gateway      single     gateway                    1/1    2dc8b0a   2dc8b0a    
+
+Addresses:
+  gateway                http://gateway-bluegreen.apps-crc.testing
+  mfe                    http://mfe-bluegreen.apps-crc.testing
+  mfe-preview            http://mfe-preview-bluegreen.apps-crc.testing
+  payment-api            http://payment-api-bluegreen.apps-crc.testing
+  payment-api-preview    http://payment-api-preview-bluegreen.apps-crc.testing
+  risk-domain            http://risk-domain-bluegreen.apps-crc.testing
+  risk-domain-preview    http://risk-domain-preview-bluegreen.apps-crc.testing

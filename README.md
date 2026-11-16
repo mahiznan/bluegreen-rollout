@@ -95,13 +95,15 @@ releases must be backward compatible for 10 to 15 s.
 | The pair that answers matches the order of the flip, to the request | `(A,A)` → `(A,B)` mix → `(B,B)` counted per second | [9, Part B](#part-b-load-tests-with-k6) |
 | A broken pilot release cannot hurt live users | D1 (pods removed: pilot 503, live untouched) and D4 (crashing release: never receives traffic, `bind.sh` refuses it) | [9, Part C](#part-c-failure-drills-phase-9-all-five-verified) |
 | Closing the pilot, fixing forward and retiring an old release are Route changes too | D2, D3, D5 | [9, Part C](#part-c-failure-drills-phase-9-all-five-verified) |
+| A real browser works against the gateway (CORS, pilot selector), and the page itself can be flipped, with an open tab surviving | M1 to M6 | [9, Part D](#part-d-the-mfe-phase-10-all-six-verified) |
 | The wrong flip order is unsafe for live users | Run 3: 299 live answers in the unsafe pair | [10](#10-measured-results) |
 
 ### Where the cluster is now
 
-After drill D5 the cluster holds **one release per service**: the former release B is both live and preview,
-and release A has been **retired and cannot be rebuilt**. The test commands in section 9 use A and B as
-example names; to run them again from this state, create a new release first (see
+One release per service, the same on live and preview: `payment-api` `5467749`, `risk-domain` `b5490fc`, `mfe`
+`fd9934e`, and the single `gateway` `2dc8b0a`. Release A of the APIs was **retired in drill D5 and cannot be
+rebuilt**, and the second MFE release was retired at the end of M6. The test commands in section 9 use A and B
+as example names; to run them again from this state, create new releases first (see
 [Starting a new cycle](#starting-a-new-cycle)).
 
 ---
@@ -140,12 +142,11 @@ example names; to run them again from this state, create a new release first (se
 | 7 | k6 pair counter, baseline | Done, results in `results/` |
 | 8 | Flip, rollback, wrong-order flip under load; retrying gateway; reload stress | Done, results in `results/` |
 | 9 | Failure drills D1 to D5 (pilot bug, close the pilot, fix forward, broken release, retire) | Done, run on the cluster, results in `results/d1` to `d5` |
-| 10 | React MFE (Vite build) | **Not built yet** |
-| 11 | This README with the results of Phases 0 to 9 | Done for Phases 0 to 9; Phase 10 results to be added |
+| 10 | React MFE (Vite build, nginx image), released, bound and flipped | Done, run on the cluster and in a browser (`results/m1-status.txt`, `results/m5.txt`) |
+| 11 | This README with the results of all phases | Done |
 
-Every test in section 9 is marked **Verified** (it was run and the evidence is named) or **Not yet run**
-(the procedure and the expected result are written, but the expectation is a prediction, not a measurement).
-T1 to T11 and D1 to D5 are verified; only the MFE tests M1 to M6 (Phase 10) are not run.
+Every test in section 9 is marked **Verified** (it was run and the evidence is named, or the operator confirmed what a browser showed).
+All of T1 to T11, D1 to D5 and M1 to M6 have been run. The browser observations of M2 to M6 were made and confirmed by the operator and are not saved as files; the files that exist are named in each test.
 
 ---
 
@@ -177,7 +178,7 @@ There is **one public gateway URL**, and one **Route pair** per service. The pai
 
 | Service | Live Route | Preview Route |
 |---|---|---|
-| `mfe` (what users browse; **Phase 10, not built**) | `mfe-bluegreen.apps-crc.testing` | `mfe-preview-bluegreen.apps-crc.testing` |
+| `mfe` (what users browse) | `mfe-bluegreen.apps-crc.testing` | `mfe-preview-bluegreen.apps-crc.testing` |
 | `payment-api` (eAPI) | `payment-api-bluegreen.apps-crc.testing` | `payment-api-preview-bluegreen.apps-crc.testing` |
 | `risk-domain` (domain API) | `risk-domain-bluegreen.apps-crc.testing` | `risk-domain-preview-bluegreen.apps-crc.testing` |
 | `gateway` (single release, no pair) | `gateway-bluegreen.apps-crc.testing` | none |
@@ -259,7 +260,7 @@ again, so k6 never counts them as a pair.
 | `gateway` | Spring Cloud Gateway (WebFlux), Boot 4.0.9 + Spring Cloud 2025.1.4 | edge decision, routing, CORS, retry | 1 (single release) |
 | `payment-api` | Spring Boot 4.1.2, Java 25 | eAPI: validates, asks for a risk score, simulates a 200 to 800 ms bank call | 1 per release |
 | `risk-domain` | Spring Boot 4.1.2, Java 25 | domain API: `GET /api/risk/score?amount=`, score = amount / 20, capped at 99 | 1 per release |
-| `mfe` | React + Vite (Phase 10) | the page users browse | 1 per release |
+| `mfe` | React 19 + Vite 6, served by nginx-unprivileged | the page users browse; the commit and the gateway URL are baked in at build time | 1 per release |
 
 The gateway is on Boot 4.0.x because the latest GA Spring Cloud (2025.1.x) targets Boot 4.0.x; Spring Cloud
 2026.0 targets Boot 4.2 and is still a release candidate.
@@ -333,6 +334,9 @@ services/
     src/main/java/.../CorsConfig.java    CORS for exactly the two MFE origins
     src/main/resources/application.yaml  static routes, pool limits, Retry filter
     k8s/*.tmpl.yaml                      ConfigMap, Service, Deployment templates
+  mfe/                          the page: React + Vite, Dockerfile (node build, nginx), nginx.conf, k8s templates (no ConfigMap, no Secret)
+    src/api.js, api.test.js              the pure API module and its 9+1 node:test tests (`npm test`)
+    src/release-note.js                  one line to edit to make a release look different
   payment-api/                  the eAPI (src, Dockerfile, k8s templates)
   risk-domain/                  the domain API (src, Dockerfile, k8s templates)
 routes/route.tmpl.yaml          the binding layer: one template for every Route
@@ -477,10 +481,10 @@ gateway      single     gateway                    1/1    2dc8b0a   2dc8b0a
 
 | Script | Usage | What it does |
 |---|---|---|
-| `release.sh` | `scripts/release.sh [--render-only] [--rebuild] [-y] <service>` | Refuses a dirty tree. Builds the image in the cluster tagged with the commit, creates the ConfigMap, Secret, Service and Deployment named `<service>-<commit>`, waits for the rollout, and then **checks that the running pod reports that commit**. Binds no Route. `--render-only` writes the YAML to `.rendered/` and validates it client-side without changing the cluster; `--rebuild` rebuilds an image whose tag already exists |
+| `release.sh` | `scripts/release.sh [--render-only] [--rebuild] [-y] <service>` | Refuses a dirty tree. Builds the image in the cluster tagged with the commit, creates the ConfigMap (if the service has one), Secret (if any), Service and Deployment named `<service>-<commit>`, waits for the rollout, and then **checks that the running pod reports that commit**. Binds no Route. `--render-only` writes the YAML to `.rendered/` and validates it client-side without changing the cluster; `--rebuild` rebuilds an image whose tag already exists. For `mfe` the BuildConfig also gets `VITE_GATEWAY_URL` (from the gateway Route), so the gateway Route must exist; if the gateway host ever changes, use `--rebuild` or the old URL stays baked in |
 | `bind.sh` | `init <service> <commit>` / `preview <service> <commit>` / `swap <service>` / `gateway` (add `-y` to skip the question) | The **only** script that touches Routes. Every command first checks the target Service has ready pods. `preview` warns that the release currently on preview becomes unreachable |
 | `flip.sh` | `scripts/flip.sh [-y] [--dry-run] [--gap SECONDS] <service> [<service> ...]` | Swaps services in the order given. **Checks every service before the first swap**, so a problem never leaves a half-done flip. Prints start and finish epochs. `--dry-run` only checks |
-| `status.sh` | `scripts/status.sh` | The table in 6.3. Read-only |
+| `status.sh` | `scripts/status.sh` | The table in 6.3, with rows for `mfe`, `payment-api`, `risk-domain` and `gateway`. Read-only |
 | `retire.sh` | `scripts/retire.sh [-y] <service> <commit>` | Deletes a release's objects and image tag. **Refuses if a Route still points at it.** For the gateway it removes only the old config and image tag |
 | `timeline.sh` | `scripts/timeline.sh <k6.csv> [epoch]` | Turns a k6 CSV into segments of consecutive seconds with the same set of `eapi/domain` pairs. A segment with two pairs is marked `<- MIX`. Pass the **start** epoch printed by `flip.sh` so that `t=0` is the first patch |
 | `render-secrets.sh` | `scripts/render-secrets.sh <service> <commit>` | The simulated vault: prints `KEY=value`, derived from service and commit, so every release has a different secret. Nothing is stored |
@@ -576,7 +580,7 @@ release first: see [Starting a new cycle](#starting-a-new-cycle).
 (live = B), T8 rolls back (live = A), and T9 promotes again (live = B), so run them in that order, or use
 `scripts/status.sh` to see where you are and start each from the state it names.
 
-Status legend: **Verified** = run, evidence named. **Not yet run** = procedure and prediction only (only M1 to M6).
+Status legend: **Verified** = run, evidence named. Where a result was observed in a browser and not saved, the test says so.
 
 ---
 
@@ -642,8 +646,8 @@ http --ignore-stdin --print=h OPTIONS $GW/api/v1/payments/authorize Origin:http:
 
 Expected: the first returns `200` with `access-control-allow-origin: <the preview origin>`, allowed methods
 `GET,POST,OPTIONS`, allowed headers `content-type, idempotency-key, x-user-group`, exposed header `X-Track`
-and `max-age: 3600`. The second returns `403` with no CORS headers. This is the closest thing to a browser we
-have until Phase 10.
+and `max-age: 3600`. The second returns `403` with no CORS headers. This is the closest thing to a browser without
+one; the real browser is tested in Part D (M3).
 
 #### T4. Release B in isolation, then open the pilot  (Verified, Phase 6: steps 2 and 3)
 
@@ -1076,19 +1080,68 @@ The drills then work as written. D5 would retire the old live release again.
 
 ---
 
-### Part D: the MFE (Phase 10, **Not built yet**)
+### Part D: the MFE (Phase 10, all six verified)
 
-The React app has not been written, so none of these has run. This is the plan, and the commands use the
-release scripts that already exist.
+The MFE is a third service in the same release model: `mfe-<commit>` objects, a live Route `mfe` and a preview
+Route `mfe-preview`, the same `release.sh`, `bind.sh`, `flip.sh` and `retire.sh`. The page calls the single
+gateway; the **browser** sets the `Origin` header (the MFE host), which is how the gateway tells live from pilot.
+It has no ConfigMap and no Secret: the commit and the gateway URL are baked into the bundle at build time.
 
-| # | Test | Steps | Prediction |
+**The page** shows a banner (`mfe <commit>`, `page origin`, `gateway`, `note`), a form (order id, amount,
+currency, fake card token), a **user group** selector (`pilot` / `standard`, which sets `X-User-Group`), and a
+result panel with the status, the risk decision, the eAPI and domain commits and pods, or a readable error (a
+403 body, a 503, or a network/CORS message). Offline tests: `cd services/mfe && npm test` (10 tests, no framework
+beyond `node:test`).
+
+#### Release and bind the first MFE (M1, M2)
+
+```bash
+oc project bluegreen
+scripts/release.sh --render-only mfe       # YAML valid, "no Secret for mfe", cluster unchanged
+tests/scripts/mfe-release-render.sh        # offline render test: PASS (needs services/mfe committed)
+scripts/release.sh -y mfe                  # build in OpenShift (npm ci + vite build), then the in-pod commit check
+export M1=$(git log -1 --format=%h -- services/mfe)
+scripts/bind.sh -y init mfe $M1            # both Routes -> mfe-<M1>
+scripts/status.sh > results/m1-status.txt
+```
+
+#### Tests
+
+| # | Test | How | Result |
 |---|---|---|---|
-| M1 | Release and bind the MFE | `scripts/release.sh mfe`, then `scripts/bind.sh init mfe <commit>` | `status.sh` shows an `mfe` row; `http://mfe-bluegreen.apps-crc.testing` and `http://mfe-preview-bluegreen.apps-crc.testing` both serve the page |
-| M2 | Commit banner | open both hosts in a browser | each page shows the commit it was built from |
-| M3 | Real browser CORS | DevTools, Network tab, press "authorize" | a preflight `OPTIONS` (200) followed by the `POST`, with `Origin` = the MFE host. No CORS error in the console |
-| M4 | Pilot selector | on the preview host choose "pilot", then a non-pilot group | pilot: a normal answer from B; non-pilot: the page shows the gateway's 403 (readable, because the 403 carries the CORS header) |
-| M5 | MFE flip under load | k6 running, then `scripts/flip.sh -y --gap 5 risk-domain payment-api mfe` | the live host serves the new page after the swap; k6 still 0 failures |
-| M6 | A tab open across a flip | keep a live tab open during M5, reload it afterwards | the old tab keeps working (its `Origin` is still the live host, so it moves to the new live API), a reload shows the new page |
+| M1 | Release and bind the MFE | commands above | **Verified** (`results/m1-status.txt`): `mfe` row `live+prev` on `mfe-fd9934e`, READY 1/1, image tag and pod-reported commit both `fd9934e` |
+| M2 | Commit banner | open `http://mfe-bluegreen.apps-crc.testing` and `http://mfe-preview-bluegreen.apps-crc.testing` | **Verified.** Both hosts return 200 and serve the same bundle, which contains `fd9934e` and `gateway-bluegreen.apps-crc.testing` (checked with `http`); the banner in a browser was confirmed by the operator |
+| M3 | Real browser CORS | live host, group `standard`, Authorize, DevTools Network | **Verified by the operator**: a preflight `OPTIONS` 200 then the `POST` 200 with `Origin` = the MFE host, no CORS error. The browser caches the preflight for an hour (`max-age: 3600`), so only the first Authorize per origin shows the `OPTIONS` row |
+| M4 | Pilot selector | preview host: group `pilot`, then `standard` | **Verified by the operator**: pilot gets a normal answer; `standard` shows the red panel `HTTP 403` with `preview is for the pilot group only`, readable because the gateway's 403 carries the CORS header |
+| M5 | MFE flip under load | second MFE release (below), k6 running, `scripts/flip.sh -y mfe` | **Verified** (`results/m5.txt`): 3,602 iterations, **0 failures**, only `5467749/b5490fc` (2,701 standard, 901 pilot), `unexpected_pair` 0. The live host showed the second release after the flip (operator) |
+| M6 | A tab open across the flip | a live tab left open and not reloaded | **Verified by the operator**: after the flip the old tab still authorized successfully (its `Origin` is still the live host), and after a reload it showed the new release |
+
+**M5 and M6 in full.** A second release is made by changing one line, `src/release-note.js`, and committing
+only the MFE directory (never `git commit -am`):
+
+```bash
+git commit services/mfe -m "mfe: second release (release note changed)"
+export M1=fd9934e M2=$(git log -1 --format=%h -- services/mfe)       # two different ids
+scripts/release.sh -y mfe                                           # second release, not routed yet
+scripts/bind.sh -y preview mfe $M2                                  # the preview host now shows $M2
+# M6: keep a tab on the live host open (it shows $M1); press Authorize once; do not reload
+# terminal 1
+k6 run -e DURATION=90s -e EAPI=$B_EAPI -e DOMAIN=$B_DOM --out csv=results/m5.csv k6/pairs.js 2>&1 | tee results/m5.txt
+# terminal 2, about 30 s later
+scripts/flip.sh -y mfe                                              # live = $M2, preview = $M1 (rollback target)
+# new window on the live host: shows $M2. Old tab: Authorize still works; reload shows $M2
+scripts/flip.sh -y mfe                                              # rollback: live = $M1 again
+scripts/bind.sh -y preview mfe $M1                                  # preview = $M1 too, so $M2 is unbound
+scripts/retire.sh -y mfe $M2
+```
+
+The real values were `M1=fd9934e` and `M2=e3a462a`. k6 does not use the MFE, so M5's k6 result shows only that
+flipping the page does not disturb the API traffic. After the cleanup the MFE was back to one release,
+`fd9934e`, on both Routes. When the whole stack is flipped, the MFE goes **last** on a promotion
+(`flip.sh risk-domain payment-api mfe`) and **first** on a rollback (`flip.sh mfe payment-api risk-domain`),
+because the page is the outermost caller.
+
+**Not saved as files:** the browser observations of M2, M3, M4 and M6, and the status output after the flip.
 
 ### Optional extras
 
@@ -1119,6 +1172,12 @@ A = `c8cd594/09c7931`, B = `5467749/b5490fc`. Load: 30 rps standard plus 10 rps 
 All runs had 0 dropped iterations and 0 `unexpected_pair`. Baseline p95 was 780 ms (the bank call is simulated
 at 200 to 800 ms). The first three flips on the original gateway had 3 failed requests in 16,812; the three
 runs on the retrying gateway had 0 in 14,410.
+
+### The MFE run (Phase 10)
+
+| Run | File | Duration | Requests | Failed | Max latency | Notes |
+|---|---|---|---|---|---|---|
+| **M5** MFE flip under load | `m5.txt` | 90 s | 3,604 | **0** | 846 ms | 2,701 standard + 901 pilot, all `5467749/b5490fc`; `unexpected_pair` 0 |
 
 ### The drill runs (Phase 9)
 
@@ -1226,7 +1285,11 @@ long tail of old-pod answers was seen, even though the gateway pools connections
 12. **Retiring is irreversible.** `retire.sh` deletes the image tags, so a retired release cannot be rebuilt from
     the cluster. Rebuilding it from git (check out that commit, then run `release.sh`) is plausible but was
     not tried.
-13. **The operator is the weak point.** In D3 a release missing from the k6 list produced 798 false
+13. **The MFE needed no change to the release model.** `bind.sh`, `flip.sh`, `retire.sh` and `status.sh` worked for it
+    unchanged; only `release.sh` learned a per-service build argument (the gateway URL) and a service without a
+    ConfigMap. A tab left open across a flip keeps working because its `Origin` still names the live host, and the
+    browser caches the CORS preflight for an hour.
+14. **The operator is the weak point.** In D3 a release missing from the k6 list produced 798 false
     `unexpected_pair` counts, and `git commit -am` swept an unrelated README edit into the throwaway commit.
     Both are procedural: the commands in section 9 now name the list and commit only the service directory.
 
@@ -1276,11 +1339,12 @@ Project 1 in `my-project` is untouched. To bring its 3-pod app back: `oc scale d
 
 ## 14. Limits and what is next
 
-- **Phase 10 (the Vite MFE) is not built.** Until it exists, the "users" are k6 and HTTPie sending the `Origin`
-  header, and tests M1 to M6 are procedures only. The README must be extended with their results.
 - The drill figures are single runs. D4's crash-loop and `bind.sh` refusal output and D5's step 4 and pod
   termination output were observed by the operator but not saved.
-- The cluster is now in a one-release state (see [Starting a new cycle](#starting-a-new-cycle)).
+- The cluster is now in a one-release state for every service (see [Starting a new cycle](#starting-a-new-cycle)); the `mfe` is on `fd9934e`. To repeat the drills, create new releases of the services as described there.
+- The MFE tests M2 to M4 and M6 were observed in a browser by the operator and not recorded as files.
+- The MFE bakes the gateway URL in at build time; if the gateway host changes, rebuild it (`release.sh --rebuild mfe`).
+- A first `npm ci` in the cluster needs the npm registry and Docker Hub (`node:22-alpine`, `nginx-unprivileged`); this worked in CRC here, but rate limits would break a build.
 - A header is not security: `X-User-Group` and `Origin` are spoofable by any non-browser client. They stand
   in for a verified JWT claim and for the real browser's `Origin`.
 - The eAPI and domain Routes are public in this demo; in a real cluster they would be internal only.
