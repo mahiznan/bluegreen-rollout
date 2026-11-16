@@ -26,7 +26,7 @@ row() { # service role target note
 
 commit_time() { git show -s --format=%ct "$1" 2>/dev/null || echo 0; }
 
-for svc in payment-api risk-domain; do
+for svc in mfe payment-api risk-domain; do
   live="$(route_target "$svc")"; prev="$(route_target "$svc-preview")"
   if [[ -z "$live" && -z "$prev" ]]; then
     printf "$FMT" "$svc" "-" "(no Routes yet)" "" "" "" ""
@@ -49,7 +49,7 @@ if oc get deploy gateway >/dev/null 2>&1; then row gateway single gateway ""; el
 
 echo
 echo "Addresses:"
-for r in gateway payment-api payment-api-preview risk-domain risk-domain-preview; do
+for r in gateway mfe mfe-preview payment-api payment-api-preview risk-domain risk-domain-preview; do
   h="$(route_host "$r")"; [[ -n "$h" ]] && printf '  %-22s http://%s\n' "$r" "$h"
 done
 exit 0

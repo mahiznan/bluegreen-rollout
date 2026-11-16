@@ -9,3 +9,10 @@ target/
 
 # raw k6 CSV output can be large; the .txt summaries are what we commit
 results/*.csv
+
+# subagent workspace
+.superpowers/
+
+# MFE
+services/mfe/node_modules/
+services/mfe/dist/

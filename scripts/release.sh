@@ -50,6 +50,8 @@ info "image=$IMAGE"
 OUT="$ROOT/.rendered/$NAME-$COMMIT"
 mkdir -p "$OUT"
 for f in configmap service deployment; do
+  # A service without a template for this kind (the mfe has no ConfigMap) is skipped.
+  [[ -f "$SERVICE_DIR/k8s/$f.tmpl.yaml" ]] || continue
   render "$SERVICE_DIR/k8s/$f.tmpl.yaml" >"$OUT/$f.yaml"
 done
 DEPLOY="$(grep -m1 '^  name:' "$OUT/deployment.yaml" | awk '{print $2}')"
@@ -74,18 +76,26 @@ else
   oc get bc/"$NAME" >/dev/null 2>&1 || { info "creating BuildConfig and ImageStream '$NAME'"; oc new-build --binary --strategy=docker --name="$NAME"; }
   STAGE="$(mktemp -d)"
   trap 'rm -rf "${STAGE:?}"' EXIT
-  rsync -a --exclude target/ --exclude k8s/ "$SERVICE_DIR"/ "$STAGE"/
+  rsync -a --exclude target/ --exclude k8s/ --exclude node_modules/ --exclude dist/ "$SERVICE_DIR"/ "$STAGE"/
   # The commit is passed as a build arg set ON THE BuildConfig. Do NOT use `oc start-build --build-arg`:
   # for binary builds (--from-dir) it is silently ignored, and the image would report "unknown".
   info "building (the commit is baked in as GIT_COMMIT=$COMMIT)"
+  BUILD_ARGS="{\"name\":\"GIT_COMMIT\",\"value\":\"$COMMIT\"}"
+  if [[ "$NAME" == "mfe" ]]; then
+    # The page is built with the commit and the gateway URL baked in (VITE_* are read by `vite build`).
+    GW_HOST="$(route_host gateway)"
+    [[ -n "$GW_HOST" ]] || die "the gateway Route does not exist yet (scripts/bind.sh gateway). The mfe is built with its URL."
+    BUILD_ARGS="$BUILD_ARGS,{\"name\":\"VITE_GATEWAY_URL\",\"value\":\"http://$GW_HOST\"}"
+    info "the mfe is built with VITE_GATEWAY_URL=http://$GW_HOST"
+  fi
   oc patch "bc/$NAME" --type=merge \
-    -p "{\"spec\":{\"strategy\":{\"dockerStrategy\":{\"buildArgs\":[{\"name\":\"GIT_COMMIT\",\"value\":\"$COMMIT\"}]}}}}" >/dev/null
+    -p "{\"spec\":{\"strategy\":{\"dockerStrategy\":{\"buildArgs\":[$BUILD_ARGS]}}}}" >/dev/null
   oc start-build "$NAME" --from-dir="$STAGE" --follow --wait
   oc tag "$NAME:latest" "$NAME:$COMMIT"
 fi
 
 # ---- 4. Apply: config first, then the Secret, then the workload ----
-oc apply -f "$OUT/configmap.yaml"
+if [[ -f "$OUT/configmap.yaml" ]]; then oc apply -f "$OUT/configmap.yaml"; fi
 if [[ -n "$SECRET_LINES" ]]; then
   ENVFILE="$(mktemp)"
   trap 'rm -f "${ENVFILE:?}"; rm -rf "${STAGE:-/nonexistent-stage}"' EXIT
